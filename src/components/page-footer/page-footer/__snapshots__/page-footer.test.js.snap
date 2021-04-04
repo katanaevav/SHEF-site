@@ -1,0 +1,255 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render PageFooter 1`] = `
+<footer
+  className="page-footer"
+>
+  <div
+    className="page-footer__wrapper page-footer__wrapper--0"
+  >
+    <img
+      alt="Логотип"
+      className="page-footer__logo-image"
+      src="./img/logo-footer.png"
+      srcSet="./img/logo-footer@2x.png 2x"
+    />
+    <div
+      className="page-footer__wrapper page-footer__wrapper--1"
+    >
+      <div
+        className="page-footer__wrapper page-footer__wrapper--2"
+      >
+        <section
+          className="page-footer__section section-connect"
+        >
+          <h2
+            className="section-connect visually-hidden"
+          >
+            Для связи
+          </h2>
+          <div
+            className="section-connect__wrapper"
+          >
+            <img
+              alt="Инстаграм"
+              className="section-connect__image section-connect__image--instagram"
+              src="./img/instagram.svg"
+            />
+            <ul
+              className="section-connect__adress"
+            >
+              <li
+                className="section-connect__adress-item"
+              >
+                <a
+                  href="tel:+79953014090"
+                  title="Телефон"
+                >
+                  +7 995 301 40 90
+                </a>
+              </li>
+              <li
+                className="section-connect__adress-item"
+              >
+                <a
+                  href="mailto:office@jscorp.ru"
+                  title="Email"
+                >
+                  office@jscorp.ru
+                </a>
+              </li>
+            </ul>
+          </div>
+          <form
+            action="https://echo.htmlacademy.ru"
+            className="section-connect__form"
+            method="POST"
+          >
+            <p
+              className="section-connect__form-title"
+            >
+              Отправим вам ссылку на наше приложение
+            </p>
+            <div
+              className="section-connect__form-input-wrapper"
+            >
+              <input
+                className="section-connect__form-input-email"
+                name="e-mail"
+                placeholder="Email"
+                required={true}
+                type="email"
+              />
+              <input
+                className="section-connect__form-button"
+                type="submit"
+                value="Получить ссылку"
+              />
+            </div>
+            <div
+              className="section-connect__form-input-wrapper"
+            >
+              <input
+                className="section-connect__form-checkbox"
+                id="footer-check-policy"
+                name="accept-policy"
+                type="checkbox"
+                value="yes"
+              />
+              <label
+                className="section-connect__form-checkbox-label"
+                htmlFor="footer-check-policy"
+              >
+                согласен с условиями
+                <a
+                  href="#"
+                >
+                   Политики конфиденциальности
+                </a>
+              </label>
+            </div>
+          </form>
+        </section>
+        <section
+          className="page-footer__section section-links"
+        >
+          <h2
+            className="section-connect__header"
+          >
+            Заказ еды
+          </h2>
+          <ul
+            className="section-links__links"
+          >
+            <li
+              className="section-links__link"
+            >
+              <a
+                href="catering.html"
+              >
+                Кейтеринг
+              </a>
+            </li>
+            <li
+              className="section-links__link"
+            >
+              <a
+                href="online-cooking.html"
+              >
+                Онлайн кулинария
+              </a>
+            </li>
+            <li
+              className="section-links__link"
+            >
+              <a
+                href="foods.html"
+              >
+                Заказ продуктов
+              </a>
+            </li>
+          </ul>
+        </section>
+        <section
+          className="page-footer__section section-links"
+        >
+          <h2
+            className="section-connect__header"
+          >
+            Бизнесу
+          </h2>
+          <ul
+            className="section-links__links"
+          >
+            <li
+              className="section-links__link"
+            >
+              <a
+                href="#"
+              >
+                Доставка еды
+              </a>
+            </li>
+            <li
+              className="section-links__link"
+            >
+              <a
+                href="#"
+              >
+                Стань партнером
+              </a>
+            </li>
+          </ul>
+        </section>
+        <section
+          className="page-footer__section section-apps"
+        >
+          <a
+            className="section-apps__mobile-app"
+            href="#"
+          >
+            <img
+              alt="Скачать в App Store"
+              className="section-apps__mobile-app-image"
+              src="./img/app-store.png"
+              srcSet="./img/app-store@2x.png 2x"
+            />
+          </a>
+          <a
+            className="section-apps__mobile-app"
+            href="#"
+          >
+            <img
+              alt="Скачать в Google Play"
+              className="section-apps__mobile-app-image"
+              src="./img/google-play.png"
+              srcSet="./img/google-play@2x.png 2x"
+            />
+          </a>
+        </section>
+      </div>
+      <ul
+        className="page-footer__legals-list"
+      >
+        <li
+          className="page-footer__legals-item"
+        >
+          <a
+            href="#"
+          >
+            Условия использования
+          </a>
+        </li>
+        <li
+          className="page-footer__legals-item"
+        >
+          <a
+            href="#"
+          >
+            Политика конфиденциальности
+          </a>
+        </li>
+        <li
+          className="page-footer__legals-item"
+        >
+          <a
+            href="#"
+          >
+            Cookies
+          </a>
+        </li>
+      </ul>
+      <p
+        className="page-footer__rights"
+      >
+        2020-2021 Шеф Здесь. Все права защищены.
+      </p>
+    </div>
+    <img
+      alt="JSCorp"
+      className="page-footer__jscorp-image"
+      src="./img/jscorp-logo1.svg"
+    />
+  </div>
+</footer>
+`;

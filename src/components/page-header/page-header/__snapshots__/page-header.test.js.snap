@@ -1,0 +1,261 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render PageHeader 1`] = `
+<header
+  className="page-header"
+>
+  <div
+    className="page-header__wrapper"
+  >
+    <button
+      className="page-header__mobile-menu-button"
+      href="#"
+    >
+      <img
+        alt="Меню"
+        className="page-header__mobile-menu-button-image"
+        height="25"
+        src="./img/burger-button.svg"
+        width="28"
+      />
+    </button>
+    <a
+      className="page-header__logo"
+    >
+      <img
+        alt="Логотип"
+        className="page-header__logo-image"
+        height="44"
+        src="./img/logo-small.png"
+        srcSet="./img/logo-small@2x.png 2x"
+        width="107"
+      />
+    </a>
+    <nav
+      className="page-header__nav main-nav"
+    >
+      <ul
+        className="main-nav__menu main-menu"
+      >
+        <li
+          className="main-menu__item"
+        >
+          <a
+            href="#"
+            title="Заказ еды"
+          >
+            Заказ еды
+          </a>
+          <ul
+            className="main-menu__sub-menu sub-menu"
+          >
+            <li
+              className="sub-menu__item"
+            >
+              <a
+                href="catering.html"
+                title="Кейтеринг"
+              >
+                Кейтеринг
+              </a>
+            </li>
+            <li
+              className="sub-menu__item"
+            >
+              <a
+                href="online-cooking.html"
+                title="Онлайн кулинария"
+              >
+                Онлайн кулинария
+              </a>
+            </li>
+            <li
+              className="sub-menu__item"
+            >
+              <a
+                href="foods.html"
+                title="Заказ продуктов"
+              >
+                Заказ продуктов
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li
+          className="main-menu__item"
+        >
+          <a
+            href="#"
+            title="Бизнесу"
+          >
+            Бизнесу
+          </a>
+          <ul
+            className="main-menu__sub-menu sub-menu"
+          >
+            <li
+              className="sub-menu__item"
+            >
+              <a
+                href="#"
+                title="Доставка еды"
+              >
+                Доставка еды
+              </a>
+            </li>
+            <li
+              className="sub-menu__item"
+            >
+              <a
+                href="#"
+                title="Стань партнером"
+              >
+                Стань партнером
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li
+          className="main-menu__item"
+        >
+          <a
+            href="#"
+            title="О нас"
+          >
+            О нас
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <a
+      className="page-header__phone"
+      href="tel:+79953014090"
+    >
+      +7 995 301 40 90
+    </a>
+    <a
+      className="page-header__basket"
+      href="#"
+    >
+      0 р. 
+      <img
+        alt="Корзина"
+        className="page-header__basket-image"
+        height="22"
+        src="./img/shopping-basket.svg"
+        width="25"
+      />
+    </a>
+  </div>
+  <div
+    className="page-header__mobile-menu mobile-menu"
+  >
+    <nav
+      className="mobile-menu__mobile-nav mobile-nav"
+    >
+      <ul
+        className="mobile-nav__menu "
+      >
+        <li
+          className="mobile-nav__item"
+        >
+          <a
+            href="catering.html"
+            title="Бизнесу"
+          >
+            Кейтеринг
+          </a>
+        </li>
+        <li
+          className="mobile-nav__item"
+        >
+          <a
+            href="online-cooking.html"
+            title="Бизнесу"
+          >
+            Онлайн кулинария
+          </a>
+        </li>
+        <li
+          className="mobile-nav__item"
+        >
+          <a
+            href="foods.html"
+            title="Бизнесу"
+          >
+            Заказ продуктов
+          </a>
+        </li>
+        <li
+          className="mobile-nav__item"
+        >
+          <a
+            href="#"
+            title="Бизнесу"
+          >
+            Доставка еды
+          </a>
+        </li>
+        <li
+          className="mobile-nav__item"
+        >
+          <a
+            href="#"
+            title="О нас"
+          >
+            Стань партнером
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div
+      className="mobile-menu__mobile-apps"
+    >
+      <a
+        className="mobile-menu__mobile-app"
+        href="#"
+      >
+        <img
+          alt="Скачать в App Store"
+          className="mobile-menu__mobile-app-image"
+          height="48"
+          src="./img/app-store.png"
+          srcSet="./img/app-store@2x.png 2x"
+          width="142"
+        />
+      </a>
+      <a
+        className="mobile-menu__mobile-app"
+        href="#"
+      >
+        <img
+          alt="Скачать в Google Play"
+          className="mobile-menu__mobile-app-image"
+          height="48"
+          src="./img/google-play.png"
+          srcSet="./img/google-play@2x.png 2x"
+          width="160"
+        />
+      </a>
+    </div>
+    <a
+      className="mobile-menu__mobile-phone"
+      href="tel:+79953014090"
+    >
+      +7 995 301 40 90
+    </a>
+    <a
+      className="mobile-menu__mobile-jscorp"
+      href="#"
+    >
+      <img
+        alt="JSCorp"
+        className="mobile-menu__mobile-jscorp-image"
+        height="63"
+        src="./img/jscorp-logo.svg"
+        width="63"
+      />
+    </a>
+  </div>
+</header>
+`;
