@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render PageHeaderMobileMenu 1`] = `
+<div
+  className="page-header__mobile-menu mobile-menu"
+>
+  <nav
+    className="mobile-menu__mobile-nav mobile-nav"
+  >
+    <ul
+      className="mobile-nav__menu "
+    >
+      <li
+        className="mobile-nav__item"
+      >
+        <a
+          href="catering.html"
+          title="Бизнесу"
+        >
+          Кейтеринг
+        </a>
+      </li>
+      <li
+        className="mobile-nav__item"
+      >
+        <a
+          href="online-cooking.html"
+          title="Бизнесу"
+        >
+          Онлайн кулинария
+        </a>
+      </li>
+      <li
+        className="mobile-nav__item"
+      >
+        <a
+          href="foods.html"
+          title="Бизнесу"
+        >
+          Заказ продуктов
+        </a>
+      </li>
+      <li
+        className="mobile-nav__item"
+      >
+        <a
+          href="#"
+          title="Бизнесу"
+        >
+          Доставка еды
+        </a>
+      </li>
+      <li
+        className="mobile-nav__item"
+      >
+        <a
+          href="#"
+          title="О нас"
+        >
+          Стань партнером
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div
+    className="mobile-menu__mobile-apps"
+  >
+    <a
+      className="mobile-menu__mobile-app"
+      href="#"
+    >
+      <img
+        alt="Скачать в App Store"
+        className="mobile-menu__mobile-app-image"
+        height="48"
+        src="./img/app-store.png"
+        srcSet="./img/app-store@2x.png 2x"
+        width="142"
+      />
+    </a>
+    <a
+      className="mobile-menu__mobile-app"
+      href="#"
+    >
+      <img
+        alt="Скачать в Google Play"
+        className="mobile-menu__mobile-app-image"
+        height="48"
+        src="./img/google-play.png"
+        srcSet="./img/google-play@2x.png 2x"
+        width="160"
+      />
+    </a>
+  </div>
+  <a
+    className="mobile-menu__mobile-phone"
+    href="tel:+79953014090"
+  >
+    +7 995 301 40 90
+  </a>
+  <a
+    className="mobile-menu__mobile-jscorp"
+    href="#"
+  >
+    <img
+      alt="JSCorp"
+      className="mobile-menu__mobile-jscorp-image"
+      height="63"
+      src="./img/jscorp-logo.svg"
+      width="63"
+    />
+  </a>
+</div>
+`;
