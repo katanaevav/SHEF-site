@@ -1,9 +1,9 @@
 import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
 
 import PageHeaderNav from "../page-header-nav/page-header-nav.jsx";
 import PageHeaderMobileMenu from "../page-header-mobile-menu/page-header-mobile-menu.jsx";
 
-// const PageHeader = (props) => {
 
 class PageHeader extends PureComponent {
   constructor(props) {
@@ -18,6 +18,9 @@ class PageHeader extends PureComponent {
 
 
   render() {
+
+    const {totalCost} = this.props;
+
     return (
       <React.Fragment>
 
@@ -35,7 +38,7 @@ class PageHeader extends PureComponent {
 
             <a className="page-header__phone" href="tel:+79953014090">+7 995 301 40 90</a>
 
-            <a className="page-header__basket" href="#">0 р. <img className="page-header__basket-image" src="./img/shopping-basket.svg" width="25" height="22" alt="Корзина" /></a>
+            <a className="page-header__basket" href="#">{`${totalCost} р. `} <img className="page-header__basket-image" src="./img/shopping-basket.svg" width="25" height="22" alt="Корзина" /></a>
           </div>
 
           <PageHeaderMobileMenu></PageHeaderMobileMenu>
@@ -46,6 +49,11 @@ class PageHeader extends PureComponent {
     );
   }
 };
+
+
+PageHeader.propTypes = {
+  totalCost: PropTypes.number,
+}
 
 
 export default PageHeader;

@@ -11,6 +11,7 @@ Array [
       <button
         className="page-header__mobile-menu-button"
         href="#"
+        onClick={[Function]}
       >
         <img
           alt="Меню"
@@ -138,7 +139,8 @@ Array [
         className="page-header__basket"
         href="#"
       >
-        0 р. 
+        220 р. 
+         
         <img
           alt="Корзина"
           className="page-header__basket-image"
@@ -1085,11 +1087,16 @@ Array [
           2020-2021 Шеф Здесь. Все права защищены.
         </p>
       </div>
-      <img
-        alt="JSCorp"
-        className="page-footer__jscorp-image"
-        src="./img/jscorp-logo1.svg"
-      />
+      <a
+        className="page-footer__jscorp-link"
+        href="#"
+      >
+        <img
+          alt="JSCorp"
+          className="page-footer__jscorp-image"
+          src="./img/jscorp-logo1.svg"
+        />
+      </a>
     </div>
   </footer>,
 ]

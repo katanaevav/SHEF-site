@@ -1,5 +1,7 @@
 import React from "react";
 
+import PageFooterGetLinkForm from "../page-footer-get-link-form/page-footer-get-link-form.jsx";
+
 
 const PageFooter = (props) => {
 
@@ -23,19 +25,7 @@ const PageFooter = (props) => {
                   </ul>
                 </div>
 
-                <form className="section-connect__form" method="POST" action="https://echo.htmlacademy.ru">
-                  <p className="section-connect__form-title">Отправим вам ссылку на наше приложение</p>
-                  <div className="section-connect__form-input-wrapper">
-                    <input className="section-connect__form-input-email" type="email" placeholder="Email" name="e-mail" required />
-                    <input className="section-connect__form-button" type="submit" value="Получить ссылку"/>
-                  </div>
-                  <div className="section-connect__form-input-wrapper">
-                    <input className="section-connect__form-checkbox" type="checkbox" id="footer-check-policy" name="accept-policy" value="yes"/>
-                    <label className="section-connect__form-checkbox-label" htmlFor="footer-check-policy">согласен с условиями
-                      <a href="#"> Политики конфиденциальности</a>
-                    </label>
-                  </div>
-                </form>
+                <PageFooterGetLinkForm />
 
               </section>
 
@@ -77,7 +67,7 @@ const PageFooter = (props) => {
 
           </div>
 
-          <img className="page-footer__jscorp-image" src="./img/jscorp-logo1.svg" alt="JSCorp" />
+          <a href="#" className="page-footer__jscorp-link"><img className="page-footer__jscorp-image" src="./img/jscorp-logo1.svg" alt="JSCorp" /></a>
 
         </div>
       </footer>

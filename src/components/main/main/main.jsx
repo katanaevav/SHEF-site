@@ -1,6 +1,5 @@
 import React, {PureComponent} from "react";
-import PageHeader from "../../page-header/page-header/page-header.jsx";
-import PageFooter from "../../page-footer/page-footer/page-footer.jsx";
+
 
 class Main extends PureComponent {
   constructor(props) {
@@ -14,7 +13,7 @@ class Main extends PureComponent {
     return (
       <React.Fragment>
 
-      <PageHeader></PageHeader>
+
 
       <main className="page-main">
         <div className="page-main__wrapper">
@@ -227,7 +226,7 @@ class Main extends PureComponent {
         </div>
       </main>
 
-      <PageFooter></PageFooter>
+
 
       </React.Fragment>
     );

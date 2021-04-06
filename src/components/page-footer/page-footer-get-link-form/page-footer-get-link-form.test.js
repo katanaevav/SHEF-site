@@ -1,12 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import PageHeader from "./page-header.jsx";
+import PageFooterGetLinkForm from "./page-footer-get-link-form.jsx";
 
-it(`Render PageHeader`, () => {
+it(`Render PageFooter`, () => {
   const tree = renderer.create(
-      <PageHeader
-        totalCost = {220}
-      />
+      <PageFooterGetLinkForm />
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

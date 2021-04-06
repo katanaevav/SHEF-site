@@ -10,6 +10,7 @@ exports[`Render PageHeader 1`] = `
     <button
       className="page-header__mobile-menu-button"
       href="#"
+      onClick={[Function]}
     >
       <img
         alt="Меню"
@@ -137,7 +138,8 @@ exports[`Render PageHeader 1`] = `
       className="page-header__basket"
       href="#"
     >
-      0 р. 
+      220 р. 
+       
       <img
         alt="Корзина"
         className="page-header__basket-image"

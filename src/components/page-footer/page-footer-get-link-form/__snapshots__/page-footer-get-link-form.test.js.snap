@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render PageFooter 1`] = `
+<form
+  action="https://echo.htmlacademy.ru"
+  className="section-connect__form"
+  method="POST"
+>
+  <p
+    className="section-connect__form-title"
+  >
+    Отправим вам ссылку на наше приложение
+  </p>
+  <div
+    className="section-connect__form-input-wrapper"
+  >
+    <input
+      className="section-connect__form-input-email"
+      name="e-mail"
+      placeholder="Email"
+      required={true}
+      type="email"
+    />
+    <input
+      className="section-connect__form-button"
+      type="submit"
+      value="Получить ссылку"
+    />
+  </div>
+  <div
+    className="section-connect__form-input-wrapper"
+  >
+    <input
+      className="section-connect__form-checkbox"
+      id="footer-check-policy"
+      name="accept-policy"
+      type="checkbox"
+      value="yes"
+    />
+    <label
+      className="section-connect__form-checkbox-label"
+      htmlFor="footer-check-policy"
+    >
+      согласен с условиями
+      <a
+        href="#"
+      >
+         Политики конфиденциальности
+      </a>
+    </label>
+  </div>
+</form>
+`;
