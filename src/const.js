@@ -7,4 +7,12 @@ export const Links = {
   EMAIL_SHOW: `office@jscorp.ru`,
   EMAIL_LINK: `mailto:office@jscorp.ru`,
   LOCAL_BURDER_APP_LINK: `https://www.localburgerco.com/app`
-}
+};
+
+export const Screens = {
+  MAIN_SCREEN: 1,
+  ONLINE_COOKING_SCREEN: 2,
+  CATERING_SCREEN: 3,
+  FOODS_SCREEN: 4,
+  CART_SCREEN: 5
+};
