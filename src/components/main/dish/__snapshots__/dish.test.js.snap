@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Dish 1`] = `
+<li
+  className="menu-group-navigator__item dish"
+>
+  <div
+    className="dish-wrapper dish-wrapper--head"
+  >
+    <p
+      className="dish-weight"
+    >
+      250 гр.
+    </p>
+    <p
+      className="dish-tag"
+    >
+      NEW
+    </p>
+  </div>
+  <img
+    alt="Анатомия вкуса"
+    className="dish__image"
+    src="./img/dish.png"
+    srcSet="./img/dish@2x.png 2x"
+  />
+  <div
+    className="dish__counter select-count"
+  >
+    <button
+      className="select-count__button select-count__button--dec"
+    >
+      -
+    </button>
+    <input
+      className="select-count__input"
+      defaultValue="1"
+      type="number"
+    />
+    <button
+      className="select-count__button select-count__button--inc"
+    >
+      +
+    </button>
+  </div>
+  <h3
+    className="dish__header"
+  >
+    Анатомия вкуса
+  </h3>
+  <p
+    className="dish__description"
+  >
+    Описание блюда Описание блюда
+        Описание блюда Описание блюда
+        Описание блюда Описание блюда
+        Описание блюда Описание блюда
+  </p>
+  <div
+    className="dish-wrapper dish-wrapper--footer"
+  >
+    <p
+      className="dish__price"
+    >
+      250 р.
+    </p>
+    <button
+      className="dish__to-cart"
+    >
+      В корзину
+    </button>
+  </div>
+</li>
+`;

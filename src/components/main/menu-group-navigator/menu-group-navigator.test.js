@@ -7,6 +7,11 @@ import MenuGroupNavigator from "./menu-group-navigator.jsx";
 configure({adapter: new Adapter()});
 
 it('Render Order Navigator', () => {
-  const tree = shallow(<MenuGroupNavigator />);
+  const tree = shallow(
+    <MenuGroupNavigator
+      groupId = {1}
+      groupName = {`Первые блюда`}
+    />
+  );
   expect(tree).toMatchSnapshot();
 });
