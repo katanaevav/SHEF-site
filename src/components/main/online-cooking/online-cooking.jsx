@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 // import PropTypes from "prop-types";
 
+import OrderNavigator from "../order-navigator/order-navigator.jsx";
 
 class OnlineCooking extends PureComponent {
   constructor(props) {
@@ -51,19 +52,7 @@ class OnlineCooking extends PureComponent {
 
             </section>
 
-            <section className="order-navigator">
-              <h2 className="order-navigator__header visually-hidden">Навигация по меню</h2>
-              <ul className="order-navigator__list">
-                <li className="order-navigator__item"><a href="#1">Первые блюда</a></li>
-                <li className="order-navigator__item"><a href="#2">Вторые блюда</a></li>
-                <li className="order-navigator__item"><a href="#3">Гарниры</a></li>
-                <li className="order-navigator__item"><a href="#">Десерты</a></li>
-                <li className="order-navigator__item"><a href="#">Безалкогольные напитки</a></li>
-                <li className="order-navigator__item"><a href="#">Вина</a></li>
-                <li className="order-navigator__item"><a href="#">Крепкий алкоголь</a></li>
-                <li className="order-navigator__item"><a href="#">Пицца</a></li>
-              </ul>
-            </section>
+            <OrderNavigator />
 
             <section className="menu-group-navigator" id="1">
               <h2 className="menu-group-navigator__header">Первые блюда</h2>
