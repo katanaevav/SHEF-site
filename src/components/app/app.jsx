@@ -5,6 +5,8 @@ import Main from "../main/main/main.jsx";
 import PageHeader from "../page-header/page-header/page-header.jsx";
 import PageFooter from "../page-footer/page-footer/page-footer.jsx";
 
+import OnlineCooking from "../main/online-cooking/online-cooking.jsx";
+
 import {Screens} from "../../const.js"
 
 class App extends PureComponent {
@@ -27,6 +29,7 @@ class App extends PureComponent {
             <PageHeader
               totalCost = {200}
             />
+            <OnlineCooking />
             <PageFooter />
           </React.Fragment>
         );
@@ -83,9 +86,13 @@ class App extends PureComponent {
           <Route exact path="/">
             {this._renderApp()}
           </Route>
-          {/* <Route exact path="/sign-in">
-            <PageSignIn />
-          </Route> */}
+          <Route exact path="/online-cooking">
+            <PageHeader
+                totalCost = {200}
+              />
+              <OnlineCooking />
+            <PageFooter />
+          </Route>
         </Switch>
       </BrowserRouter>
     );
