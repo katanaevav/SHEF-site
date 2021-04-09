@@ -29,16 +29,21 @@ exports[`Render Dish 1`] = `
   >
     <button
       className="select-count__button select-count__button--dec"
+      onClick={[Function]}
     >
       -
     </button>
     <input
       className="select-count__input"
-      defaultValue="1"
+      defaultValue={1}
+      max={99}
+      min={1}
+      onChange={[Function]}
       type="number"
     />
     <button
       className="select-count__button select-count__button--inc"
+      onClick={[Function]}
     >
       +
     </button>

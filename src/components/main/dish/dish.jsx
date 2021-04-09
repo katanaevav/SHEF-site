@@ -1,6 +1,8 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
+import SelectCount from "../select-count/select-count.jsx";
+
 
 class Dish extends PureComponent {
   constructor(props) {
@@ -29,11 +31,14 @@ class Dish extends PureComponent {
             {dishTag !== `` ? this._renderTag(dishTag) : ``}
           </div>
           <img className="dish__image" src="./img/dish.png" srcSet="./img/dish@2x.png 2x" alt="Анатомия вкуса" />
-          <div className="dish__counter select-count">
-            <button className="select-count__button select-count__button--dec">-</button>
-            <input className="select-count__input" type="number" defaultValue="1" />
-            <button className="select-count__button select-count__button--inc">+</button>
-          </div>
+
+          <SelectCount
+            defaultValue = {1}
+            minValue = {1}
+            maxValue = {99}
+            onChangeValue = {()=>{}}
+          />
+
           <h3 className="dish__header">{dishNmae}</h3>
           <p className="dish__description">{dishDescription}</p>
           <div className="dish-wrapper dish-wrapper--footer">

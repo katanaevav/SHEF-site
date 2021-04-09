@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Select Count 1`] = `
+<div
+  className="dish__counter select-count"
+>
+  <button
+    className="select-count__button select-count__button--dec"
+    onClick={[Function]}
+  >
+    -
+  </button>
+  <input
+    className="select-count__input"
+    defaultValue={1}
+    max={99}
+    min={1}
+    onChange={[Function]}
+    type="number"
+  />
+  <button
+    className="select-count__button select-count__button--inc"
+    onClick={[Function]}
+  >
+    +
+  </button>
+</div>
+`;
