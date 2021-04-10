@@ -4,6 +4,8 @@ import Adapter from "enzyme-adapter-react-16";
 
 import MenuGroupNavigator from "./menu-group-navigator.jsx";
 
+import {Dishes} from "../../../mocks/dishes.js";
+
 configure({adapter: new Adapter()});
 
 it('Render Order Navigator', () => {
@@ -11,6 +13,8 @@ it('Render Order Navigator', () => {
     <MenuGroupNavigator
       groupId = {1}
       groupName = {`Первые блюда`}
+      dishesList = {Dishes}
+      MenuCategory = {1}
     />
   );
   expect(tree).toMatchSnapshot();

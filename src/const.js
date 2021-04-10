@@ -16,3 +16,9 @@ export const Screens = {
   FOODS_SCREEN: 4,
   CART_SCREEN: 5
 };
+
+export const MenuCategory = {
+  ONLINE_COOKING: 1,
+  CATERING: 2,
+  FOODS: 3
+}

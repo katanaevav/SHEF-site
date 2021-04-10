@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
+
 import ScrollContainer from "react-indiana-drag-scroll";
-// import PropTypes from "prop-types";
 
 
 class OrderNavigator extends PureComponent {
@@ -8,30 +9,31 @@ class OrderNavigator extends PureComponent {
     super(props);
   }
 
+  _renderItem(itemId, itemName) {
+    return (
+      <li key={itemName + itemId} className="order-navigator__item"><a href={`#${itemId}`}>{itemName}</a></li>
+    );
+  }
+
   render() {
 
-    // const {totalCost} = this.props;
+    const {dishesTypesList} = this.props;
+
+    const typeItems = dishesTypesList.map((dishesType) => (
+      this._renderItem(dishesType.dishTypeId, dishesType.dishTypeName)
+    ));
 
     return (
       <React.Fragment>
 
-        {/* <section className="order-navigator"> */}
           <ScrollContainer className="order-navigator"
             hideScrollbars = {false}
           >
           <h2 className="order-navigator__header visually-hidden">Навигация по меню</h2>
             <ul className="order-navigator__list">
-              <li className="order-navigator__item"><a href="#1">Первые блюда</a></li>
-              <li className="order-navigator__item"><a href="#2">Вторые блюда</a></li>
-              <li className="order-navigator__item"><a href="#3">Гарниры</a></li>
-              <li className="order-navigator__item"><a href="#4">Десерты</a></li>
-              <li className="order-navigator__item"><a href="#5">Безалкогольные напитки</a></li>
-              <li className="order-navigator__item"><a href="#6">Вина</a></li>
-              <li className="order-navigator__item"><a href="#7">Крепкий алкоголь</a></li>
-              <li className="order-navigator__item"><a href="#8">Пицца</a></li>
+              {typeItems}
             </ul>
           </ScrollContainer>
-        {/* </section> */}
 
       </React.Fragment>
     );
@@ -39,9 +41,9 @@ class OrderNavigator extends PureComponent {
 };
 
 
-// OnlineCooking.propTypes = {
-//   totalCost: PropTypes.number,
-// }
+OrderNavigator.propTypes = {
+  dishesTypesList: PropTypes.array,
+}
 
 
 export default OrderNavigator;

@@ -13,7 +13,15 @@ class MenuGroupNavigator extends PureComponent {
 
   render() {
 
-    const {groupId, groupName} = this.props;
+    const {groupId, groupName, dishesList, MenuCategory} = this.props;
+
+    const dishes = dishesList.map((dish) => (
+      <Dish
+        key = {dish.dishId}
+        dish = {dish}
+        MenuCategory = {MenuCategory}
+      />
+    ));
 
     return (
       <React.Fragment>
@@ -24,73 +32,7 @@ class MenuGroupNavigator extends PureComponent {
             hideScrollbars = {false}
           >
             <ul className="menu-group-navigator__list">
-
-              <Dish
-                dishNmae = {`Анатомия вкуса`}
-                dishDescription = {`Описание блюда Описание блюда
-                Описание блюда Описание блюда
-                Описание блюда Описание блюда
-                Описание блюда Описание блюда`}
-                dishPrice = {`250 р.`}
-                dishWeight = {`250 гр.`}
-                dishTag = {`NEW`}
-              />
-
-              <Dish
-                dishNmae = {`Лапша домашняя`}
-                dishDescription = {`Описание блюда Описание блюда
-                Описание блюда Описание блюда
-                Описание блюда Описание блюда
-                Описание блюда Описание блюда`}
-                dishPrice = {`350 р.`}
-                dishWeight = {`300 гр.`}
-                dishTag = {``}
-              />
-
-              <Dish
-                dishNmae = {`Анатомия вкуса`}
-                dishDescription = {`Описание блюда Описание блюда
-                Описание блюда Описание блюда
-                Описание блюда Описание блюда
-                Описание блюда Описание блюда`}
-                dishPrice = {`250 р.`}
-                dishWeight = {`250 гр.`}
-                dishTag = {`NEW`}
-              />
-
-              <Dish
-                dishNmae = {`Лапша домашняя`}
-                dishDescription = {`Описание блюда Описание блюда
-                Описание блюда Описание блюда
-                Описание блюда Описание блюда
-                Описание блюда Описание блюда`}
-                dishPrice = {`350 р.`}
-                dishWeight = {`300 гр.`}
-                dishTag = {``}
-              />
-
-              <Dish
-                dishNmae = {`Анатомия вкуса`}
-                dishDescription = {`Описание блюда Описание блюда
-                Описание блюда Описание блюда
-                Описание блюда Описание блюда
-                Описание блюда Описание блюда`}
-                dishPrice = {`250 р.`}
-                dishWeight = {`250 гр.`}
-                dishTag = {`NEW`}
-              />
-
-              <Dish
-                dishNmae = {`Лапша домашняя`}
-                dishDescription = {`Описание блюда Описание блюда
-                Описание блюда Описание блюда
-                Описание блюда Описание блюда
-                Описание блюда Описание блюда`}
-                dishPrice = {`350 р.`}
-                dishWeight = {`300 гр.`}
-                dishTag = {``}
-              />
-
+              {dishes}
             </ul>
           </ScrollContainer>
         </section>
@@ -104,6 +46,8 @@ class MenuGroupNavigator extends PureComponent {
 MenuGroupNavigator.propTypes = {
   groupId: PropTypes.number,
   groupName: PropTypes.string,
+  dishesList: PropTypes.array,
+  MenuCategory: PropTypes.number,
 }
 
 

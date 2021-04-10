@@ -9,6 +9,9 @@ import OnlineCooking from "../main/online-cooking/online-cooking.jsx";
 
 import {Screens} from "../../const.js"
 
+import {DishesTypes} from "../../mocks/dishes-types.js";
+import {Dishes} from "../../mocks/dishes.js";
+
 class App extends PureComponent {
   constructor(props) {
     super(props);
@@ -29,7 +32,10 @@ class App extends PureComponent {
             <PageHeader
               totalCost = {200}
             />
-            <OnlineCooking />
+            <OnlineCooking
+              dishesTypesList = {DishesTypes}
+              dishesList = {Dishes}
+            />
             <PageFooter />
           </React.Fragment>
         );
@@ -90,7 +96,10 @@ class App extends PureComponent {
             <PageHeader
                 totalCost = {200}
               />
-              <OnlineCooking />
+              <OnlineCooking
+                dishesTypesList = {DishesTypes}
+                dishesList = {Dishes}
+              />
             <PageFooter />
           </Route>
         </Switch>

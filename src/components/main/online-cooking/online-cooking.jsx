@@ -1,24 +1,30 @@
 import React, {PureComponent} from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 import OrderNavigator from "../order-navigator/order-navigator.jsx";
 import MenuGroupNavigator from "../menu-group-navigator/menu-group-navigator.jsx";
 
+import {MenuCategory} from "../../../const.js";
+
+
 class OnlineCooking extends PureComponent {
   constructor(props) {
     super(props);
-
-    this._burgerButtonClickHandler = this._burgerButtonClickHandler.bind(this);
   }
-
-  _burgerButtonClickHandler() {
-    document.querySelector(`.site-container`).classList.toggle("site-container--show-mobile-menu");
-  }
-
 
   render() {
 
-    // const {totalCost} = this.props;
+    const {dishesTypesList, dishesList} = this.props;
+
+    const menuGroups = dishesTypesList.map((dishesType) => (
+      <MenuGroupNavigator
+        key = {dishesType.dishTypeName + dishesType.dishTypeId}
+        groupId = {dishesType.dishTypeId}
+        groupName = {dishesType.dishTypeName}
+        dishesList = {dishesList.slice().filter((dishes) => dishes.dishTypeId === dishesType.dishTypeId)}
+        MenuCategory = {MenuCategory.ONLINE_COOKING}
+      />
+    ));
 
     return (
       <React.Fragment>
@@ -53,18 +59,11 @@ class OnlineCooking extends PureComponent {
 
             </section>
 
-            <OrderNavigator />
-
-            <MenuGroupNavigator
-              groupId = {1}
-              groupName = {`Первые блюда`}
+            <OrderNavigator
+              dishesTypesList = {dishesTypesList}
             />
 
-            <MenuGroupNavigator
-              groupId = {2}
-              groupName = {`Вторые блюда`}
-            />
-
+            {menuGroups}
 
           </div>
         </main>
@@ -75,9 +74,10 @@ class OnlineCooking extends PureComponent {
 };
 
 
-// OnlineCooking.propTypes = {
-//   totalCost: PropTypes.number,
-// }
+OnlineCooking.propTypes = {
+  dishesTypesList: PropTypes.array,
+  dishesList: PropTypes.array,
+}
 
 
 export default OnlineCooking;

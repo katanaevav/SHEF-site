@@ -20,17 +20,17 @@ class Dish extends PureComponent {
 
   render() {
 
-    const {dishNmae, dishDescription, dishPrice, dishWeight, dishTag} = this.props;
+    const {dish} = this.props;
 
     return (
       <React.Fragment>
 
         <li className="menu-group-navigator__item dish">
           <div className="dish-wrapper dish-wrapper--head">
-            <p className="dish-weight">{dishWeight}</p>
-            {dishTag !== `` ? this._renderTag(dishTag) : ``}
+            <p className="dish-weight">{dish.dishWeight}</p>
+            {dish.dishTag !== `` ? this._renderTag(dish.dishTag) : ``}
           </div>
-          <img className="dish__image" src="./img/dish.png" srcSet="./img/dish@2x.png 2x" alt="Анатомия вкуса" />
+          <img className="dish__image" src={dish.dishImage} srcSet={dish.dishImage2x} alt="Анатомия вкуса"  width="166" height="166"/>
 
           <SelectCount
             defaultValue = {1}
@@ -39,11 +39,14 @@ class Dish extends PureComponent {
             onChangeValue = {()=>{}}
           />
 
-          <h3 className="dish__header">{dishNmae}</h3>
-          <p className="dish__description">{dishDescription}</p>
+          <h3 className="dish__header">{dish.dishName}</h3>
+          <p className="dish__description">{dish.dishDescription}</p>
           <div className="dish-wrapper dish-wrapper--footer">
-            <p className="dish__price">{dishPrice}</p>
-            <button className="dish__to-cart">В корзину</button>
+            <p className="dish__price">{dish.dishPrice}</p>
+            <button
+              className="dish__to-cart"
+
+            >В корзину</button>
           </div>
         </li>
 
@@ -54,11 +57,16 @@ class Dish extends PureComponent {
 
 
 Dish.propTypes = {
-  dishNmae: PropTypes.string,
-  dishDescription: PropTypes.string,
-  dishPrice: PropTypes.string,
-  dishWeight: PropTypes.string,
-  dishTag: PropTypes.string,
+  dishId: PropTypes.number,
+  dish: PropTypes.object,
+  // dishName: PropTypes.string,
+  // dishDescription: PropTypes.string,
+  // dishPrice: PropTypes.string,
+  // dishWeight: PropTypes.string,
+  // dishTag: PropTypes.string,
+  // dishImage: PropTypes.string,
+  // dishImage2x: PropTypes.string,
+  MenuCategory: PropTypes.number,
 }
 
 
