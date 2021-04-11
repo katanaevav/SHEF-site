@@ -57,8 +57,8 @@ class Dish extends PureComponent {
 
 
 Dish.propTypes = {
-  dishId: PropTypes.number,
   dish: PropTypes.object,
+  // dishId: PropTypes.number,
   // dishName: PropTypes.string,
   // dishDescription: PropTypes.string,
   // dishPrice: PropTypes.string,

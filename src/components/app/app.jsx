@@ -6,6 +6,7 @@ import PageHeader from "../page-header/page-header/page-header.jsx";
 import PageFooter from "../page-footer/page-footer/page-footer.jsx";
 
 import OnlineCooking from "../main/online-cooking/online-cooking.jsx";
+import Catering from "../main/catering/catering.jsx";
 
 import {Screens} from "../../const.js"
 
@@ -97,6 +98,16 @@ class App extends PureComponent {
                 totalCost = {200}
               />
               <OnlineCooking
+                dishesTypesList = {DishesTypes}
+                dishesList = {Dishes}
+              />
+            <PageFooter />
+          </Route>
+          <Route exact path="/catering">
+            <PageHeader
+                totalCost = {200}
+              />
+              <Catering
                 dishesTypesList = {DishesTypes}
                 dishesList = {Dishes}
               />
