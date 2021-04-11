@@ -8,6 +8,7 @@ import PageFooter from "../page-footer/page-footer/page-footer.jsx";
 import OnlineCooking from "../main/online-cooking/online-cooking.jsx";
 import Catering from "../main/catering/catering.jsx";
 import Foods from "../main/foods/foods.jsx";
+import Cart from "../main/cart/cart.jsx";
 
 import {Screens} from "../../const.js"
 
@@ -121,6 +122,16 @@ class App extends PureComponent {
               <Foods
                 dishesTypesList = {DishesTypes}
                 dishesList = {Dishes}
+              />
+            <PageFooter />
+          </Route>
+          <Route exact path="/cart">
+            <PageHeader
+                totalCost = {200}
+              />
+              <Cart
+                cartType = {1}
+                cartDishesList = {Dishes}
               />
             <PageFooter />
           </Route>

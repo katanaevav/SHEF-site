@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import PropTypes from "prop-types";
+import PropTypes, { bool } from "prop-types";
 
 
 class SelectCount extends PureComponent {
@@ -60,12 +60,15 @@ class SelectCount extends PureComponent {
 
   render() {
 
-    const {minValue, maxValue} = this.props;
+    const {minValue, maxValue, isWhiteBackground} = this.props;
 
     return (
       <React.Fragment>
 
-        <div className="dish__counter select-count">
+{/* {`dish__counter select-count ${isWhiteBackground ? `select-count--background-white` : ``}`} */}
+
+        {/* <div className="dish__counter select-count select-count--background-white"> */}
+        <div className={`dish__counter select-count ${isWhiteBackground ? `select-count--background-white` : ``}`}>
           <button
             className="select-count__button select-count__button--dec"
             onClick = {this._subButtonClickHandler}
@@ -96,6 +99,7 @@ SelectCount.propTypes = {
   minValue: PropTypes.number.isRequired,
   maxValue: PropTypes.number.isRequired,
   onChangeValue: PropTypes.func.isRequired,
+  isWhiteBackground: bool,
 }
 
 
