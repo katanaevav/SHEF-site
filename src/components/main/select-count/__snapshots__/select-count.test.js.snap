@@ -2,7 +2,7 @@
 
 exports[`Render Select Count 1`] = `
 <div
-  className="dish__counter select-count"
+  className="dish__counter select-count "
 >
   <button
     className="select-count__button select-count__button--dec"

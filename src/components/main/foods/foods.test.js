@@ -8,7 +8,7 @@ import {Dishes} from "../../../mocks/dishes.js";
 
 configure({adapter: new Adapter()});
 
-it('Render Online Cooking', () => {
+it('Render Foods', () => {
   const tree = shallow(
     <Foods
       dishesTypesList = {DishesTypes}

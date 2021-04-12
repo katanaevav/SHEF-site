@@ -1,12 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
-import SelectCount from "../select-count/select-count.jsx"
-
-import OrderNavigator from "../order-navigator/order-navigator.jsx";
-import MenuGroupNavigator from "../menu-group-navigator/menu-group-navigator.jsx";
-
-import {MenuCategory} from "../../../const.js";
+import CartDish from "../cart-dish/cart-dish.jsx";
 
 
 class Cart extends PureComponent {
@@ -18,15 +13,13 @@ class Cart extends PureComponent {
 
     const {cartType, cartDishesList} = this.props;
 
-    // const menuGroups = dishesTypesList.map((dishesType) => (
-    //   <MenuGroupNavigator
-    //     key = {dishesType.dishTypeName + dishesType.dishTypeId}
-    //     groupId = {dishesType.dishTypeId}
-    //     groupName = {dishesType.dishTypeName}
-    //     dishesList = {dishesList.slice().filter((dishes) => dishes.dishTypeId === dishesType.dishTypeId)}
-    //     MenuCategory = {MenuCategory.CATERING}
-    //   />
-    // ));
+    const cartDishes = cartDishesList.map((dish) => (
+      <CartDish
+        key = {dish.dishId}
+        dish = {dish}
+      />
+    ));
+
 
     return (
       <React.Fragment>
@@ -41,62 +34,7 @@ class Cart extends PureComponent {
                   <a className="cart__go-back">Вернуться к выбру</a>
                 </div>
                 <ul className="cart__shopping-list shopping">
-                  <li className="shopping__item">
-                    <img className="shopping__image" src="./img/dish.png" srcSet="./img/dish@2x.png 2x" alt="Анатомия вкуса" />
-
-                    <div className="shopping__wrapper shopping__wrapper--1">
-                      <div className="shopping__wrapper shopping__wrapper--2">
-                        <p className="shopping__name">Анатомия вкуса</p>
-                        <p className="shopping__weight">250 гр.</p>
-                      </div>
-                      <div className="shopping__wrapper shopping__wrapper--3">
-                        {/* <div className="dish__counter select-count select-count--background-white">
-                          <button className="select-count__button select-count__button--dec">-</button>
-                          <input className="select-count__input" type="number" value="1" />
-                          <button className="select-count__button select-count__button--inc">+</button>
-                        </div> */}
-                        <SelectCount
-                          defaultValue = {1}
-                          minValue = {1}
-                          maxValue = {99}
-                          isWhiteBackground = {true}
-                          onChangeValue = {()=>{}}
-                        />
-                        <p className="shopping__price">250 р.</p>
-                      </div>
-                    </div>
-
-                    <a href="#" className="shopping__delete"><img className="shopping__delete-image" src="./img/delete.svg" alt="Удалить" /></a>
-                  </li>
-
-                  <li className="shopping__item">
-                    <img className="shopping__image" src="./img/dish.png" srcSet="./img/dish@2x.png 2x" alt="Анатомия вкуса" />
-
-                    <div className="shopping__wrapper shopping__wrapper--1">
-                      <div className="shopping__wrapper shopping__wrapper--2">
-                        <p className="shopping__name">Вкусные биточки с томатным
-                          соусом и картофельным пюре</p>
-                        <p className="shopping__weight">250 гр.</p>
-                      </div>
-                      <div className="shopping__wrapper shopping__wrapper--3">
-                        {/* <div className="dish__counter select-count select-count--background-white">
-                          <button className="select-count__button select-count__button--dec">-</button>
-                          <input className="select-count__input" type="number" value="1" />
-                          <button className="select-count__button select-count__button--inc">+</button>
-                        </div> */}
-                        <SelectCount
-                          defaultValue = {1}
-                          minValue = {1}
-                          maxValue = {99}
-                          isWhiteBackground = {true}
-                          onChangeValue = {()=>{}}
-                        />
-                        <p className="shopping__price">250 р.</p>
-                      </div>
-                    </div>
-
-                    <a href="#" className="shopping__delete"><img className="shopping__delete-image" src="./img/delete.svg" alt="Удалить" /></a>
-                  </li>
+                  {cartDishes}
                 </ul>
 
                 <div className="cart__empty cart__empty--hide">

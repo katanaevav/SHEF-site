@@ -13,7 +13,7 @@ import Cart from "../main/cart/cart.jsx";
 import {Screens} from "../../const.js"
 
 import {DishesTypes} from "../../mocks/dishes-types.js";
-import {Dishes} from "../../mocks/dishes.js";
+import {Dishes, CartDishes} from "../../mocks/dishes.js";
 
 class App extends PureComponent {
   constructor(props) {
@@ -131,7 +131,7 @@ class App extends PureComponent {
               />
               <Cart
                 cartType = {1}
-                cartDishesList = {Dishes}
+                cartDishesList = {CartDishes}
               />
             <PageFooter />
           </Route>

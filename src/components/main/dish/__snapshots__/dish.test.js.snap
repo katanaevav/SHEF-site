@@ -23,11 +23,11 @@ exports[`Render Dish 1`] = `
     className="dish__image"
     height="166"
     src="./img/dish.png"
-    srcSet="./img/dish@2x.png"
+    srcSet="./img/dish@2x.png 2x"
     width="166"
   />
   <div
-    className="dish__counter select-count"
+    className="dish__counter select-count "
   >
     <button
       className="select-count__button select-count__button--dec"

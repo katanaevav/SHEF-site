@@ -165,3 +165,53 @@ export const Dishes = [
     dishImage2x: `./img/g3.jpg`,
   },
 ];
+
+
+export const CartDishes = [
+  {
+    dishId: 1,
+    dishTypeId: 1,
+    dishName: `Анатомия вкуса`,
+    dishDescription: `Описание блюда Описание блюда
+                      Описание блюда Описание блюда
+                      Описание блюда Описание блюда
+                      Описание блюда Описание блюда`,
+    dishPrice: `250 р.`,
+    dishWeight: `250 гр.`,
+    dishTag: `NEW`,
+    dishImage: `./img/dish.png`,
+    dishImage2x: `./img/dish@2x.png`,
+    dishCount: 3,
+  },
+  {
+    dishId: 2,
+    dishTypeId: 1,
+    dishName: `Солянка сборная мясная`,
+    dishDescription: `Солянка сборная, приготовлена
+                      из нескольких видов мяса. В состав
+                      входят: телятина, свинина, курица,
+                      копченые ребрышки, охотничьи колбаски,
+                      свиной карбонад, копченая и вареная колбаса`,
+    dishPrice: `210 р.`,
+    dishWeight: `350 гр.`,
+    dishTag: `HOT`,
+    dishImage: `./img/soup1.jpg`,
+    dishImage2x: `./img/soup1.jpg`,
+    dishCount: 1,
+  },
+  {
+    dishId: 3,
+    dishTypeId: 1,
+    dishName: `Картофельный суп с фрикадельками`,
+    dishDescription: `Картофельный суп с фрикадельками и
+                      вермишелью - один из самых легких
+                      и быстрых мясных супов. `,
+    dishPrice: `250 р.`,
+    dishWeight: `250 гр.`,
+    dishTag: ``,
+    dishImage: `./img/soup2.jpg`,
+    dishImage2x: `./img/soup2.jpg`,
+    dishCount: 2,
+  },
+];
+

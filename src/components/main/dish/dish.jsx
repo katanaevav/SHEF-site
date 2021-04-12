@@ -30,7 +30,7 @@ class Dish extends PureComponent {
             <p className="dish-weight">{dish.dishWeight}</p>
             {dish.dishTag !== `` ? this._renderTag(dish.dishTag) : ``}
           </div>
-          <img className="dish__image" src={dish.dishImage} srcSet={dish.dishImage2x} alt="Анатомия вкуса"  width="166" height="166"/>
+          <img className="dish__image" src={dish.dishImage} srcSet={`${dish.dishImage2x} 2x`} alt={dish.dishName}  width="166" height="166"/>
 
           <SelectCount
             defaultValue = {1}

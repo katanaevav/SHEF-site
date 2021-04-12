@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Cart Dish 1`] = `
+<li
+  className="shopping__item"
+>
+  <img
+    alt="Анатомия вкуса"
+    className="shopping__image"
+    src="./img/dish.png"
+    srcSet="./img/dish@2x.png 2x"
+  />
+  <div
+    className="shopping__wrapper shopping__wrapper--1"
+  >
+    <div
+      className="shopping__wrapper shopping__wrapper--2"
+    >
+      <p
+        className="shopping__name"
+      >
+        Анатомия вкуса
+      </p>
+      <p
+        className="shopping__weight"
+      >
+        250 гр.
+      </p>
+    </div>
+    <div
+      className="shopping__wrapper shopping__wrapper--3"
+    >
+      <div
+        className="dish__counter select-count select-count--background-white"
+      >
+        <button
+          className="select-count__button select-count__button--dec"
+          onClick={[Function]}
+        >
+          -
+        </button>
+        <input
+          className="select-count__input"
+          defaultValue={3}
+          max={99}
+          min={1}
+          onChange={[Function]}
+          type="number"
+        />
+        <button
+          className="select-count__button select-count__button--inc"
+          onClick={[Function]}
+        >
+          +
+        </button>
+      </div>
+      <p
+        className="shopping__price"
+      >
+        250 р.
+      </p>
+    </div>
+  </div>
+  <a
+    className="shopping__delete"
+    href="#"
+  >
+    <img
+      alt="Удалить"
+      className="shopping__delete-image"
+      src="./img/delete.svg"
+    />
+  </a>
+</li>
+`;
