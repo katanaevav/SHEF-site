@@ -1,10 +1,29 @@
 import React, {PureComponent} from "react";
 
+import ContactUsModal from "../contact-us-modal/contact-us-modal.jsx";
+
 
 class Main extends PureComponent {
   constructor(props) {
     super(props);
 
+    this.state = {
+      showModalInfo: false
+    };
+
+    this._openModalWindowHandle = this._openModalWindowHandle.bind(this);
+    this._closeModalWindowHandle = this._closeModalWindowHandle.bind(this);
+
+  }
+
+
+  _openModalWindowHandle(evt) {
+    evt.preventDefault();
+    this.setState({ showModalInfo: true });
+  }
+
+  _closeModalWindowHandle() {
+    this.setState({ showModalInfo: false });
   }
 
 
@@ -103,7 +122,7 @@ class Main extends PureComponent {
                     без кухни? Привезем готовую
                     еду по оптовым ценам!<br /><br />
                   </p>
-                  <a className="links__button" href="#">Оставить заявку</a>
+                  <a className="links__button" href="#" onClick={this._openModalWindowHandle}>Оставить заявку</a>
                 </div>
               </li>
 
@@ -114,7 +133,7 @@ class Main extends PureComponent {
                   <p className="links__text">Инвестируй в точку с<br />
                     готовой едой.<br /><br /><br />
                   </p>
-                  <a className="links__button" href="#">Оставить заявку</a>
+                  <a className="links__button" href="#" onClick={this._openModalWindowHandle}>Оставить заявку</a>
                 </div>
               </li>
 
@@ -226,6 +245,11 @@ class Main extends PureComponent {
         </div>
       </main>
 
+
+      <ContactUsModal
+          openState = {this.state.showModalInfo}
+          onCloweModalWindow = {this._closeModalWindowHandle}
+        />
 
 
       </React.Fragment>
