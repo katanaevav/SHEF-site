@@ -43,7 +43,7 @@ const ContactUsModal = (props) => {
                 </label>
               </div>
 
-              <input className="contact-us-form__form-button" type="submit" value="Отправить" />
+              <input className="contact-us-form__form-button" type="submit" value="Отправить" onClick={onCloweModalWindow} />
             </form>
 
       </ReactModal>
