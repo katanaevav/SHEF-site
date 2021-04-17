@@ -7,19 +7,41 @@ import CartDish from "../cart-dish/cart-dish.jsx";
 class Cart extends PureComponent {
   constructor(props) {
     super(props);
+
+    this._renderShoppingList = this._renderShoppingList.bind(this);
+    this._renderCheckoututton = this._renderCheckoututton.bind(this);
   }
 
-  render() {
 
-    const {cartType, cartDishesList} = this.props;
+
+  _renderShoppingList() {
+    const {cartDishesList, onDeleteDishFromCart, onChangeDishCountInCart} = this.props;
 
     const cartDishes = cartDishesList.map((dish) => (
       <CartDish
         key = {dish.dishId}
         dish = {dish}
+        onDeleteDishFromCart = {onDeleteDishFromCart}
+        onChangeDishCountInCart = {onChangeDishCountInCart}
       />
     ));
 
+    return (
+      cartDishesList.length > 0 ? (<ul className="cart__shopping-list shopping">{cartDishes}</ul>) : ``
+    );
+  }
+
+
+  _renderCheckoututton(clickEventHandler) {
+    const {cartDishesList} = this.props;
+
+    return (
+      cartDishesList.length > 0 ? (<button className="cart__checkout">Оформить заказ</button>) : ``
+    );
+  }
+
+  render() {
+    const {cartType, cartTypeName, cartDishesList, totalCost} = this.props;
 
     return (
       <React.Fragment>
@@ -30,18 +52,17 @@ class Cart extends PureComponent {
             <div className="cart-wrapper">
               <section className="cart">
                 <div className="cart__wrpapper">
-                  <h1 className="cart__header">Ваша корзина</h1>
+                  <h1 className="cart__header">{cartTypeName}</h1>
                   <a className="cart__go-back">Вернуться к выбру</a>
                 </div>
-                <ul className="cart__shopping-list shopping">
-                  {cartDishes}
-                </ul>
 
-                <div className="cart__empty cart__empty--hide">
+                {this._renderShoppingList()}
+
+                <div className={`cart__empty ${cartDishesList.length > 0 ? `cart__empty--hide` : ``}`}>
                   <p>Ваша корзина пуста</p>
                 </div>
 
-                <button className="cart__checkout">Оформить заказ</button>
+                {this._renderCheckoututton()}
 
               </section>
 
@@ -67,7 +88,7 @@ class Cart extends PureComponent {
 
                   <div className="order-details__form-input-wrapper order-details__form-input-wrapper--total">
                     <p className="order-details__form-text">Итого:</p>
-                    <p className="order-details__form-text">559 р.</p>
+                    <p className="order-details__form-text">{`${totalCost} р.`}</p>
                   </div>
 
                   <input className="order-details__form-button" type="submit" value="Перейти к оплате" />
@@ -88,8 +109,13 @@ class Cart extends PureComponent {
 
 
 Cart.propTypes = {
+  totalCost: PropTypes.number,
   cartType: PropTypes.number,
+  cartTypeName: PropTypes.string,
   cartDishesList: PropTypes.array,
+
+  onDeleteDishFromCart: PropTypes.func,
+  onChangeDishCountInCart: PropTypes.func,
 }
 
 

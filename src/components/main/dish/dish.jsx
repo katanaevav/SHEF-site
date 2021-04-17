@@ -42,7 +42,7 @@ class Dish extends PureComponent {
           <h3 className="dish__header">{dish.dishName}</h3>
           <p className="dish__description">{dish.dishDescription}</p>
           <div className="dish-wrapper dish-wrapper--footer">
-            <p className="dish__price">{dish.dishPrice}</p>
+            <p className="dish__price">{`${dish.dishPrice} р.`}</p>
             <button
               className="dish__to-cart"
 

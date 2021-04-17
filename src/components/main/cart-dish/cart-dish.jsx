@@ -7,21 +7,23 @@ import SelectCount from "../select-count/select-count.jsx"
 class CartDish extends PureComponent {
   constructor(props) {
     super(props);
+
+    this._deleteDishFromCartHandler = this._deleteDishFromCartHandler.bind(this);
+    this._chacngeDishCountHandler = this._chacngeDishCountHandler.bind(this);
+  }
+
+
+  _deleteDishFromCartHandler(evt) {
+    evt.preventDefault();
+    this.props.onDeleteDishFromCart(this.props.dish.dishId);
+  }
+
+  _chacngeDishCountHandler(dishCount) {
+    this.props.onChangeDishCountInCart(this.props.dish.dishId, dishCount);
   }
 
   render() {
-
     const {dish} = this.props;
-
-    // const menuGroups = dishesTypesList.map((dishesType) => (
-    //   <MenuGroupNavigator
-    //     key = {dishesType.dishTypeName + dishesType.dishTypeId}
-    //     groupId = {dishesType.dishTypeId}
-    //     groupName = {dishesType.dishTypeName}
-    //     dishesList = {dishesList.slice().filter((dishes) => dishes.dishTypeId === dishesType.dishTypeId)}
-    //     MenuCategory = {MenuCategory.CATERING}
-    //   />
-    // ));
 
     return (
       <React.Fragment>
@@ -40,13 +42,13 @@ class CartDish extends PureComponent {
                 minValue = {1}
                 maxValue = {99}
                 isWhiteBackground = {true}
-                onChangeValue = {()=>{}}
+                onChangeValue = {this._chacngeDishCountHandler}
               />
-              <p className="shopping__price">{dish.dishPrice}</p>
+              <p className="shopping__price">{`${dish.dishPrice} р.`}</p>
             </div>
           </div>
 
-          <a href="#" className="shopping__delete"><img className="shopping__delete-image" src="./img/delete.svg" alt="Удалить" /></a>
+          <a href="#" className="shopping__delete"><img className="shopping__delete-image" src="./img/delete.svg" alt="Удалить" onClick={this._deleteDishFromCartHandler}/></a>
         </li>
 
       </React.Fragment>
@@ -57,6 +59,9 @@ class CartDish extends PureComponent {
 
 CartDish.propTypes = {
   dish: PropTypes.object,
+
+  onDeleteDishFromCart: PropTypes.func,
+  onChangeDishCountInCart: PropTypes.func,
 }
 
 

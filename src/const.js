@@ -13,12 +13,13 @@ export const Screens = {
   MAIN_SCREEN: 1,
   ONLINE_COOKING_SCREEN: 2,
   CATERING_SCREEN: 3,
-  FOODS_SCREEN: 4,
   CART_SCREEN: 5
 };
 
 export const MenuCategory = {
+  EMPTY: 0,
   ONLINE_COOKING: 1,
   CATERING: 2,
-  FOODS: 3
-}
+};
+
+export const MenuCategoryNames = [``, `Онлайн кулинария`, `Кейтеринг`];

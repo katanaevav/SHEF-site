@@ -12,6 +12,12 @@ class Catering extends PureComponent {
     super(props);
   }
 
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
+
   render() {
 
     const {dishesTypesList, dishesList} = this.props;
@@ -25,6 +31,7 @@ class Catering extends PureComponent {
         MenuCategory = {MenuCategory.CATERING}
       />
     ));
+
 
     return (
       <React.Fragment>
