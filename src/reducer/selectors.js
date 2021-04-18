@@ -31,8 +31,14 @@ const changeDishCountInCart = (cartList, dishId, dishCount) => {
 }
 
 const addDishToCart = (cartList, dish) => {
-  const arr = cartList.slice(0, cartList.length);
-  arr.push(dish);
+  let arr = cartList.slice(0, cartList.length);
+
+  const index = cartList.findIndex((cartdish) => cartdish.dishId === dish.dishId);
+  const count = index < 0 ? 0 : arr[index].dishCount;
+
+  arr.splice(index > -1 ? index : arr.length, index > -1 ? 1 : 0, Object.assign({}, dish, {
+    dishCount: count + dish.dishCount,
+  }));
 
   return arr;
 }

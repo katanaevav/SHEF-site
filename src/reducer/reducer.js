@@ -8,7 +8,7 @@ import {deleteDishFromCart, changeDishCountInCart, addDishToCart} from "./select
 const initialState = {
   currentScreen: Screens.MAIN_SCREEN,
 
-  cartPrice: 200,
+  cartPrice: 0,
   cartType: MenuCategory.EMPTY,
   cartDishes: [],
 
@@ -100,6 +100,7 @@ const reducer = (state = initialState, action) => {
     case ActionType.DELETE_DISH_FROM_CART:
       return Object.assign({}, state, {
         cartDishes: deleteDishFromCart(state.cartDishes, action.payload),
+        // cartType: state.cartDishes.length < 1 ? state.cartType : MenuCategory.EMPTY,
       });
     case ActionType.CHANGE_DISH_COUNT_IN_CART:
       return Object.assign({}, state, {
@@ -108,6 +109,7 @@ const reducer = (state = initialState, action) => {
     case ActionType.ADD_DISH_TO_CART:
       return Object.assign({}, state, {
         cartDishes: addDishToCart(state.cartDishes, action.payload),
+        cartType: state.cartType === MenuCategory.EMPTY ? action.payload.dishCategory : state.cartType,
       });
     case ActionType.CLEAR_CART:
       return Object.assign({}, state, {

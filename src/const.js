@@ -10,9 +10,9 @@ export const Links = {
 };
 
 export const Screens = {
-  MAIN_SCREEN: 1,
-  ONLINE_COOKING_SCREEN: 2,
-  CATERING_SCREEN: 3,
+  MAIN_SCREEN: 0,
+  ONLINE_COOKING_SCREEN: 1,
+  CATERING_SCREEN: 2,
   CART_SCREEN: 5
 };
 

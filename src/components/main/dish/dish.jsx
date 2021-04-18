@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 import SelectCount from "../select-count/select-count.jsx";
 
+import {MenuCategory} from "../../../const.js";
+
 
 class Dish extends PureComponent {
   constructor(props) {
@@ -29,7 +31,7 @@ class Dish extends PureComponent {
     evt.preventDefault();
     dish.dishCount = this.state.dishCount;
 
-    if (dish.dishCategory != CartCategory) {
+    if ((dish.dishCategory != CartCategory) && (CartCategory != MenuCategory.EMPTY)) {
       onClearCart();
     }
 
@@ -81,14 +83,6 @@ class Dish extends PureComponent {
 
 Dish.propTypes = {
   dish: PropTypes.object,
-  // dishId: PropTypes.number,
-  // dishName: PropTypes.string,
-  // dishDescription: PropTypes.string,
-  // dishPrice: PropTypes.string,
-  // dishWeight: PropTypes.string,
-  // dishTag: PropTypes.string,
-  // dishImage: PropTypes.string,
-  // dishImage2x: PropTypes.string,
   CartCategory: PropTypes.number,
 
   onAddDishToCart: PropTypes.func,

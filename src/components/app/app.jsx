@@ -99,6 +99,10 @@ class App extends PureComponent {
 
               onDeleteDishFromCart = {onDeleteDishFromCart}
               onChangeDishCountInCart = {onChangeDishCountInCart}
+
+              onMainClick = {onMainClick}
+              onOnlineCookingClick = {onOnlineCookingClick}
+              onCateringClick = {onCateringClick}
               />
             <PageFooter
               openOnlineCookingScreen = {onOnlineCookingClick}

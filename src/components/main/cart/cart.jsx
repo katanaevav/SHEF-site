@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 import CartDish from "../cart-dish/cart-dish.jsx";
 
+import {MenuCategory} from "../../../const.js";
+
 
 class Cart extends PureComponent {
   constructor(props) {
@@ -10,8 +12,21 @@ class Cart extends PureComponent {
 
     this._renderShoppingList = this._renderShoppingList.bind(this);
     this._renderCheckoututton = this._renderCheckoututton.bind(this);
+    this._goBackClickHandler = this._goBackClickHandler.bind(this);
   }
 
+
+  _goBackClickHandler() {
+    const {cartType, onMainClick, onOnlineCookingClick, onCateringClick} = this.props;
+
+    switch (cartType) {
+      case MenuCategory.ONLINE_COOKING: onOnlineCookingClick();
+        break;
+      case MenuCategory.CATERING: onCateringClick();
+        break;
+      default: onMainClick();
+    }
+  }
 
 
   _renderShoppingList() {
@@ -41,7 +56,7 @@ class Cart extends PureComponent {
   }
 
   render() {
-    const {cartType, cartTypeName, cartDishesList, totalCost} = this.props;
+    const {cartTypeName, cartDishesList, totalCost} = this.props;
 
     return (
       <React.Fragment>
@@ -53,7 +68,7 @@ class Cart extends PureComponent {
               <section className="cart">
                 <div className="cart__wrpapper">
                   <h1 className="cart__header">{cartTypeName}</h1>
-                  <a className="cart__go-back">Вернуться к выбру</a>
+                  <a className="cart__go-back" onClick={this._goBackClickHandler}>Вернуться к выбру</a>
                 </div>
 
                 {this._renderShoppingList()}
@@ -116,6 +131,10 @@ Cart.propTypes = {
 
   onDeleteDishFromCart: PropTypes.func,
   onChangeDishCountInCart: PropTypes.func,
+
+  onMainClick: PropTypes.func,
+  onOnlineCookingClick: PropTypes.func,
+  onCateringClick: PropTypes.func,
 }
 
 
