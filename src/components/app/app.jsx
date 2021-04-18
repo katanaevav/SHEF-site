@@ -29,7 +29,7 @@ class App extends PureComponent {
   _renderApp() {
 
     const {currentScreen, cartPrice, cartType, cartTypeName, cartDishes, dishesTypesList, dishesList} = this.props;
-    const {onMainClick, onOnlineCookingClick, onCateringClick, onCartClick, onDeleteDishFromCart, onChangeDishCountInCart} = this.props;
+    const {onMainClick, onOnlineCookingClick, onCateringClick, onCartClick, onDeleteDishFromCart, onChangeDishCountInCart, onAddDishToCart, onClearCart} = this.props;
 
 
     switch (currentScreen) {
@@ -46,6 +46,9 @@ class App extends PureComponent {
             <OnlineCooking
               dishesTypesList = {dishesTypesList}
               dishesList = {dishesList}
+              onAddDishToCart = {onAddDishToCart}
+              cartCategory = {cartType}
+              onClearCart = {onClearCart}
             />
             <PageFooter
               openOnlineCookingScreen = {onOnlineCookingClick}
@@ -67,6 +70,9 @@ class App extends PureComponent {
             <Catering
                 dishesTypesList = {dishesTypesList}
                 dishesList = {dishesList}
+                onAddDishToCart = {onAddDishToCart}
+                cartCategory = {cartType}
+                onClearCart = {onClearCart}
               />
             <PageFooter
               openOnlineCookingScreen = {onOnlineCookingClick}
@@ -159,6 +165,8 @@ App.propTypes = {
   onCartClick: PropTypes.func.isRequired,
   onDeleteDishFromCart: PropTypes.func,
   onChangeDishCountInCart: PropTypes.func,
+  onAddDishToCart: PropTypes.func,
+  onClearCart: PropTypes.func,
 };
 
 
@@ -197,7 +205,12 @@ const mapDispatchToProps = (dispatch) => ({
   onChangeDishCountInCart(dishId, dishCount) {
     dispatch(ActionCreator.onChangeDishCountInCart(dishId, dishCount));
   },
-
+  onAddDishToCart(dish) {
+    dispatch(ActionCreator.onAddDishToCart(dish));
+  },
+  onClearCart() {
+    dispatch(ActionCreator.clearCart());
+  },
 });
 
 

@@ -20,7 +20,7 @@ class OnlineCooking extends PureComponent {
 
   render() {
 
-    const {dishesTypesList, dishesList} = this.props;
+    const {dishesTypesList, dishesList, cartCategory, onAddDishToCart, onClearCart} = this.props;
 
     const menuGroups = dishesTypesList.map((dishesType) => (
       <MenuGroupNavigator
@@ -28,7 +28,9 @@ class OnlineCooking extends PureComponent {
         groupId = {dishesType.dishTypeId}
         groupName = {dishesType.dishTypeName}
         dishesList = {dishesList.slice().filter((dishes) => dishes.dishTypeId === dishesType.dishTypeId)}
-        MenuCategory = {MenuCategory.ONLINE_COOKING}
+        CartCategory = {cartCategory}
+        onAddDishToCart = {onAddDishToCart}
+        onClearCart = {onClearCart}
       />
     ));
 
@@ -83,6 +85,10 @@ class OnlineCooking extends PureComponent {
 OnlineCooking.propTypes = {
   dishesTypesList: PropTypes.array,
   dishesList: PropTypes.array,
+  cartCategory: PropTypes.number,
+
+  onAddDishToCart: PropTypes.func,
+  onClearCart: PropTypes.func,
 }
 
 

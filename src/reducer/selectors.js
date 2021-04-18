@@ -30,4 +30,11 @@ const changeDishCountInCart = (cartList, dishId, dishCount) => {
   return arr;
 }
 
-export {getMenuCategoryName, getCartPrice, deleteDishFromCart, changeDishCountInCart};
+const addDishToCart = (cartList, dish) => {
+  const arr = cartList.slice(0, cartList.length);
+  arr.push(dish);
+
+  return arr;
+}
+
+export {getMenuCategoryName, getCartPrice, deleteDishFromCart, changeDishCountInCart, addDishToCart};

@@ -13,13 +13,16 @@ class MenuGroupNavigator extends PureComponent {
 
   render() {
 
-    const {groupId, groupName, dishesList, MenuCategory} = this.props;
+    const {groupId, groupName, dishesList, CartCategory, onAddDishToCart, onClearCart} = this.props;
 
     const dishes = dishesList.map((dish) => (
       <Dish
         key = {dish.dishId}
         dish = {dish}
-        MenuCategory = {MenuCategory}
+        CartCategory = {CartCategory}
+
+        onAddDishToCart= {onAddDishToCart}
+        onClearCart = {onClearCart}
       />
     ));
 
@@ -47,7 +50,10 @@ MenuGroupNavigator.propTypes = {
   groupId: PropTypes.number,
   groupName: PropTypes.string,
   dishesList: PropTypes.array,
-  MenuCategory: PropTypes.number,
+  CartCategory: PropTypes.number,
+
+  onAddDishToCart: PropTypes.func,
+  onClearCart: PropTypes.func,
 }
 
 

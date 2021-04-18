@@ -8,13 +8,36 @@ class Dish extends PureComponent {
   constructor(props) {
     super(props);
 
-    this. _renderTag = this. _renderTag.bind(this);
+    this.state = {
+      dishCount: 1,
+    }
+
+    this._renderTag = this._renderTag.bind(this);
+    this._addToCartClickHandler = this._addToCartClickHandler.bind(this);
+    this._changeDishCountHandler = this._changeDishCountHandler.bind(this);
   }
 
   _renderTag(tag) {
     return (
       <p className="dish-tag">{tag}</p>
     );
+  }
+
+
+  _addToCartClickHandler(evt) {
+    const {dish, CartCategory, onAddDishToCart, onClearCart} = this.props;
+    evt.preventDefault();
+    dish.dishCount = this.state.dishCount;
+
+    if (dish.dishCategory != CartCategory) {
+      onClearCart();
+    }
+
+    onAddDishToCart(dish);
+  }
+
+  _changeDishCountHandler(value) {
+    this.setState({ dishCount: value });
   }
 
 
@@ -36,7 +59,7 @@ class Dish extends PureComponent {
             defaultValue = {1}
             minValue = {1}
             maxValue = {99}
-            onChangeValue = {()=>{}}
+            onChangeValue = {this._changeDishCountHandler}
           />
 
           <h3 className="dish__header">{dish.dishName}</h3>
@@ -45,7 +68,7 @@ class Dish extends PureComponent {
             <p className="dish__price">{`${dish.dishPrice} р.`}</p>
             <button
               className="dish__to-cart"
-
+              onClick={this._addToCartClickHandler}
             >В корзину</button>
           </div>
         </li>
@@ -66,7 +89,10 @@ Dish.propTypes = {
   // dishTag: PropTypes.string,
   // dishImage: PropTypes.string,
   // dishImage2x: PropTypes.string,
-  MenuCategory: PropTypes.number,
+  CartCategory: PropTypes.number,
+
+  onAddDishToCart: PropTypes.func,
+  onClearCart: PropTypes.func,
 }
 
 
