@@ -13,6 +13,19 @@ class Cart extends PureComponent {
     this._renderShoppingList = this._renderShoppingList.bind(this);
     this._renderCheckoututton = this._renderCheckoututton.bind(this);
     this._goBackClickHandler = this._goBackClickHandler.bind(this);
+    this._goBackToCartClickHandler = this._goBackToCartClickHandler.bind(this);
+    this._checkOutButtonClickHandler = this._checkOutButtonClickHandler.bind(this);
+
+  }
+
+  _goBackToCartClickHandler() {
+    document.querySelector(`.order-details`).classList.toggle("order-details--hide");
+    document.querySelector(`.cart`).classList.toggle("cart--hide");
+  }
+
+  _checkOutButtonClickHandler() {
+    document.querySelector(`.order-details`).classList.toggle("order-details--hide");
+    document.querySelector(`.cart`).classList.toggle("cart--hide");
   }
 
 
@@ -51,7 +64,7 @@ class Cart extends PureComponent {
     const {cartDishesList} = this.props;
 
     return (
-      cartDishesList.length > 0 ? (<button className="cart__checkout">Оформить заказ</button>) : ``
+      cartDishesList.length > 0 ? (<button className="cart__checkout" onClick={this._checkOutButtonClickHandler}>Оформить заказ</button>) : ``
     );
   }
 
@@ -83,7 +96,7 @@ class Cart extends PureComponent {
 
               <section className="order-details order-details--hide">
                 <div className="order-details__wrpapper">
-                  <a className="order-details__go-back">В корзину</a>
+                  <a className="order-details__go-back" onClick={this._goBackToCartClickHandler}>В корзину</a>
                   <h2 className="order-details__header">Детали заказа</h2>
                 </div>
 

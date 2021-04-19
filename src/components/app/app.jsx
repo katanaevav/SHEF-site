@@ -15,11 +15,7 @@ import Catering from "../main/catering/catering.jsx";
 import Foods from "../main/foods/foods.jsx";
 import Cart from "../main/cart/cart.jsx";
 
-import {Screens} from "../../const.js"
-
-// import {DishesTypes} from "../../mocks/dishes-types.js";
-// import {Dishes, CartDishes} from "../../mocks/dishes.js";
-// import {CartDishes} from "../../mocks/dishes.js";
+import {Screens, MenuCategory} from "../../const.js"
 
 class App extends PureComponent {
   constructor(props) {
@@ -34,6 +30,15 @@ class App extends PureComponent {
 
     switch (currentScreen) {
       case Screens.ONLINE_COOKING_SCREEN:
+        const onlineCookingDishes = dishesList.slice().filter((dish) => dish.dishCategory === MenuCategory.ONLINE_COOKING);
+
+        const onlineCookingDishesTypes = dishesTypesList
+          .map((dishType) => {
+              dishType.count = onlineCookingDishes.slice().filter((dish) => dish.dishTypeId === dishType.dishTypeId).length;
+              return dishType;
+            })
+          .filter((dishType) => dishType.count > 0);
+
         return (
           <React.Fragment>
             <PageHeader
@@ -44,8 +49,8 @@ class App extends PureComponent {
               openCartScreen = {onCartClick}
             />
             <OnlineCooking
-              dishesTypesList = {dishesTypesList}
-              dishesList = {dishesList}
+              dishesTypesList = {onlineCookingDishesTypes}
+              dishesList = {onlineCookingDishes}
               onAddDishToCart = {onAddDishToCart}
               cartCategory = {cartType}
               onClearCart = {onClearCart}
@@ -58,6 +63,15 @@ class App extends PureComponent {
         );
 
       case Screens.CATERING_SCREEN:
+        const cateringDishes = dishesList.slice().filter((dish) => dish.dishCategory === MenuCategory.CATERING);
+
+        const cateringDishesTypes = dishesTypesList
+          .map((dishType) => {
+              dishType.count = cateringDishes.slice().filter((dish) => dish.dishTypeId === dishType.dishTypeId).length;
+              return dishType;
+            })
+          .filter((dishType) => dishType.count > 0);
+
         return (
           <React.Fragment>
             <PageHeader
@@ -68,8 +82,8 @@ class App extends PureComponent {
               openCartScreen = {onCartClick}
             />
             <Catering
-                dishesTypesList = {dishesTypesList}
-                dishesList = {dishesList}
+                dishesTypesList = {cateringDishesTypes}
+                dishesList = {cateringDishes}
                 onAddDishToCart = {onAddDishToCart}
                 cartCategory = {cartType}
                 onClearCart = {onClearCart}

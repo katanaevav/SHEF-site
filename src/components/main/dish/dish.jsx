@@ -2,6 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
 import SelectCount from "../select-count/select-count.jsx";
+import QuestionWindow from "../question-window/question-window.jsx";
 
 import {MenuCategory} from "../../../const.js";
 
@@ -12,11 +13,36 @@ class Dish extends PureComponent {
 
     this.state = {
       dishCount: 1,
+      showQuestionWindow: false,
     }
+
+    this.dish = {};
 
     this._renderTag = this._renderTag.bind(this);
     this._addToCartClickHandler = this._addToCartClickHandler.bind(this);
     this._changeDishCountHandler = this._changeDishCountHandler.bind(this);
+
+    this._openQuestionWindowHandle = this._openQuestionWindowHandle.bind(this);
+    this._closeQuestionWindowFormHandle = this._closeQuestionWindowFormHandle.bind(this);
+  }
+
+
+
+  _openQuestionWindowHandle() {
+    this.setState({ showQuestionWindow: true });
+  }
+
+  _closeQuestionWindowFormHandle(status) {
+    const {dish, onAddDishToCart, onClearCart} = this.props;
+
+    this.setState({
+      showQuestionWindow: false,
+     });
+
+    if (status === 1) {
+      onClearCart();
+      onAddDishToCart(dish);
+    }
   }
 
   _renderTag(tag) {
@@ -32,10 +58,12 @@ class Dish extends PureComponent {
     dish.dishCount = this.state.dishCount;
 
     if ((dish.dishCategory != CartCategory) && (CartCategory != MenuCategory.EMPTY)) {
-      onClearCart();
+      // onClearCart();
+      this._openQuestionWindowHandle();
+    } else {
+      onAddDishToCart(dish);
     }
 
-    onAddDishToCart(dish);
   }
 
   _changeDishCountHandler(value) {
@@ -74,6 +102,16 @@ class Dish extends PureComponent {
             >В корзину</button>
           </div>
         </li>
+
+
+        <QuestionWindow
+          openState = {this.state.showQuestionWindow}
+          onCloweModalWindow = {this._closeQuestionWindowFormHandle}
+          headerText = {`Очистка корзины`}
+          bodyText = {`Добавление заказа из другой категории приведет к очистке корзины. Продолжить?`}
+          yesButtonText = {`Да`}
+          noButtonText = {`Нет`}
+        />
 
       </React.Fragment>
     );
