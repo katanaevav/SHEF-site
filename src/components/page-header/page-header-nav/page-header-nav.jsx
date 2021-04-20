@@ -1,5 +1,8 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
+
+import {AppRoute} from "../../../const.js";
 
 
 // const PageHeaderNav = (props) => {
@@ -7,19 +10,19 @@ class PageHeaderNav extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._onlineCookingClickHandler = this._onlineCookingClickHandler.bind(this);
-    this._cateringClickHandler = this._cateringClickHandler.bind(this);
+    // this._onlineCookingClickHandler = this._onlineCookingClickHandler.bind(this);
+    // this._cateringClickHandler = this._cateringClickHandler.bind(this);
   }
 
-  _onlineCookingClickHandler(evt) {
-    evt.preventDefault();
-    this.props.openOnlineCookingScreen();
-  }
+  // _onlineCookingClickHandler(evt) {
+  //   evt.preventDefault();
+  //   this.props.openOnlineCookingScreen();
+  // }
 
-  _cateringClickHandler(evt) {
-    evt.preventDefault();
-    this.props.openCateringScreen();
-  }
+  // _cateringClickHandler(evt) {
+  //   evt.preventDefault();
+  //   this.props.openCateringScreen();
+  // }
 
   render() {
     return (
@@ -30,8 +33,26 @@ class PageHeaderNav extends PureComponent {
             <li className="main-menu__item">
               <a href="#" title="Заказ еды">Заказ&nbsp;еды</a>
               <ul className="main-menu__sub-menu sub-menu">
-                <li className="sub-menu__item"><a href="catering.html" title="Кейтеринг" onClick={this._cateringClickHandler}>Кейтеринг</a></li>
-                <li className="sub-menu__item"><a href="online-cooking.html" title="Онлайн кулинария" onClick={this._onlineCookingClickHandler}>Онлайн&nbsp;кулинария</a></li>
+                <li className="sub-menu__item">
+                  <Link
+                    href="catering.html"
+                    title="Кейтеринг"
+                    // onClick={this._cateringClickHandler}
+                    to={`${AppRoute.CATERING}`}
+                  >
+                      Кейтеринг
+                  </Link>
+                </li>
+                <li className="sub-menu__item">
+                  <Link
+                    href="online-cooking.html"
+                    title="Онлайн кулинария"
+                    // onClick={this._onlineCookingClickHandler}
+                    to={`${AppRoute.ONLINE_COOKING}`}
+                  >
+                    Онлайн&nbsp;кулинария
+                  </Link>
+                </li>
                 {/* <li className="sub-menu__item"><a href="foods.html" title="Заказ продуктов">Заказ&nbsp;продуктов</a></li> */}
               </ul>
             </li>
@@ -56,9 +77,9 @@ class PageHeaderNav extends PureComponent {
 
 PageHeaderNav.propTypes = {
   totalCost: PropTypes.number,
-  openMainScreen: PropTypes.func.isRequired,
-  openOnlineCookingScreen: PropTypes.func.isRequired,
-  openCateringScreen: PropTypes.func.isRequired,
+  // openMainScreen: PropTypes.func.isRequired,
+  // openOnlineCookingScreen: PropTypes.func.isRequired,
+  // openCateringScreen: PropTypes.func.isRequired,
 }
 
 export default PageHeaderNav;

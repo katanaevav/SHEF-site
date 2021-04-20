@@ -1,5 +1,8 @@
 import React, {PureComponent} from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
+
+import {AppRoute} from "../../../const.js";
 
 import ContactUsModal from "../contact-us-modal/contact-us-modal.jsx";
 import InfoWindow from "../info-window/info-window.jsx";
@@ -20,23 +23,23 @@ class Main extends PureComponent {
     this._openInfoWindowHandle = this._openInfoWindowHandle.bind(this);
     this._closeInfoWindowFormHandle = this._closeInfoWindowFormHandle.bind(this);
 
-    this._onlineCookingClickHandler = this._onlineCookingClickHandler.bind(this);
-    this._cateringClickHandler = this._cateringClickHandler.bind(this);
+    // this._onlineCookingClickHandler = this._onlineCookingClickHandler.bind(this);
+    // this._cateringClickHandler = this._cateringClickHandler.bind(this);
   }
 
   componentDidMount() {
     window.scrollTo(0, 0);
   }
 
-  _onlineCookingClickHandler(evt) {
-    evt.preventDefault();
-    this.props.openOnlineCookingScreen();
-  }
+  // _onlineCookingClickHandler(evt) {
+  //   evt.preventDefault();
+  //   this.props.openOnlineCookingScreen();
+  // }
 
-  _cateringClickHandler(evt) {
-    evt.preventDefault();
-    this.props.openCateringScreen();
-  }
+  // _cateringClickHandler(evt) {
+  //   evt.preventDefault();
+  //   this.props.openCateringScreen();
+  // }
 
 
   _openContactUsFormHandle(evt) {
@@ -131,7 +134,14 @@ class Main extends PureComponent {
                     Оформить заказ можно у нас
                     на сайте до  17:00 текущего дня.
                   </p>
-                  <a className="links__button" href="online-cooking.html" onClick={this._onlineCookingClickHandler}>Выбрать блюда</a>
+                  <Link
+                    className="links__button"
+                    href="online-cooking.html"
+                    // onClick={this._onlineCookingClickHandler}
+                    to={`${AppRoute.ONLINE_COOKING}`}
+                  >
+                    Выбрать блюда
+                  </Link>
                 </div>
               </li>
 
@@ -143,7 +153,14 @@ class Main extends PureComponent {
                     Оформить заказ можно у нас
                     на сайте до 15:00 текущего дня.
                   </p>
-                  <a className="links__button" href="catering.html" onClick={this._cateringClickHandler}>Выбрать блюда</a>
+                  <Link
+                    className="links__button"
+                    href="catering.html"
+                    // onClick={this._cateringClickHandler}
+                    to={`${AppRoute.CATERING}`}
+                  >
+                    Выбрать блюда
+                  </Link>
                 </div>
               </li>
 
@@ -274,10 +291,10 @@ class Main extends PureComponent {
 };
 
 
-Main.propTypes = {
-  openOnlineCookingScreen: PropTypes.func.isRequired,
-  openCateringScreen: PropTypes.func.isRequired,
-}
+// Main.propTypes = {
+  // openOnlineCookingScreen: PropTypes.func.isRequired,
+  // openCateringScreen: PropTypes.func.isRequired,
+// }
 
 
 export default Main;

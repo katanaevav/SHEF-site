@@ -9,7 +9,7 @@
     "test": "npm run eslint && npm run test.jest",
     "test.jest": "jest",
     "build": "webpack --mode production",
-    "start": "webpack-dev-server --host 192.168.1.225"
+    "start": "webpack-dev-server"
   },
   "devDependencies": {
     "@babel/core": "7.12.10",

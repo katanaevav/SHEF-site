@@ -1,10 +1,12 @@
 import React, {PureComponent} from "react";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Route, Router, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 
 import {ActionCreator} from "../../reducer/reducer.js";
 import {getMenuCategoryName, getCartPrice} from "../../reducer/selectors.js";
+
+import history from "../../history.js";
 
 import Main from "../main/main/main.jsx";
 import PageHeader from "../page-header/page-header/page-header.jsx";
@@ -15,7 +17,7 @@ import Catering from "../main/catering/catering.jsx";
 import Foods from "../main/foods/foods.jsx";
 import Cart from "../main/cart/cart.jsx";
 
-import {Screens, MenuCategory} from "../../const.js"
+import {Screens, MenuCategory, AppRoute} from "../../const.js"
 
 class App extends PureComponent {
   constructor(props) {
@@ -151,15 +153,139 @@ class App extends PureComponent {
   }
 
   render() {
+    const {currentScreen, cartPrice, cartType, cartTypeName, cartDishes, dishesTypesList, dishesList} = this.props;
+    const {onMainClick, onOnlineCookingClick, onCateringClick, onCartClick, onDeleteDishFromCart, onChangeDishCountInCart, onAddDishToCart, onClearCart} = this.props;
+
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <Switch>
-          <Route exact path="/">
-            {this._renderApp()}
+
+          <Route exact path={AppRoute.ROOT}>
+            <React.Fragment>
+              <PageHeader
+                totalCost = {cartPrice}
+                // openMainScreen = {onMainClick}
+                // openOnlineCookingScreen = {onOnlineCookingClick}
+                // openCateringScreen = {onCateringClick}
+                // openCartScreen = {onCartClick}
+              />
+              <Main
+                // openOnlineCookingScreen = {onOnlineCookingClick}
+                // openCateringScreen = {onCateringClick}
+              />
+              <PageFooter
+                // openOnlineCookingScreen = {onOnlineCookingClick}
+                // openCateringScreen = {onCateringClick}
+              />
+            </React.Fragment>
           </Route>
+
+          <Route exact path={AppRoute.CART}>
+            <React.Fragment>
+              <PageHeader
+                totalCost = {cartPrice}
+                // openMainScreen = {onMainClick}
+                // openOnlineCookingScreen = {onOnlineCookingClick}
+                // openCateringScreen = {onCateringClick}
+                // openCartScreen = {onCartClick}
+              />
+              <Cart
+                totalCost = {cartPrice}
+                cartType = {cartType}
+                cartTypeName = {cartTypeName}
+                cartDishesList = {cartDishes}
+
+                onDeleteDishFromCart = {onDeleteDishFromCart}
+                onChangeDishCountInCart = {onChangeDishCountInCart}
+
+                // onMainClick = {onMainClick}
+                // onOnlineCookingClick = {onOnlineCookingClick}
+                // onCateringClick = {onCateringClick}
+                />
+              <PageFooter
+                // openOnlineCookingScreen = {onOnlineCookingClick}
+                // openCateringScreen = {onCateringClick}
+              />
+            </React.Fragment>
+          </Route>
+
+          <Route
+            path={AppRoute.CATERING}
+            render = {() => {
+              const cateringDishes = dishesList.slice().filter((dish) => dish.dishCategory === MenuCategory.CATERING);
+
+              const cateringDishesTypes = dishesTypesList
+                .map((dishType) => {
+                    dishType.count = cateringDishes.slice().filter((dish) => dish.dishTypeId === dishType.dishTypeId).length;
+                    return dishType;
+                  })
+                .filter((dishType) => dishType.count > 0);
+
+                return (
+                  <React.Fragment>
+                    <PageHeader
+                      totalCost = {cartPrice}
+                      // openMainScreen = {onMainClick}
+                      // openOnlineCookingScreen = {onOnlineCookingClick}
+                      // openCateringScreen = {onCateringClick}
+                      // openCartScreen = {onCartClick}
+                    />
+                    <Catering
+                        dishesTypesList = {cateringDishesTypes}
+                        dishesList = {cateringDishes}
+                        onAddDishToCart = {onAddDishToCart}
+                        cartCategory = {cartType}
+                        onClearCart = {onClearCart}
+                      />
+                    <PageFooter
+                      // openOnlineCookingScreen = {onOnlineCookingClick}
+                      // openCateringScreen = {onCateringClick}
+                    />
+                  </React.Fragment>
+                );
+            }}
+          />
+
+          <Route
+            path={AppRoute.ONLINE_COOKING}
+            render = {() => {
+              const onlineCookingDishes = dishesList.slice().filter((dish) => dish.dishCategory === MenuCategory.ONLINE_COOKING);
+
+              const onlineCookingDishesTypes = dishesTypesList
+                .map((dishType) => {
+                    dishType.count = onlineCookingDishes.slice().filter((dish) => dish.dishTypeId === dishType.dishTypeId).length;
+                    return dishType;
+                  })
+                .filter((dishType) => dishType.count > 0);
+
+                return (
+                  <React.Fragment>
+                    <PageHeader
+                      totalCost = {cartPrice}
+                      // openMainScreen = {onMainClick}
+                      // openOnlineCookingScreen = {onOnlineCookingClick}
+                      // openCateringScreen = {onCateringClick}
+                      // openCartScreen = {onCartClick}
+                    />
+                    <OnlineCooking
+                      dishesTypesList = {onlineCookingDishesTypes}
+                      dishesList = {onlineCookingDishes}
+                      onAddDishToCart = {onAddDishToCart}
+                      cartCategory = {cartType}
+                      onClearCart = {onClearCart}
+                    />
+                    <PageFooter
+                      // openOnlineCookingScreen = {onOnlineCookingClick}
+                      // openCateringScreen = {onCateringClick}
+                    />
+                  </React.Fragment>
+                );
+            }}
+          />
+
         </Switch>
-      </BrowserRouter>
-    );
+      </Router>
+    )
   }
 };
 

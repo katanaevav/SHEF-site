@@ -23,3 +23,11 @@ export const MenuCategory = {
 };
 
 export const MenuCategoryNames = [``, `Онлайн кулинария`, `Кейтеринг`];
+
+
+export const AppRoute = {
+  ROOT: `/`,
+  ONLINE_COOKING: `/online-cooking`,
+  CATERING: `/catering`,
+  CART: `/cart`,
+};

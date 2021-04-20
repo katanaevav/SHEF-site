@@ -1,5 +1,8 @@
 import React, {PureComponent} from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
+
+import {AppRoute} from "../../../const.js";
 
 
 import PageFooterGetLinkForm from "../page-footer-get-link-form/page-footer-get-link-form.jsx";
@@ -10,19 +13,19 @@ class PageFooter extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._onlineCookingClickHandler = this._onlineCookingClickHandler.bind(this);
-    this._cateringClickHandler = this._cateringClickHandler.bind(this);
+    // this._onlineCookingClickHandler = this._onlineCookingClickHandler.bind(this);
+    // this._cateringClickHandler = this._cateringClickHandler.bind(this);
   }
 
-  _onlineCookingClickHandler(evt) {
-    evt.preventDefault();
-    this.props.openOnlineCookingScreen();
-  }
+  // _onlineCookingClickHandler(evt) {
+  //   evt.preventDefault();
+  //   this.props.openOnlineCookingScreen();
+  // }
 
-  _cateringClickHandler(evt) {
-    evt.preventDefault();
-    this.props.openCateringScreen();
-  }
+  // _cateringClickHandler(evt) {
+  //   evt.preventDefault();
+  //   this.props.openCateringScreen();
+  // }
 
 
   render() {
@@ -54,8 +57,24 @@ class PageFooter extends PureComponent {
                 <section className="page-footer__section section-links">
                   <h2 className="section-connect__header">Заказ еды</h2>
                   <ul className="section-links__links">
-                    <li className="section-links__link"><a href="catering.html" onClick={this._cateringClickHandler}>Кейтеринг</a></li>
-                    <li className="section-links__link"><a href="online-cooking.html" onClick={this._onlineCookingClickHandler}>Онлайн кулинария</a></li>
+                    <li className="section-links__link">
+                      <Link
+                        href="catering.html"
+                        // onClick={this._cateringClickHandler}
+                        to={`${AppRoute.CATERING}`}
+                      >
+                        Кейтеринг
+                      </Link>
+                    </li>
+                    <li className="section-links__link">
+                      <Link
+                        href="online-cooking.html"
+                        // onClick={this._onlineCookingClickHandler}
+                        to={`${AppRoute.ONLINE_COOKING}`}
+                      >
+                        Онлайн кулинария
+                      </Link>
+                    </li>
                     {/* <li className="section-links__link"><a href="foods.html">Заказ продуктов</a></li> */}
                   </ul>
                 </section>
@@ -100,10 +119,10 @@ class PageFooter extends PureComponent {
 };
 
 
-PageFooter.propTypes = {
-  openOnlineCookingScreen: PropTypes.func.isRequired,
-  openCateringScreen: PropTypes.func.isRequired,
-}
+// PageFooter.propTypes = {
+//   openOnlineCookingScreen: PropTypes.func.isRequired,
+//   openCateringScreen: PropTypes.func.isRequired,
+// }
 
 
 export default PageFooter;

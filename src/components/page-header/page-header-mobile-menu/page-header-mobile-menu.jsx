@@ -1,5 +1,9 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import history from "../../../history.js";
+// import {Link} from "react-router-dom";
+
+import {AppRoute} from "../../../const.js";
 
 
 class PageHeaderMobileMenu extends PureComponent {
@@ -11,13 +15,13 @@ class PageHeaderMobileMenu extends PureComponent {
 
   _onlineCookingClickHandler(evt) {
     evt.preventDefault();
-    this.props.openOnlineCookingScreen();
-    this.props.burgerButtonClick();
+    history.push(AppRoute.ONLINE_COOKING);
+    return(this.props.burgerButtonClick());
   }
 
   _cateringClickHandler(evt) {
     evt.preventDefault();
-    this.props.openCateringScreen();
+    history.push(AppRoute.CATERING);
     this.props.burgerButtonClick();
   }
 
@@ -28,10 +32,22 @@ class PageHeaderMobileMenu extends PureComponent {
           <nav className="mobile-menu__mobile-nav mobile-nav">
             <ul className="mobile-nav__menu ">
               <li className="mobile-nav__item">
-                <a href="catering.html" title="Кейтеринг" onClick={this._cateringClickHandler}>Кейтеринг</a>
+                <a
+                  href={AppRoute.CATERING}
+                  title="Кейтеринг"
+                  onClick={this._cateringClickHandler}
+                >
+                  Кейтеринг
+                </a>
               </li>
               <li className="mobile-nav__item">
-                <a href="online-cooking.html" title="Бизнесу" onClick={this._onlineCookingClickHandler}>Онлайн&nbsp;кулинария</a>
+                <a
+                  href={AppRoute.ONLINE_COOKING}
+                  title="Бизнесу"
+                  onClick={this._onlineCookingClickHandler}
+                >
+                  Онлайн&nbsp;кулинария
+                </a>
               </li>
               {/* <li className="mobile-nav__item">
                 <a href="foods.html" title="Бизнесу">Заказ&nbsp;продуктов</a>
@@ -63,8 +79,8 @@ class PageHeaderMobileMenu extends PureComponent {
 
 PageHeaderMobileMenu.propTypes = {
   burgerButtonClick: PropTypes.func.isRequired,
-  openOnlineCookingScreen: PropTypes.func.isRequired,
-  openCateringScreen: PropTypes.func.isRequired,
+  // openOnlineCookingScreen: PropTypes.func.isRequired,
+  // openCateringScreen: PropTypes.func.isRequired,
 }
 
 
