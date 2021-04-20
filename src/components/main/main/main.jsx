@@ -42,16 +42,15 @@ class Main extends PureComponent {
   // }
 
 
-  _openContactUsFormHandle(evt) {
-    evt.preventDefault();
+  _openContactUsFormHandle() {
     this.setState({ showContactUsForm: true });
   }
 
-  _closeContactUsFormHandle(evt) {
-    evt.preventDefault();
+  _closeContactUsFormHandle(status) {
     this.setState({ showContactUsForm: false });
-
-    this._openInfoWindowHandle();
+    if (status === 1) {
+      this._openInfoWindowHandle();
+    }
   }
 
   _openInfoWindowHandle() {

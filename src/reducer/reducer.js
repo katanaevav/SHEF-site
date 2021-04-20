@@ -6,7 +6,7 @@ import {deleteDishFromCart, changeDishCountInCart, addDishToCart} from "./select
 
 
 const initialState = {
-  currentScreen: Screens.MAIN_SCREEN,
+  // currentScreen: Screens.MAIN_SCREEN,
 
   cartPrice: 0,
   cartType: MenuCategory.EMPTY,
@@ -17,10 +17,10 @@ const initialState = {
 };
 
 const ActionType = {
-  OPEN_MAIN_SCREEN: `OPEN_MAIN_SCREEN`,
-  OPEN_ONLINE_COOKING_SCREEN: `OPEN_ONLINE_COOKING_SCREEN`,
-  OPEN_CATERING_SCREEN: `OPEN_CATERING_SCREEN`,
-  OPEN_CART_SCREEN: `OPEN_CART_SCREEN`,
+  // OPEN_MAIN_SCREEN: `OPEN_MAIN_SCREEN`,
+  // OPEN_ONLINE_COOKING_SCREEN: `OPEN_ONLINE_COOKING_SCREEN`,
+  // OPEN_CATERING_SCREEN: `OPEN_CATERING_SCREEN`,
+  // OPEN_CART_SCREEN: `OPEN_CART_SCREEN`,
 
   DELETE_DISH_FROM_CART: `DELETE_DISH_FROM_CART`,
   CHANGE_DISH_COUNT_IN_CART: `CHANGE_DISH_COUNT_IN_CART`,
@@ -30,26 +30,26 @@ const ActionType = {
 
 
 const ActionCreator = {
-  openMainScreen: () => {
-    return {
-      type: ActionType.OPEN_MAIN_SCREEN,
-    };
-  },
-  openOnlineCookingScreen: () => {
-    return {
-      type: ActionType.OPEN_ONLINE_COOKING_SCREEN,
-    };
-  },
-  openCateringScreen: () => {
-    return {
-      type: ActionType.OPEN_CATERING_SCREEN,
-    };
-  },
-  openCartScreen: () => {
-    return {
-      type: ActionType.OPEN_CART_SCREEN,
-    };
-  },
+  // openMainScreen: () => {
+  //   return {
+  //     type: ActionType.OPEN_MAIN_SCREEN,
+  //   };
+  // },
+  // openOnlineCookingScreen: () => {
+  //   return {
+  //     type: ActionType.OPEN_ONLINE_COOKING_SCREEN,
+  //   };
+  // },
+  // openCateringScreen: () => {
+  //   return {
+  //     type: ActionType.OPEN_CATERING_SCREEN,
+  //   };
+  // },
+  // openCartScreen: () => {
+  //   return {
+  //     type: ActionType.OPEN_CART_SCREEN,
+  //   };
+  // },
   onDeleteDishFromCart: (dishId) => {
     return {
       type: ActionType.DELETE_DISH_FROM_CART,
@@ -81,22 +81,22 @@ const ActionCreator = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.OPEN_MAIN_SCREEN:
-      return Object.assign({}, state, {
-        currentScreen: Screens.MAIN_SCREEN,
-      });
-    case ActionType.OPEN_ONLINE_COOKING_SCREEN:
-      return Object.assign({}, state, {
-        currentScreen: Screens.ONLINE_COOKING_SCREEN,
-      });
-    case ActionType.OPEN_CATERING_SCREEN:
-      return Object.assign({}, state, {
-        currentScreen: Screens.CATERING_SCREEN,
-      });
-    case ActionType.OPEN_CART_SCREEN:
-      return Object.assign({}, state, {
-        currentScreen: Screens.CART_SCREEN,
-      });
+    // case ActionType.OPEN_MAIN_SCREEN:
+    //   return Object.assign({}, state, {
+    //     currentScreen: Screens.MAIN_SCREEN,
+    //   });
+    // case ActionType.OPEN_ONLINE_COOKING_SCREEN:
+    //   return Object.assign({}, state, {
+    //     currentScreen: Screens.ONLINE_COOKING_SCREEN,
+    //   });
+    // case ActionType.OPEN_CATERING_SCREEN:
+    //   return Object.assign({}, state, {
+    //     currentScreen: Screens.CATERING_SCREEN,
+    //   });
+    // case ActionType.OPEN_CART_SCREEN:
+    //   return Object.assign({}, state, {
+    //     currentScreen: Screens.CART_SCREEN,
+    //   });
     case ActionType.DELETE_DISH_FROM_CART:
       return Object.assign({}, state, {
         cartDishes: deleteDishFromCart(state.cartDishes, action.payload),

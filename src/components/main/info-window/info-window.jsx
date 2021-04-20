@@ -1,32 +1,55 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import ReactModal from 'react-modal';
 import PropTypes from "prop-types";
 
 
 ReactModal.setAppElement('.site-container');
 
-const InfoWindow = (props) => {
+// const InfoWindow = (props) => {
+  class InfoWindow extends PureComponent {
+    constructor(props) {
+      super(props);
 
-  const {openState, onCloweModalWindow, headerText, bodyText, buttonText} = props;
+      // this._closeModalWindowHandler = this._closeModalWindowHandler.bind(this);
+      // this._clickButtonHandler = this._clickButtonHandler.bind(this);
+    }
 
-  return (
-    <React.Fragment>
-      <ReactModal
-         isOpen={openState}
-         contentLabel={`Связаться с нами`}
-         onRequestClose={onCloweModalWindow}
-         className="info-window__wrapper"
-         overlayClassName="info-window__overlay"
-      >
 
-        <img className="info-window__image" src="./img/check.png" srcSet="./img/check.png 2x" alt="OK" height="80" width="80" />
-        <h2 className="info-window__header">{headerText}</h2>
-        <p className="info-window__text">{bodyText}</p>
-        <button className="info-window__button" onClick={onCloweModalWindow}>{buttonText}</button>
+    // _closeModalWindowHandler() {
+    //   const {onCloweModalWindow} = this.props;
 
-      </ReactModal>
-    </React.Fragment>
-  );
+    //   onCloweModalWindow(0);
+    // }
+
+    // _clickButtonHandler() {
+    //   const {onCloweModalWindow} = this.props;
+
+    //   onCloweModalWindow(1);
+    // }
+
+    render() {
+
+      const {openState, onCloweModalWindow, headerText, bodyText, buttonText} = this.props;
+
+      return (
+        <React.Fragment>
+          <ReactModal
+            isOpen={openState}
+            contentLabel={`Связаться с нами`}
+            onRequestClose={this._closeModalWindowHandler}
+            className="info-window__wrapper"
+            overlayClassName="info-window__overlay"
+          >
+
+            <img className="info-window__image" src="./img/check.png" srcSet="./img/check.png 2x" alt="OK" height="80" width="80" />
+            <h2 className="info-window__header">{headerText}</h2>
+            <p className="info-window__text">{bodyText}</p>
+            <button className="info-window__button" onClick={onCloweModalWindow}>{buttonText}</button>
+
+          </ReactModal>
+        </React.Fragment>
+      );
+    }
 };
 
 

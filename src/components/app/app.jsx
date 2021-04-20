@@ -27,7 +27,8 @@ class App extends PureComponent {
   _renderApp() {
 
     const {currentScreen, cartPrice, cartType, cartTypeName, cartDishes, dishesTypesList, dishesList} = this.props;
-    const {onMainClick, onOnlineCookingClick, onCateringClick, onCartClick, onDeleteDishFromCart, onChangeDishCountInCart, onAddDishToCart, onClearCart} = this.props;
+    // const {onMainClick, onOnlineCookingClick, onCateringClick, onCartClick, onDeleteDishFromCart, onChangeDishCountInCart, onAddDishToCart, onClearCart} = this.props;
+    const {onDeleteDishFromCart, onChangeDishCountInCart, onAddDishToCart, onClearCart} = this.props;
 
 
     switch (currentScreen) {
@@ -154,7 +155,8 @@ class App extends PureComponent {
 
   render() {
     const {currentScreen, cartPrice, cartType, cartTypeName, cartDishes, dishesTypesList, dishesList} = this.props;
-    const {onMainClick, onOnlineCookingClick, onCateringClick, onCartClick, onDeleteDishFromCart, onChangeDishCountInCart, onAddDishToCart, onClearCart} = this.props;
+    // const {onMainClick, onOnlineCookingClick, onCateringClick, onCartClick, onDeleteDishFromCart, onChangeDishCountInCart, onAddDishToCart, onClearCart} = this.props;
+    const {onDeleteDishFromCart, onChangeDishCountInCart, onAddDishToCart, onClearCart} = this.props;
 
     return (
       <Router history={history}>
@@ -293,7 +295,7 @@ class App extends PureComponent {
 
 
 App.propTypes = {
-  currentScreen: PropTypes.number.isRequired,
+  // currentScreen: PropTypes.number.isRequired,
 
   cartPrice: PropTypes.number,
   cartType: PropTypes.number.isRequired,
@@ -303,10 +305,10 @@ App.propTypes = {
   dishesTypesList: PropTypes.array,
   dishesList: PropTypes.array,
 
-  onMainClick: PropTypes.func.isRequired,
-  onOnlineCookingClick: PropTypes.func.isRequired,
-  onCateringClick: PropTypes.func.isRequired,
-  onCartClick: PropTypes.func.isRequired,
+  // onMainClick: PropTypes.func.isRequired,
+  // onOnlineCookingClick: PropTypes.func.isRequired,
+  // onCateringClick: PropTypes.func.isRequired,
+  // onCartClick: PropTypes.func.isRequired,
   onDeleteDishFromCart: PropTypes.func,
   onChangeDishCountInCart: PropTypes.func,
   onAddDishToCart: PropTypes.func,
@@ -318,7 +320,7 @@ App.propTypes = {
 
 
 const mapStateToProps = (state) => ({
-  currentScreen: state.currentScreen,
+  // currentScreen: state.currentScreen,
 
   cartPrice: getCartPrice(state.cartDishes),
   cartType: state.cartType,
@@ -331,18 +333,18 @@ const mapStateToProps = (state) => ({
 
 
 const mapDispatchToProps = (dispatch) => ({
-  onMainClick() {
-    dispatch(ActionCreator.openMainScreen());
-  },
-  onOnlineCookingClick() {
-    dispatch(ActionCreator.openOnlineCookingScreen());
-  },
-  onCateringClick() {
-    dispatch(ActionCreator.openCateringScreen());
-  },
-  onCartClick() {
-    dispatch(ActionCreator.openCartScreen());
-  },
+  // onMainClick() {
+  //   dispatch(ActionCreator.openMainScreen());
+  // },
+  // onOnlineCookingClick() {
+  //   dispatch(ActionCreator.openOnlineCookingScreen());
+  // },
+  // onCateringClick() {
+  //   dispatch(ActionCreator.openCateringScreen());
+  // },
+  // onCartClick() {
+  //   dispatch(ActionCreator.openCartScreen());
+  // },
   onDeleteDishFromCart(dishId) {
     dispatch(ActionCreator.onDeleteDishFromCart(dishId));
   },
