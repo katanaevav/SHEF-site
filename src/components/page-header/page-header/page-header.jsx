@@ -35,7 +35,7 @@ class PageHeader extends PureComponent {
   render() {
 
     // const {totalCost, openMainScreen, openOnlineCookingScreen, openCateringScreen} = this.props;
-    const {totalCost} = this.props;
+    const {totalCost, openContactUsForm} = this.props;
 
     return (
       <React.Fragment>
@@ -55,6 +55,7 @@ class PageHeader extends PureComponent {
             </Link>
 
             <PageHeaderNav
+              openContactUsForm = {openContactUsForm}
               // openMainScreen = {openMainScreen}
               // openOnlineCookingScreen = {openOnlineCookingScreen}
               // openCateringScreen = {openCateringScreen}
@@ -74,6 +75,7 @@ class PageHeader extends PureComponent {
 
           <PageHeaderMobileMenu
             burgerButtonClick = {this._burgerButtonClickHandler}
+            openContactUsForm = {openContactUsForm}
             // openOnlineCookingScreen = {openOnlineCookingScreen}
             // openCateringScreen = {openCateringScreen}
           />
@@ -88,6 +90,7 @@ class PageHeader extends PureComponent {
 
 PageHeader.propTypes = {
   totalCost: PropTypes.number,
+  openContactUsForm: PropTypes.func.isRequired,
   // openMainScreen: PropTypes.func.isRequired,
   // openOnlineCookingScreen: PropTypes.func.isRequired,
   // openCateringScreen: PropTypes.func.isRequired,

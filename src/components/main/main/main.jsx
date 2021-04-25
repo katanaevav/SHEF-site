@@ -1,9 +1,10 @@
 import React, {PureComponent} from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
 import {AppRoute} from "../../../const.js";
 
+import GetLinkForm from "../get-link-form/get-link-form.jsx";
 import ContactUsModal from "../contact-us-modal/contact-us-modal.jsx";
 import InfoWindow from "../info-window/info-window.jsx";
 
@@ -23,6 +24,8 @@ class Main extends PureComponent {
     this._openInfoWindowHandle = this._openInfoWindowHandle.bind(this);
     this._closeInfoWindowFormHandle = this._closeInfoWindowFormHandle.bind(this);
 
+    this._downloadApplicationsClickHandler = this._downloadApplicationsClickHandler.bind(this);
+
     // this._onlineCookingClickHandler = this._onlineCookingClickHandler.bind(this);
     // this._cateringClickHandler = this._cateringClickHandler.bind(this);
   }
@@ -41,8 +44,27 @@ class Main extends PureComponent {
   //   this.props.openCateringScreen();
   // }
 
+  _getCoords(el) {
+    var box = el.getBoundingClientRect();
 
-  _openContactUsFormHandle() {
+    return {
+      top: box.top + pageYOffset,
+      left: box.left + pageXOffset
+    };
+  }
+
+
+  _downloadApplicationsClickHandler(evt) {
+    evt.preventDefault();
+
+    getComputedStyle(document.querySelector(`.get-link-form`)).display === `none` ?
+      window.scrollTo(this._getCoords(document.querySelector(`.head__mobile-apps`))) :
+      document.querySelector(`.get-link-form__input-email`).focus();
+  }
+
+  _openContactUsFormHandle(evt) {
+    evt.preventDefault();
+
     this.setState({ showContactUsForm: true });
   }
 
@@ -78,7 +100,7 @@ class Main extends PureComponent {
               <h1 className="head__header">Фабрика кухни Кирилла Еселева.<br />Готовая еда!</h1>
               <p className="head__text">Мы готовим для вас, чтобы вы могли позаботьтесь о том, что вам важно.</p>
 
-              <form className="header__form get-link-form" method="POST" action="https://echo.htmlacademy.ru">
+              {/* <form className="header__form get-link-form" method="POST" action="https://echo.htmlacademy.ru">
                 <p className="get-link-form__title">Отправим вам ссылку на наше приложение</p>
                 <div className="get-link-form__input-wrapper">
                   <input className="get-link-form__input-email" type="email" placeholder="Email" name="e-mail" required />
@@ -90,7 +112,11 @@ class Main extends PureComponent {
                     <a href="#"> Политики конфиденциальности</a>
                   </label>
                 </div>
-              </form>
+              </form> */}
+
+              <GetLinkForm
+                isFooter={false}
+              />
 
               <div className="head__mobile-apps">
                 <a className="head__mobile-app" href="#">
@@ -121,7 +147,7 @@ class Main extends PureComponent {
                     Скачайте мобильное приложение
                     и заказывайте вкусную еду из дома
                   </p>
-                  <a className="links__button" href="#">Скачать приложение</a>
+                  <a className="links__button" href="#" onClick={this._downloadApplicationsClickHandler}>Скачать приложение</a>
                 </div>
               </li>
 
@@ -171,7 +197,7 @@ class Main extends PureComponent {
                     без кухни? Привезем готовую
                     еду по оптовым ценам!<br /><br />
                   </p>
-                  <a className="links__button" href="#" onClick={this._openContactUsFormHandle}>Оставить заявку</a>
+                  <a className="links__button" href="#" onClick={this.props.openContactUsForm}>Оставить заявку</a>
                 </div>
               </li>
 
@@ -182,7 +208,7 @@ class Main extends PureComponent {
                   <p className="links__text">Инвестируй в точку с<br />
                     готовой едой.<br /><br /><br />
                   </p>
-                  <a className="links__button" href="#" onClick={this._openContactUsFormHandle}>Оставить заявку</a>
+                  <a className="links__button" href="#" onClick={this.props.openContactUsForm}>Оставить заявку</a>
                 </div>
               </li>
 
@@ -196,7 +222,7 @@ class Main extends PureComponent {
                     бургеры у нас, ведь они<br />
                     наши друзья.<br /><br />
                   </p>
-                  <a className="links__button" href="#">Скачать приложение</a>
+                  <a className="links__button" href="#"  onClick={this._downloadApplicationsClickHandler}>Скачать приложение</a>
                 </div>
               </li>
             </ul>
@@ -290,10 +316,9 @@ class Main extends PureComponent {
 };
 
 
-// Main.propTypes = {
-  // openOnlineCookingScreen: PropTypes.func.isRequired,
-  // openCateringScreen: PropTypes.func.isRequired,
-// }
+Main.propTypes = {
+  openContactUsForm: PropTypes.func.isRequired,
+}
 
 
 export default Main;

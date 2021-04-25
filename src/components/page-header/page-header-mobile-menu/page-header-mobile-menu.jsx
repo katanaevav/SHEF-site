@@ -11,6 +11,7 @@ class PageHeaderMobileMenu extends PureComponent {
     super(props);
     this._onlineCookingClickHandler = this._onlineCookingClickHandler.bind(this);
     this._cateringClickHandler = this._cateringClickHandler.bind(this);
+    this._contactUsClickHandler = this._contactUsClickHandler.bind(this);
   }
 
   _onlineCookingClickHandler(evt) {
@@ -23,6 +24,12 @@ class PageHeaderMobileMenu extends PureComponent {
     evt.preventDefault();
     history.push(AppRoute.CATERING);
     this.props.burgerButtonClick();
+  }
+
+  _contactUsClickHandler(evt) {
+    evt.preventDefault();
+    this.props.burgerButtonClick();
+    this.props.openContactUsForm(evt);
   }
 
   render() {
@@ -53,10 +60,10 @@ class PageHeaderMobileMenu extends PureComponent {
                 <a href="foods.html" title="Бизнесу">Заказ&nbsp;продуктов</a>
               </li> */}
               <li className="mobile-nav__item">
-                <a href="#" title="Бизнесу">Доставка&nbsp;еды</a>
+                <a href="#" title="Бизнесу" onClick={this._contactUsClickHandler}>Доставка&nbsp;еды</a>
               </li>
               <li className="mobile-nav__item">
-                <a href="#" title="О нас">Стань&nbsp;партнером</a>
+                <a href="#" title="О нас" onClick={this._contactUsClickHandler}>Стань&nbsp;партнером</a>
               </li>
             </ul>
           </nav>
@@ -79,6 +86,7 @@ class PageHeaderMobileMenu extends PureComponent {
 
 PageHeaderMobileMenu.propTypes = {
   burgerButtonClick: PropTypes.func.isRequired,
+  openContactUsForm: PropTypes.func.isRequired,
   // openOnlineCookingScreen: PropTypes.func.isRequired,
   // openCateringScreen: PropTypes.func.isRequired,
 }

@@ -4,28 +4,13 @@ import {Link} from "react-router-dom";
 
 import {AppRoute} from "../../../const.js";
 
+import GetLinkForm from "../../main/get-link-form/get-link-form.jsx";
 
-import PageFooterGetLinkForm from "../page-footer-get-link-form/page-footer-get-link-form.jsx";
 
-
-// const PageFooter = (props) => {
 class PageFooter extends PureComponent {
   constructor(props) {
     super(props);
-
-    // this._onlineCookingClickHandler = this._onlineCookingClickHandler.bind(this);
-    // this._cateringClickHandler = this._cateringClickHandler.bind(this);
   }
-
-  // _onlineCookingClickHandler(evt) {
-  //   evt.preventDefault();
-  //   this.props.openOnlineCookingScreen();
-  // }
-
-  // _cateringClickHandler(evt) {
-  //   evt.preventDefault();
-  //   this.props.openCateringScreen();
-  // }
 
 
   render() {
@@ -50,7 +35,9 @@ class PageFooter extends PureComponent {
                     </ul>
                   </div>
 
-                  <PageFooterGetLinkForm />
+                  <GetLinkForm
+                    isFooter={true}
+                  />
 
                 </section>
 
@@ -60,7 +47,6 @@ class PageFooter extends PureComponent {
                     <li className="section-links__link">
                       <Link
                         href="catering.html"
-                        // onClick={this._cateringClickHandler}
                         to={`${AppRoute.CATERING}`}
                       >
                         Кейтеринг
@@ -69,7 +55,6 @@ class PageFooter extends PureComponent {
                     <li className="section-links__link">
                       <Link
                         href="online-cooking.html"
-                        // onClick={this._onlineCookingClickHandler}
                         to={`${AppRoute.ONLINE_COOKING}`}
                       >
                         Онлайн кулинария

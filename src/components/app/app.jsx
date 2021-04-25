@@ -3,6 +3,9 @@ import {Switch, Route, Router, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 
+import ContactUsModal from "../main/contact-us-modal/contact-us-modal.jsx";
+import InfoWindow from "../main/info-window/info-window.jsx";
+
 import {ActionCreator} from "../../reducer/reducer.js";
 import {getMenuCategoryName, getCartPrice} from "../../reducer/selectors.js";
 
@@ -22,6 +25,42 @@ import {MenuCategory, AppRoute} from "../../const.js"
 class App extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      showContactUsForm: false,
+      showInfoWindow: false,
+    };
+
+    this._openContactUsFormHandle = this._openContactUsFormHandle.bind(this);
+    this._closeContactUsFormHandle = this._closeContactUsFormHandle.bind(this);
+
+    this._openInfoWindowHandle = this._openInfoWindowHandle.bind(this);
+    this._closeInfoWindowFormHandle = this._closeInfoWindowFormHandle.bind(this);
+  }
+
+
+
+  _openContactUsFormHandle(evt) {
+    evt.preventDefault();
+
+    this.setState({ showContactUsForm: true });
+  }
+
+  _closeContactUsFormHandle(status) {
+    this.setState({ showContactUsForm: false });
+    if (status === 1) {
+      this._openInfoWindowHandle();
+    }
+  }
+
+  _openInfoWindowHandle() {
+    // evt.preventDfault();
+    this.setState({ showInfoWindow: true });
+  }
+
+  _closeInfoWindowFormHandle() {
+    // evt.preventDefault();
+    this.setState({ showInfoWindow: false });
   }
 
 
@@ -39,6 +78,7 @@ class App extends PureComponent {
             <React.Fragment>
               <PageHeader
                 totalCost = {cartPrice}
+                openContactUsForm = {this._openContactUsFormHandle}
                 // openMainScreen = {onMainClick}
                 // openOnlineCookingScreen = {onOnlineCookingClick}
                 // openCateringScreen = {onCateringClick}
@@ -47,6 +87,7 @@ class App extends PureComponent {
               <Main
                 // openOnlineCookingScreen = {onOnlineCookingClick}
                 // openCateringScreen = {onCateringClick}
+                openContactUsForm = {this._openContactUsFormHandle}
               />
               <PageFooter
                 // openOnlineCookingScreen = {onOnlineCookingClick}
@@ -59,6 +100,7 @@ class App extends PureComponent {
             <React.Fragment>
               <PageHeader
                 totalCost = {cartPrice}
+                openContactUsForm = {this._openContactUsFormHandle}
                 // openMainScreen = {onMainClick}
                 // openOnlineCookingScreen = {onOnlineCookingClick}
                 // openCateringScreen = {onCateringClick}
@@ -100,6 +142,7 @@ class App extends PureComponent {
                   <React.Fragment>
                     <PageHeader
                       totalCost = {cartPrice}
+                      openContactUsForm = {this._openContactUsFormHandle}
                       // openMainScreen = {onMainClick}
                       // openOnlineCookingScreen = {onOnlineCookingClick}
                       // openCateringScreen = {onCateringClick}
@@ -137,6 +180,7 @@ class App extends PureComponent {
                   <React.Fragment>
                     <PageHeader
                       totalCost = {cartPrice}
+                      openContactUsForm = {this._openContactUsFormHandle}
                       // openMainScreen = {onMainClick}
                       // openOnlineCookingScreen = {onOnlineCookingClick}
                       // openCateringScreen = {onCateringClick}
@@ -159,6 +203,19 @@ class App extends PureComponent {
           />
 
         </Switch>
+
+        <ContactUsModal
+          openState = {this.state.showContactUsForm}
+          onCloweModalWindow = {this._closeContactUsFormHandle}
+        />
+
+        <InfoWindow
+          openState = {this.state.showInfoWindow}
+          onCloweModalWindow = {this._closeInfoWindowFormHandle}
+          headerText = {`Ваше сообщение отправлено`}
+          bodyText = {`Наши эксперты свяжутся с вами, как только обработают сообщение`}
+          buttonText = {`Хорошо`}
+        />
       </Router>
     )
   }
