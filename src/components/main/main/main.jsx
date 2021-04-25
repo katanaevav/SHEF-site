@@ -7,6 +7,7 @@ import {AppRoute} from "../../../const.js";
 import GetLinkForm from "../get-link-form/get-link-form.jsx";
 import ContactUsModal from "../contact-us-modal/contact-us-modal.jsx";
 import InfoWindow from "../info-window/info-window.jsx";
+import ContactFormByPhone from "../contact-form-by-phone/contact-form-by-phone.jsx";
 
 
 class Main extends PureComponent {
@@ -274,7 +275,7 @@ class Main extends PureComponent {
 
             <div className="about__connect">
 
-              <form className="about__form contact-form" method="POST" action="https://echo.htmlacademy.ru">
+              {/* <form className="about__form contact-form" method="POST" action="https://echo.htmlacademy.ru">
               <img className="contact-form__image" src="./img/contact-us.png" srcSet="./img/contact-us@2x.png 2x" alt="Связаться с нами" height="151" width="150" />
                 <h2 className="contact-form__title">Связаться снами</h2>
                 <input className="contact-form__input contact-form__input--text" type="text" placeholder="Ваше имя" name="name" required />
@@ -286,7 +287,9 @@ class Main extends PureComponent {
                   </label>
                 </div>
                 <input className="contact-form__button" type="submit" value="Получить ссылку" />
-              </form>
+              </form> */}
+
+              <ContactFormByPhone />
 
             </div>
 
