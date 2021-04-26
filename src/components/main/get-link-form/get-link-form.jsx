@@ -19,6 +19,8 @@ class GetLinkForm extends PureComponent {
 
     this._openInfoWindowHandle = this._openInfoWindowHandle.bind(this);
     this._closeInfoWindowFormHandle = this._closeInfoWindowFormHandle.bind(this);
+
+    this._policyLinkClickHandler = this._policyLinkClickHandler.bind(this);
   }
 
 
@@ -41,6 +43,12 @@ class GetLinkForm extends PureComponent {
 
   _closeInfoWindowFormHandle() {
     this.setState({ showInfoWindow: false });
+  }
+
+  _policyLinkClickHandler(evt) {
+    evt.preventDefault();
+
+    this.props.openPolicyWindow();
   }
 
 
@@ -79,7 +87,7 @@ class GetLinkForm extends PureComponent {
             <input
               className={isFooter ? `section-connect__form-checkbox` : `get-link-form__checkbox`}
               type="checkbox"
-              id="check-policy"
+              id={isFooter ? `footer-check-policy` : `check-policy`}
               name="accept-policy"
               value="yes"
               ref={this.checkPolicy}
@@ -88,11 +96,11 @@ class GetLinkForm extends PureComponent {
               onChange={this._custonValidityCheckboxHandler}
             />
             <label
-              className={isFooter ? `section-connect__form-checkbox-label` : `get-link-form__checkbox-label`}
-              htmlFor="check-policy"
+              className= {isFooter ? `section-connect__form-checkbox-label` : `get-link-form__checkbox-label`}
+              htmlFor= {isFooter ? `footer-check-policy` : `check-policy`}
             >
               согласен с условиями
-              <a href="#"> Политики конфиденциальности</a>
+              <a onClick={this._policyLinkClickHandler}> Политики конфиденциальности</a>
             </label>
           </div>
         </form>
@@ -114,6 +122,7 @@ class GetLinkForm extends PureComponent {
 
 GetLinkForm.propTypes = {
   isFooter: PropTypes.bool.isRequired,
+  openPolicyWindow: PropTypes.func.isRequired,
 }
 
 export default GetLinkForm;

@@ -26,24 +26,11 @@ class Main extends PureComponent {
     this._closeInfoWindowFormHandle = this._closeInfoWindowFormHandle.bind(this);
 
     this._downloadApplicationsClickHandler = this._downloadApplicationsClickHandler.bind(this);
-
-    // this._onlineCookingClickHandler = this._onlineCookingClickHandler.bind(this);
-    // this._cateringClickHandler = this._cateringClickHandler.bind(this);
   }
 
   componentDidMount() {
     window.scrollTo(0, 0);
   }
-
-  // _onlineCookingClickHandler(evt) {
-  //   evt.preventDefault();
-  //   this.props.openOnlineCookingScreen();
-  // }
-
-  // _cateringClickHandler(evt) {
-  //   evt.preventDefault();
-  //   this.props.openCateringScreen();
-  // }
 
   _getCoords(el) {
     var box = el.getBoundingClientRect();
@@ -77,12 +64,10 @@ class Main extends PureComponent {
   }
 
   _openInfoWindowHandle() {
-    // evt.preventDfault();
     this.setState({ showInfoWindow: true });
   }
 
   _closeInfoWindowFormHandle() {
-    // evt.preventDefault();
     this.setState({ showInfoWindow: false });
   }
 
@@ -101,22 +86,9 @@ class Main extends PureComponent {
               <h1 className="head__header">Фабрика кухни Кирилла Еселева.<br />Готовая еда!</h1>
               <p className="head__text">Мы готовим для вас, чтобы вы могли позаботьтесь о том, что вам важно.</p>
 
-              {/* <form className="header__form get-link-form" method="POST" action="https://echo.htmlacademy.ru">
-                <p className="get-link-form__title">Отправим вам ссылку на наше приложение</p>
-                <div className="get-link-form__input-wrapper">
-                  <input className="get-link-form__input-email" type="email" placeholder="Email" name="e-mail" required />
-                  <input className="get-link-form__button" type="submit" value="Получить ссылку" />
-                </div>
-                <div className="get-link-form__input-wrapper">
-                  <input className="get-link-form__checkbox" type="checkbox" id="check-policy" name="accept-policy" value="yes" />
-                  <label className="get-link-form__checkbox-label" htmlFor="check-policy">согласен с условиями
-                    <a href="#"> Политики конфиденциальности</a>
-                  </label>
-                </div>
-              </form> */}
-
               <GetLinkForm
                 isFooter={false}
+                openPolicyWindow={this.props.openPolicyWindow}
               />
 
               <div className="head__mobile-apps">
@@ -148,7 +120,7 @@ class Main extends PureComponent {
                     Скачайте мобильное приложение
                     и заказывайте вкусную еду из дома
                   </p>
-                  <a className="links__button" href="#" onClick={this._downloadApplicationsClickHandler}>Скачать приложение</a>
+                  <a className="links__button" onClick={this._downloadApplicationsClickHandler}>Скачать приложение</a>
                 </div>
               </li>
 
@@ -163,7 +135,6 @@ class Main extends PureComponent {
                   <Link
                     className="links__button"
                     href="online-cooking.html"
-                    // onClick={this._onlineCookingClickHandler}
                     to={`${AppRoute.ONLINE_COOKING}`}
                   >
                     Выбрать блюда
@@ -182,7 +153,6 @@ class Main extends PureComponent {
                   <Link
                     className="links__button"
                     href="catering.html"
-                    // onClick={this._cateringClickHandler}
                     to={`${AppRoute.CATERING}`}
                   >
                     Выбрать блюда
@@ -198,7 +168,7 @@ class Main extends PureComponent {
                     без кухни? Привезем готовую
                     еду по оптовым ценам!<br /><br />
                   </p>
-                  <a className="links__button" href="#" onClick={this.props.openContactUsForm}>Оставить заявку</a>
+                  <a className="links__button" onClick={this.props.openContactUsForm}>Оставить заявку</a>
                 </div>
               </li>
 
@@ -209,7 +179,7 @@ class Main extends PureComponent {
                   <p className="links__text">Инвестируй в точку с<br />
                     готовой едой.<br /><br /><br />
                   </p>
-                  <a className="links__button" href="#" onClick={this.props.openContactUsForm}>Оставить заявку</a>
+                  <a className="links__button" onClick={this.props.openContactUsForm}>Оставить заявку</a>
                 </div>
               </li>
 
@@ -223,7 +193,7 @@ class Main extends PureComponent {
                     бургеры у нас, ведь они<br />
                     наши друзья.<br /><br />
                   </p>
-                  <a className="links__button" href="#"  onClick={this._downloadApplicationsClickHandler}>Скачать приложение</a>
+                  <a className="links__button" onClick={this._downloadApplicationsClickHandler}>Скачать приложение</a>
                 </div>
               </li>
             </ul>
@@ -275,21 +245,9 @@ class Main extends PureComponent {
 
             <div className="about__connect">
 
-              {/* <form className="about__form contact-form" method="POST" action="https://echo.htmlacademy.ru">
-              <img className="contact-form__image" src="./img/contact-us.png" srcSet="./img/contact-us@2x.png 2x" alt="Связаться с нами" height="151" width="150" />
-                <h2 className="contact-form__title">Связаться снами</h2>
-                <input className="contact-form__input contact-form__input--text" type="text" placeholder="Ваше имя" name="name" required />
-                <input className="contact-form__input contact-form__input--phone" type="phone" placeholder="+7" name="phone" required />
-                <div className="contact-form__input-wrapper">
-                  <input className="contact-form__checkbox" type="checkbox" id="check-policy" name="accept-policy" value="yes" />
-                  <label className="contact-form__checkbox-label" htmlFor="check-policy">Принимаю условия<br />
-                    <a href="#">Политики конфиденциальности</a>
-                  </label>
-                </div>
-                <input className="contact-form__button" type="submit" value="Получить ссылку" />
-              </form> */}
-
-              <ContactFormByPhone />
+              <ContactFormByPhone
+                openPolicyWindow={this.props.openPolicyWindow}
+              />
 
             </div>
 
@@ -321,6 +279,7 @@ class Main extends PureComponent {
 
 Main.propTypes = {
   openContactUsForm: PropTypes.func.isRequired,
+  openPolicyWindow: PropTypes.func.isRequired,
 }
 
 

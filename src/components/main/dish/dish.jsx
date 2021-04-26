@@ -58,7 +58,6 @@ class Dish extends PureComponent {
     dish.dishCount = this.state.dishCount;
 
     if ((dish.dishCategory != CartCategory) && (CartCategory != MenuCategory.EMPTY)) {
-      // onClearCart();
       this._openQuestionWindowHandle();
     } else {
       onAddDishToCart(dish);

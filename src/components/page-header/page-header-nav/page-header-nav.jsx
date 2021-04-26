@@ -24,7 +24,7 @@ class PageHeaderNav extends PureComponent {
 
   _abouUsClickHandler(evt) {
     evt.preventDefault();
-    window.scrollTo(this._getCoords(document.querySelector(`.about__article`)))
+    window.scrollTo(this._getCoords(document.querySelector(`.section-connect`)))
   }
 
 
@@ -57,18 +57,17 @@ class PageHeaderNav extends PureComponent {
                     Онлайн&nbsp;кулинария
                   </Link>
                 </li>
-                {/* <li className="sub-menu__item"><a href="foods.html" title="Заказ продуктов">Заказ&nbsp;продуктов</a></li> */}
               </ul>
             </li>
             <li className="main-menu__item">
               <a title="Бизнесу">Бизнесу</a>
               <ul className="main-menu__sub-menu sub-menu">
-                <li className="sub-menu__item"><a href="#" title="Доставка еды" onClick={openContactUsForm}>Доставка&nbsp;еды</a></li>
-                <li className="sub-menu__item"><a href="#" title="Стань партнером" onClick={openContactUsForm}>Стань&nbsp;партнером</a></li>
+                <li className="sub-menu__item"><a title="Доставка еды" onClick={openContactUsForm}>Доставка&nbsp;еды</a></li>
+                <li className="sub-menu__item"><a title="Стань партнером" onClick={openContactUsForm}>Стань&nbsp;партнером</a></li>
               </ul>
             </li>
             <li className="main-menu__item">
-              <a href="#" title="О нас" onClick={this._abouUsClickHandler}>О&nbsp;нас</a>
+              <a title="О нас" onClick={this._abouUsClickHandler}>О&nbsp;нас</a>
             </li>
           </ul>
         </nav>

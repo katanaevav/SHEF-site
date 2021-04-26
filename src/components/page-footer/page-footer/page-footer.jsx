@@ -1,8 +1,8 @@
 import React, {PureComponent} from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
-import {AppRoute} from "../../../const.js";
+import {AppRoute, Links} from "../../../const.js";
 
 import GetLinkForm from "../../main/get-link-form/get-link-form.jsx";
 
@@ -30,13 +30,14 @@ class PageFooter extends PureComponent {
                   <div className="section-connect__wrapper">
                     <img className="section-connect__image section-connect__image--instagram" src="./img/instagram.svg" alt="Инстаграм" />
                     <ul className="section-connect__adress">
-                      <li className="section-connect__adress-item"><a href="tel:+79953014090" title="Телефон">+7 995 301 40 90</a></li>
-                      <li className="section-connect__adress-item"><a href="mailto:office@jscorp.ru" title="Email">office@jscorp.ru</a></li>
+                      <li className="section-connect__adress-item"><a href={Links.PHONE_LINC} title="Телефон">{Links.PHONE_SHOW}</a></li>
+                      <li className="section-connect__adress-item"><a href={Links.EMAIL_LINK} title="Email">{Links.EMAIL_SHOW}u</a></li>
                     </ul>
                   </div>
 
                   <GetLinkForm
                     isFooter={true}
+                    openPolicyWindow={this.props.openPolicyWindow}
                   />
 
                 </section>
@@ -60,15 +61,14 @@ class PageFooter extends PureComponent {
                         Онлайн кулинария
                       </Link>
                     </li>
-                    {/* <li className="section-links__link"><a href="foods.html">Заказ продуктов</a></li> */}
                   </ul>
                 </section>
 
                 <section className="page-footer__section section-links">
                   <h2 className="section-connect__header">Бизнесу</h2>
                   <ul className="section-links__links">
-                    <li className="section-links__link"><a href="#">Доставка еды</a></li>
-                    <li className="section-links__link"><a href="#">Стань партнером</a></li>
+                    <li className="section-links__link"><a onClick={this.props.openContactUsForm}>Доставка еды</a></li>
+                    <li className="section-links__link"><a onClick={this.props.openContactUsForm}>Стань партнером</a></li>
                   </ul>
                 </section>
 
@@ -93,7 +93,7 @@ class PageFooter extends PureComponent {
 
             </div>
 
-            <a href="#" className="page-footer__jscorp-link"><img className="page-footer__jscorp-image" src="./img/jscorp-logo1.svg" alt="JSCorp" /></a>
+            <a href={Links.JSCORP_LINK} className="page-footer__jscorp-link"><img className="page-footer__jscorp-image" src="./img/jscorp-logo1.svg" alt="JSCorp" /></a>
 
           </div>
         </footer>
@@ -104,10 +104,10 @@ class PageFooter extends PureComponent {
 };
 
 
-// PageFooter.propTypes = {
-//   openOnlineCookingScreen: PropTypes.func.isRequired,
-//   openCateringScreen: PropTypes.func.isRequired,
-// }
+PageFooter.propTypes = {
+  openPolicyWindow: PropTypes.func.isRequired,
+  openContactUsForm: PropTypes.func.isRequired,
+}
 
 
 export default PageFooter;

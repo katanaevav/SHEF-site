@@ -1,7 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import history from "../../../history.js";
-// import {Link} from "react-router-dom";
 
 import {AppRoute} from "../../../const.js";
 
@@ -56,14 +55,11 @@ class PageHeaderMobileMenu extends PureComponent {
                   Онлайн&nbsp;кулинария
                 </a>
               </li>
-              {/* <li className="mobile-nav__item">
-                <a href="foods.html" title="Бизнесу">Заказ&nbsp;продуктов</a>
-              </li> */}
               <li className="mobile-nav__item">
-                <a href="#" title="Бизнесу" onClick={this._contactUsClickHandler}>Доставка&nbsp;еды</a>
+                <a title="Бизнесу" onClick={this._contactUsClickHandler}>Доставка&nbsp;еды</a>
               </li>
               <li className="mobile-nav__item">
-                <a href="#" title="О нас" onClick={this._contactUsClickHandler}>Стань&nbsp;партнером</a>
+                <a title="О нас" onClick={this._contactUsClickHandler}>Стань&nbsp;партнером</a>
               </li>
             </ul>
           </nav>
@@ -87,8 +83,6 @@ class PageHeaderMobileMenu extends PureComponent {
 PageHeaderMobileMenu.propTypes = {
   burgerButtonClick: PropTypes.func.isRequired,
   openContactUsForm: PropTypes.func.isRequired,
-  // openOnlineCookingScreen: PropTypes.func.isRequired,
-  // openCateringScreen: PropTypes.func.isRequired,
 }
 
 

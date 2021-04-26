@@ -48,7 +48,7 @@ class CartDish extends PureComponent {
             </div>
           </div>
 
-          <a href="#" className="shopping__delete"><img className="shopping__delete-image" src="./img/delete.svg" alt="Удалить" onClick={this._deleteDishFromCartHandler}/></a>
+          <a className="shopping__delete"><img className="shopping__delete-image" src="./img/delete.svg" alt="Удалить" onClick={this._deleteDishFromCartHandler}/></a>
         </li>
 
       </React.Fragment>

@@ -6,7 +6,8 @@ export const Links = {
   PHONE_LINC:  `tel:+79953014090`,
   EMAIL_SHOW: `office@jscorp.ru`,
   EMAIL_LINK: `mailto:office@jscorp.ru`,
-  LOCAL_BURDER_APP_LINK: `https://www.localburgerco.com/app`
+  LOCAL_BURDER_APP_LINK: `https://www.localburgerco.com/app`,
+  JSCORP_LINK: `https://jscorp.ru/`,
 };
 
 export const Screens = {

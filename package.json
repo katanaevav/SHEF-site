@@ -1,8 +1,8 @@
 {
-  "name": "shef-site",
-  "version": "1.0.0",
+  "name": "chef-site",
+  "version": "0.1",
   "private": true,
-  "description": "Основной сайт проекта Шеф здесь",
+  "description": "Cайт проекта Шеф здесь",
   "scripts": {
     "eslint": "npm run eslint.js",
     "eslint.js": "eslint --ext .jsx --ext .js src/",

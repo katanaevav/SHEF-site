@@ -14,8 +14,9 @@ exports[`Render PageHeaderMobileMenu 1`] = `
         className="mobile-nav__item"
       >
         <a
-          href="catering.html"
-          title="Бизнесу"
+          href="/catering"
+          onClick={[Function]}
+          title="Кейтеринг"
         >
           Кейтеринг
         </a>
@@ -24,7 +25,8 @@ exports[`Render PageHeaderMobileMenu 1`] = `
         className="mobile-nav__item"
       >
         <a
-          href="online-cooking.html"
+          href="/online-cooking"
+          onClick={[Function]}
           title="Бизнесу"
         >
           Онлайн кулинария
@@ -34,17 +36,8 @@ exports[`Render PageHeaderMobileMenu 1`] = `
         className="mobile-nav__item"
       >
         <a
-          href="foods.html"
-          title="Бизнесу"
-        >
-          Заказ продуктов
-        </a>
-      </li>
-      <li
-        className="mobile-nav__item"
-      >
-        <a
           href="#"
+          onClick={[Function]}
           title="Бизнесу"
         >
           Доставка еды
@@ -55,6 +48,7 @@ exports[`Render PageHeaderMobileMenu 1`] = `
       >
         <a
           href="#"
+          onClick={[Function]}
           title="О нас"
         >
           Стань партнером

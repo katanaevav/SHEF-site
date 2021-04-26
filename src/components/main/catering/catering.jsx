@@ -4,8 +4,6 @@ import PropTypes from "prop-types";
 import OrderNavigator from "../order-navigator/order-navigator.jsx";
 import MenuGroupNavigator from "../menu-group-navigator/menu-group-navigator.jsx";
 
-import {MenuCategory} from "../../../const.js";
-
 
 class Catering extends PureComponent {
   constructor(props) {

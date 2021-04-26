@@ -65,9 +65,6 @@ class SelectCount extends PureComponent {
     return (
       <React.Fragment>
 
-{/* {`dish__counter select-count ${isWhiteBackground ? `select-count--background-white` : ``}`} */}
-
-        {/* <div className="dish__counter select-count select-count--background-white"> */}
         <div className={`dish__counter select-count ${isWhiteBackground ? `select-count--background-white` : ``}`}>
           <button
             className="select-count__button select-count__button--dec"

@@ -5,30 +5,13 @@ import PropTypes from "prop-types";
 
 ReactModal.setAppElement('.site-container');
 
-// const InfoWindow = (props) => {
   class InfoWindow extends PureComponent {
     constructor(props) {
       super(props);
-
-      // this._closeModalWindowHandler = this._closeModalWindowHandler.bind(this);
-      // this._clickButtonHandler = this._clickButtonHandler.bind(this);
     }
 
 
-    // _closeModalWindowHandler() {
-    //   const {onCloweModalWindow} = this.props;
-
-    //   onCloweModalWindow(0);
-    // }
-
-    // _clickButtonHandler() {
-    //   const {onCloweModalWindow} = this.props;
-
-    //   onCloweModalWindow(1);
-    // }
-
     render() {
-
       const {openState, onCloweModalWindow, headerText, bodyText, buttonText} = this.props;
 
       return (

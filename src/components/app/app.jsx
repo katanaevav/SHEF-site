@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 import ContactUsModal from "../main/contact-us-modal/contact-us-modal.jsx";
 import InfoWindow from "../main/info-window/info-window.jsx";
+import PolicyWindow from "../main/policy-window/policy-window.jsx";
 
 import {ActionCreator} from "../../reducer/reducer.js";
 import {getMenuCategoryName, getCartPrice} from "../../reducer/selectors.js";
@@ -17,7 +18,6 @@ import PageFooter from "../page-footer/page-footer/page-footer.jsx";
 
 import OnlineCooking from "../main/online-cooking/online-cooking.jsx";
 import Catering from "../main/catering/catering.jsx";
-import Foods from "../main/foods/foods.jsx";
 import Cart from "../main/cart/cart.jsx";
 
 import {MenuCategory, AppRoute} from "../../const.js"
@@ -29,6 +29,7 @@ class App extends PureComponent {
     this.state = {
       showContactUsForm: false,
       showInfoWindow: false,
+      showPolicy: false,
     };
 
     this._openContactUsFormHandle = this._openContactUsFormHandle.bind(this);
@@ -36,6 +37,9 @@ class App extends PureComponent {
 
     this._openInfoWindowHandle = this._openInfoWindowHandle.bind(this);
     this._closeInfoWindowFormHandle = this._closeInfoWindowFormHandle.bind(this);
+
+    this._openPolicyWindowHandle = this._openPolicyWindowHandle.bind(this);
+    this._closePolicyWindowFormHandle = this._closePolicyWindowFormHandle.bind(this);
   }
 
 
@@ -54,20 +58,24 @@ class App extends PureComponent {
   }
 
   _openInfoWindowHandle() {
-    // evt.preventDfault();
     this.setState({ showInfoWindow: true });
   }
 
   _closeInfoWindowFormHandle() {
-    // evt.preventDefault();
     this.setState({ showInfoWindow: false });
+  }
+
+  _openPolicyWindowHandle() {
+    this.setState({ showPolicy: true });
+  }
+
+  _closePolicyWindowFormHandle() {
+    this.setState({ showPolicy: false });
   }
 
 
   render() {
-    // const {currentScreen, cartPrice, cartType, cartTypeName, cartDishes, dishesTypesList, dishesList} = this.props;
     const {cartPrice, cartType, cartTypeName, cartDishes, dishesTypesList, dishesList} = this.props;
-    // const {onMainClick, onOnlineCookingClick, onCateringClick, onCartClick, onDeleteDishFromCart, onChangeDishCountInCart, onAddDishToCart, onClearCart} = this.props;
     const {onDeleteDishFromCart, onChangeDishCountInCart, onAddDishToCart, onClearCart} = this.props;
 
     return (
@@ -79,19 +87,14 @@ class App extends PureComponent {
               <PageHeader
                 totalCost = {cartPrice}
                 openContactUsForm = {this._openContactUsFormHandle}
-                // openMainScreen = {onMainClick}
-                // openOnlineCookingScreen = {onOnlineCookingClick}
-                // openCateringScreen = {onCateringClick}
-                // openCartScreen = {onCartClick}
               />
               <Main
-                // openOnlineCookingScreen = {onOnlineCookingClick}
-                // openCateringScreen = {onCateringClick}
                 openContactUsForm = {this._openContactUsFormHandle}
+                openPolicyWindow = {this._openPolicyWindowHandle}
               />
               <PageFooter
-                // openOnlineCookingScreen = {onOnlineCookingClick}
-                // openCateringScreen = {onCateringClick}
+                openPolicyWindow = {this._openPolicyWindowHandle}
+                openContactUsForm = {this._openContactUsFormHandle}
               />
             </React.Fragment>
           </Route>
@@ -101,10 +104,6 @@ class App extends PureComponent {
               <PageHeader
                 totalCost = {cartPrice}
                 openContactUsForm = {this._openContactUsFormHandle}
-                // openMainScreen = {onMainClick}
-                // openOnlineCookingScreen = {onOnlineCookingClick}
-                // openCateringScreen = {onCateringClick}
-                // openCartScreen = {onCartClick}
               />
               <Cart
                 totalCost = {cartPrice}
@@ -114,14 +113,10 @@ class App extends PureComponent {
 
                 onDeleteDishFromCart = {onDeleteDishFromCart}
                 onChangeDishCountInCart = {onChangeDishCountInCart}
-
-                // onMainClick = {onMainClick}
-                // onOnlineCookingClick = {onOnlineCookingClick}
-                // onCateringClick = {onCateringClick}
                 />
               <PageFooter
-                // openOnlineCookingScreen = {onOnlineCookingClick}
-                // openCateringScreen = {onCateringClick}
+                openPolicyWindow = {this._openPolicyWindowHandle}
+                openContactUsForm = {this._openContactUsFormHandle}
               />
             </React.Fragment>
           </Route>
@@ -143,10 +138,6 @@ class App extends PureComponent {
                     <PageHeader
                       totalCost = {cartPrice}
                       openContactUsForm = {this._openContactUsFormHandle}
-                      // openMainScreen = {onMainClick}
-                      // openOnlineCookingScreen = {onOnlineCookingClick}
-                      // openCateringScreen = {onCateringClick}
-                      // openCartScreen = {onCartClick}
                     />
                     <Catering
                         dishesTypesList = {cateringDishesTypes}
@@ -156,8 +147,8 @@ class App extends PureComponent {
                         onClearCart = {onClearCart}
                       />
                     <PageFooter
-                      // openOnlineCookingScreen = {onOnlineCookingClick}
-                      // openCateringScreen = {onCateringClick}
+                      openPolicyWindow = {this._openPolicyWindowHandle}
+                      openContactUsForm = {this._openContactUsFormHandle}
                     />
                   </React.Fragment>
                 );
@@ -181,10 +172,6 @@ class App extends PureComponent {
                     <PageHeader
                       totalCost = {cartPrice}
                       openContactUsForm = {this._openContactUsFormHandle}
-                      // openMainScreen = {onMainClick}
-                      // openOnlineCookingScreen = {onOnlineCookingClick}
-                      // openCateringScreen = {onCateringClick}
-                      // openCartScreen = {onCartClick}
                     />
                     <OnlineCooking
                       dishesTypesList = {onlineCookingDishesTypes}
@@ -194,8 +181,8 @@ class App extends PureComponent {
                       onClearCart = {onClearCart}
                     />
                     <PageFooter
-                      // openOnlineCookingScreen = {onOnlineCookingClick}
-                      // openCateringScreen = {onCateringClick}
+                      openPolicyWindow = {this._openPolicyWindowHandle}
+                      openContactUsForm = {this._openContactUsFormHandle}
                     />
                   </React.Fragment>
                 );
@@ -207,6 +194,11 @@ class App extends PureComponent {
         <ContactUsModal
           openState = {this.state.showContactUsForm}
           onCloweModalWindow = {this._closeContactUsFormHandle}
+        />
+
+        <PolicyWindow
+          openState = {this.state.showPolicy}
+          onCloweModalWindow = {this._closePolicyWindowFormHandle}
         />
 
         <InfoWindow
@@ -225,8 +217,6 @@ class App extends PureComponent {
 
 
 App.propTypes = {
-  // currentScreen: PropTypes.number.isRequired,
-
   cartPrice: PropTypes.number,
   cartType: PropTypes.number.isRequired,
   cartTypeName: PropTypes.string.isRequired,
@@ -235,10 +225,6 @@ App.propTypes = {
   dishesTypesList: PropTypes.array,
   dishesList: PropTypes.array,
 
-  // onMainClick: PropTypes.func.isRequired,
-  // onOnlineCookingClick: PropTypes.func.isRequired,
-  // onCateringClick: PropTypes.func.isRequired,
-  // onCartClick: PropTypes.func.isRequired,
   onDeleteDishFromCart: PropTypes.func,
   onChangeDishCountInCart: PropTypes.func,
   onAddDishToCart: PropTypes.func,
@@ -250,7 +236,6 @@ App.propTypes = {
 
 
 const mapStateToProps = (state) => ({
-  // currentScreen: state.currentScreen,
 
   cartPrice: getCartPrice(state.cartDishes),
   cartType: state.cartType,
@@ -263,18 +248,6 @@ const mapStateToProps = (state) => ({
 
 
 const mapDispatchToProps = (dispatch) => ({
-  // onMainClick() {
-  //   dispatch(ActionCreator.openMainScreen());
-  // },
-  // onOnlineCookingClick() {
-  //   dispatch(ActionCreator.openOnlineCookingScreen());
-  // },
-  // onCateringClick() {
-  //   dispatch(ActionCreator.openCateringScreen());
-  // },
-  // onCartClick() {
-  //   dispatch(ActionCreator.openCartScreen());
-  // },
   onDeleteDishFromCart(dishId) {
     dispatch(ActionCreator.onDeleteDishFromCart(dishId));
   },
@@ -288,8 +261,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.clearCart());
   },
 });
-
-
 
 
 

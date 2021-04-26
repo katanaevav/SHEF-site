@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 import InfoWindow from "../info-window/info-window.jsx";
 
@@ -19,6 +19,8 @@ class ContactFormByPhone extends PureComponent {
 
     this._openInfoWindowHandle = this._openInfoWindowHandle.bind(this);
     this._closeInfoWindowFormHandle = this._closeInfoWindowFormHandle.bind(this);
+
+    this._policyLinkClickHandler = this._policyLinkClickHandler.bind(this);
   }
 
 
@@ -43,10 +45,14 @@ class ContactFormByPhone extends PureComponent {
     this.setState({ showInfoWindow: false });
   }
 
+  _policyLinkClickHandler(evt) {
+    evt.preventDefault();
+
+    this.props.openPolicyWindow();
+  }
+
 
   render() {
-    // const {isFooter} = this.props;
-
     return (
       <React.Fragment>
 
@@ -59,7 +65,7 @@ class ContactFormByPhone extends PureComponent {
             <input
               className="contact-form__checkbox"
               type="checkbox"
-              id="check-policy"
+              id="check-policy-phone"
               name="accept-policy"
               value="yes"
               required
@@ -67,8 +73,8 @@ class ContactFormByPhone extends PureComponent {
               onInvalid={this._custonValidityCheckboxHandler}
               onChange={this._custonValidityCheckboxHandler}
               />
-            <label className="contact-form__checkbox-label" htmlFor="check-policy">Принимаю условия<br />
-              <a href="#">Политики конфиденциальности</a>
+            <label className="contact-form__checkbox-label" htmlFor="check-policy-phone">Принимаю условия<br />
+              <a onClick={this._policyLinkClickHandler}>Политики конфиденциальности</a>
             </label>
           </div>
           <input className="contact-form__button" type="submit" value="Получить ссылку" />
@@ -88,8 +94,8 @@ class ContactFormByPhone extends PureComponent {
 };
 
 
-// ContactFormByPhone.propTypes = {
-//   isFooter: PropTypes.bool.isRequired,
-// }
+ContactFormByPhone.propTypes = {
+  openPolicyWindow: PropTypes.func.isRequired,
+}
 
 export default ContactFormByPhone;

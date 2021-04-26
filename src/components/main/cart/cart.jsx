@@ -1,6 +1,5 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-// import {Link} from "react-router-dom";
 
 import history from "../../../history.js";
 import {AppRoute} from "../../../const.js";
@@ -34,7 +33,6 @@ class Cart extends PureComponent {
 
 
   _goBackClickHandler() {
-    // const {cartType, onMainClick, onOnlineCookingClick, onCateringClick} = this.props;
     const {cartType} = this.props;
 
     switch (cartType) {
@@ -149,10 +147,6 @@ Cart.propTypes = {
 
   onDeleteDishFromCart: PropTypes.func,
   onChangeDishCountInCart: PropTypes.func,
-
-  // onMainClick: PropTypes.func,
-  // onOnlineCookingClick: PropTypes.func,
-  // onCateringClick: PropTypes.func,
 }
 
 
