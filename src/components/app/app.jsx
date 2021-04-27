@@ -194,6 +194,7 @@ class App extends PureComponent {
         <ContactUsModal
           openState = {this.state.showContactUsForm}
           onCloweModalWindow = {this._closeContactUsFormHandle}
+          onShowPolicy = {this._openPolicyWindowHandle}
         />
 
         <PolicyWindow

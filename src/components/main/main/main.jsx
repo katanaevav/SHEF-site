@@ -5,7 +5,6 @@ import {Link} from "react-router-dom";
 import {AppRoute} from "../../../const.js";
 
 import GetLinkForm from "../get-link-form/get-link-form.jsx";
-import ContactUsModal from "../contact-us-modal/contact-us-modal.jsx";
 import InfoWindow from "../info-window/info-window.jsx";
 import ContactFormByPhone from "../contact-form-by-phone/contact-form-by-phone.jsx";
 
@@ -18,9 +17,6 @@ class Main extends PureComponent {
       showContactUsForm: false,
       showInfoWindow: false,
     };
-
-    this._openContactUsFormHandle = this._openContactUsFormHandle.bind(this);
-    this._closeContactUsFormHandle = this._closeContactUsFormHandle.bind(this);
 
     this._openInfoWindowHandle = this._openInfoWindowHandle.bind(this);
     this._closeInfoWindowFormHandle = this._closeInfoWindowFormHandle.bind(this);
@@ -50,18 +46,6 @@ class Main extends PureComponent {
       document.querySelector(`.get-link-form__input-email`).focus();
   }
 
-  _openContactUsFormHandle(evt) {
-    evt.preventDefault();
-
-    this.setState({ showContactUsForm: true });
-  }
-
-  _closeContactUsFormHandle(status) {
-    this.setState({ showContactUsForm: false });
-    if (status === 1) {
-      this._openInfoWindowHandle();
-    }
-  }
 
   _openInfoWindowHandle() {
     this.setState({ showInfoWindow: true });
@@ -256,11 +240,6 @@ class Main extends PureComponent {
         </div>
       </main>
 
-
-      <ContactUsModal
-        openState = {this.state.showContactUsForm}
-        onCloweModalWindow = {this._closeContactUsFormHandle}
-      />
 
       <InfoWindow
         openState = {this.state.showInfoWindow}
