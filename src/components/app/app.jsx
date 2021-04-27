@@ -20,7 +20,7 @@ import OnlineCooking from "../main/online-cooking/online-cooking.jsx";
 import Catering from "../main/catering/catering.jsx";
 import Cart from "../main/cart/cart.jsx";
 
-import {MenuCategory, AppRoute} from "../../const.js"
+import {MenuCategory, AppRoute, PoliticsTexts} from "../../const.js"
 
 class App extends PureComponent {
   constructor(props) {
@@ -29,7 +29,7 @@ class App extends PureComponent {
     this.state = {
       showContactUsForm: false,
       showInfoWindow: false,
-      showPolicy: false,
+      showPolicy: 0,
     };
 
     this._openContactUsFormHandle = this._openContactUsFormHandle.bind(this);
@@ -39,6 +39,8 @@ class App extends PureComponent {
     this._closeInfoWindowFormHandle = this._closeInfoWindowFormHandle.bind(this);
 
     this._openPolicyWindowHandle = this._openPolicyWindowHandle.bind(this);
+    this._openPoliticWindowHandle = this._openPoliticWindowHandle.bind(this);
+    this._openCookiesWindowHandle = this._openCookiesWindowHandle.bind(this);
     this._closePolicyWindowFormHandle = this._closePolicyWindowFormHandle.bind(this);
   }
 
@@ -66,11 +68,19 @@ class App extends PureComponent {
   }
 
   _openPolicyWindowHandle() {
-    this.setState({ showPolicy: true });
+    this.setState({ showPolicy: PoliticsTexts.PRIVACY_POLICY });
+  }
+
+  _openPoliticWindowHandle() {
+    this.setState({ showPolicy: PoliticsTexts.USE_POLICY });
+  }
+
+  _openCookiesWindowHandle() {
+    this.setState({ showPolicy: PoliticsTexts.COOKIES });
   }
 
   _closePolicyWindowFormHandle() {
-    this.setState({ showPolicy: false });
+    this.setState({ showPolicy: PoliticsTexts.HIDE });
   }
 
 
@@ -94,6 +104,8 @@ class App extends PureComponent {
               />
               <PageFooter
                 openPolicyWindow = {this._openPolicyWindowHandle}
+                openPolicsWindow = {this._openPoliticWindowHandle}
+                openCookiesWindow = {this._openCookiesWindowHandle}
                 openContactUsForm = {this._openContactUsFormHandle}
               />
             </React.Fragment>
@@ -116,6 +128,8 @@ class App extends PureComponent {
                 />
               <PageFooter
                 openPolicyWindow = {this._openPolicyWindowHandle}
+                openPolicsWindow = {this._openPoliticWindowHandle}
+                openCookiesWindow = {this._openCookiesWindowHandle}
                 openContactUsForm = {this._openContactUsFormHandle}
               />
             </React.Fragment>
@@ -148,6 +162,8 @@ class App extends PureComponent {
                       />
                     <PageFooter
                       openPolicyWindow = {this._openPolicyWindowHandle}
+                      openPolicsWindow = {this._openPoliticWindowHandle}
+                      openCookiesWindow = {this._openCookiesWindowHandle}
                       openContactUsForm = {this._openContactUsFormHandle}
                     />
                   </React.Fragment>
@@ -182,6 +198,8 @@ class App extends PureComponent {
                     />
                     <PageFooter
                       openPolicyWindow = {this._openPolicyWindowHandle}
+                      openPolicsWindow = {this._openPoliticWindowHandle}
+                      openCookiesWindow = {this._openCookiesWindowHandle}
                       openContactUsForm = {this._openContactUsFormHandle}
                     />
                   </React.Fragment>

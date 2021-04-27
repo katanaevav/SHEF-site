@@ -84,9 +84,9 @@ class PageFooter extends PureComponent {
 
 
               <ul className="page-footer__legals-list">
-                <li className="page-footer__legals-item"><a href="#">Условия использования</a></li>
-                <li className="page-footer__legals-item"><a href="#">Политика конфиденциальности</a></li>
-                <li className="page-footer__legals-item"><a href="#">Cookies</a></li>
+                <li className="page-footer__legals-item"><a onClick={this.props.openPolicsWindow}>Условия использования</a></li>
+                <li className="page-footer__legals-item"><a onClick={this.props.openPolicyWindow}>Политика конфиденциальности</a></li>
+                <li className="page-footer__legals-item"><a onClick={this.props.openCookiesWindow}>Cookies</a></li>
               </ul>
 
               <p className="page-footer__rights">2020-2021 Шеф Здесь. Все права защищены.</p>
@@ -106,6 +106,8 @@ class PageFooter extends PureComponent {
 
 PageFooter.propTypes = {
   openPolicyWindow: PropTypes.func.isRequired,
+  openPolicsWindow: PropTypes.func.isRequired,
+  openCookiesWindow: PropTypes.func.isRequired,
   openContactUsForm: PropTypes.func.isRequired,
 }
 

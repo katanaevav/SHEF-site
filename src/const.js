@@ -25,6 +25,12 @@ export const MenuCategory = {
 
 export const MenuCategoryNames = [``, `Онлайн кулинария`, `Кейтеринг`];
 
+export const PoliticsTexts = {
+  HIDE: 0,
+  PRIVACY_POLICY: 1,
+  USE_POLICY: 2,
+  COOKIES: 3,
+}
 
 export const AppRoute = {
   ROOT: `/`,
@@ -32,3 +38,4 @@ export const AppRoute = {
   CATERING: `/catering`,
   CART: `/cart`,
 };
+
