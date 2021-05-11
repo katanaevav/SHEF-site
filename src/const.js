@@ -14,6 +14,7 @@ export const Screens = {
   MAIN_SCREEN: 0,
   ONLINE_COOKING_SCREEN: 1,
   CATERING_SCREEN: 2,
+  NO_GLUTEN_SCREEN: 3,
   CART_SCREEN: 5
 };
 
@@ -21,9 +22,10 @@ export const MenuCategory = {
   EMPTY: 0,
   ONLINE_COOKING: 1,
   CATERING: 2,
+  NO_GLUTEN: 3,
 };
 
-export const MenuCategoryNames = [``, `Онлайн кулинария`, `Кейтеринг`];
+export const MenuCategoryNames = [``, `Онлайн кулинария`, `Кейтеринг`, `Без глютена`];
 
 export const PoliticsTexts = {
   HIDE: 0,
@@ -36,6 +38,7 @@ export const AppRoute = {
   ROOT: `/`,
   ONLINE_COOKING: `/online-cooking`,
   CATERING: `/catering`,
+  NO_GLUTEN: `/no-gluten`,
   CART: `/cart`,
 };
 

@@ -51,6 +51,18 @@ class GetLinkForm extends PureComponent {
     this.props.openPolicyWindow();
   }
 
+  _renderInfoWindow() {
+    return(
+      <InfoWindow
+        openState = {this.state.showInfoWindow}
+        onCloweModalWindow = {this._closeInfoWindowFormHandle}
+        headerText = {`Ваша заявка принята`}
+        bodyText = {`В ближайшее время вы полчучите письмо на указанную электронную почту`}
+        buttonText = {`Хорошо`}
+      />
+    );
+  }
+
 
   render() {
     const {isFooter} = this.props;
@@ -105,14 +117,7 @@ class GetLinkForm extends PureComponent {
           </div>
         </form>
 
-
-        <InfoWindow
-          openState = {this.state.showInfoWindow}
-          onCloweModalWindow = {this._closeInfoWindowFormHandle}
-          headerText = {`Ваша заявка принята`}
-          bodyText = {`В ближайшее время вы полчучите письмо на указанную электронную почту`}
-          buttonText = {`Хорошо`}
-        />
+        {this.state.showInfoWindow ? this._renderInfoWindow() : ``}
 
       </React.Fragment>
     );

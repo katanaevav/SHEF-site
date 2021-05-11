@@ -40,6 +40,8 @@ class Cart extends PureComponent {
         break;
       case MenuCategory.CATERING: history.push(AppRoute.CATERING);
         break;
+      case MenuCategory.NO_GLUTEN: history.push(AppRoute.NO_GLUTEN);
+        break;
       default: history.push(AppRoute.ROOT);
     }
   }

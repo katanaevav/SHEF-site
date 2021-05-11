@@ -57,6 +57,15 @@ class PageHeaderNav extends PureComponent {
                     Онлайн&nbsp;кулинария
                   </Link>
                 </li>
+                <li className="sub-menu__item">
+                  <Link
+                    href="no-gluten.html"
+                    title="Без глютена"
+                    to={`${AppRoute.NO_GLUTEN}`}
+                  >
+                    Без глютена
+                  </Link>
+                </li>
               </ul>
             </li>
             <li className="main-menu__item">

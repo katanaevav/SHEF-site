@@ -69,6 +69,19 @@ class Dish extends PureComponent {
     this.setState({ dishCount: value });
   }
 
+  _renderQuestionWindow() {
+    return(
+      <QuestionWindow
+        openState = {this.state.showQuestionWindow}
+        onCloweModalWindow = {this._closeQuestionWindowFormHandle}
+        headerText = {`Очистка корзины`}
+        bodyText = {`Добавление заказа из другой категории приведет к очистке корзины. Продолжить?`}
+        yesButtonText = {`Да`}
+        noButtonText = {`Нет`}
+      />
+    );
+  }
+
 
   render() {
 
@@ -102,15 +115,7 @@ class Dish extends PureComponent {
           </div>
         </li>
 
-
-        <QuestionWindow
-          openState = {this.state.showQuestionWindow}
-          onCloweModalWindow = {this._closeQuestionWindowFormHandle}
-          headerText = {`Очистка корзины`}
-          bodyText = {`Добавление заказа из другой категории приведет к очистке корзины. Продолжить?`}
-          yesButtonText = {`Да`}
-          noButtonText = {`Нет`}
-        />
+        {this.state.showQuestionWindow ? this._renderQuestionWindow() : ``}
 
       </React.Fragment>
     );

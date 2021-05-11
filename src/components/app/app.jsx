@@ -17,6 +17,7 @@ import PageHeader from "../page-header/page-header/page-header.jsx";
 import PageFooter from "../page-footer/page-footer/page-footer.jsx";
 
 import OnlineCooking from "../main/online-cooking/online-cooking.jsx";
+import NoGluten from "../main/no-gluten/no-gluten.jsx";
 import Catering from "../main/catering/catering.jsx";
 import Cart from "../main/cart/cart.jsx";
 
@@ -30,6 +31,7 @@ class App extends PureComponent {
       showContactUsForm: false,
       showInfoWindow: false,
       showPolicy: 0,
+      showQuestionWindow: false,
     };
 
     this._openContactUsFormHandle = this._openContactUsFormHandle.bind(this);
@@ -83,6 +85,36 @@ class App extends PureComponent {
     this.setState({ showPolicy: PoliticsTexts.HIDE });
   }
 
+  _renderContactUsModal() {
+    return(
+      <ContactUsModal
+        openState = {this.state.showContactUsForm}
+        onCloweModalWindow = {this._closeContactUsFormHandle}
+        onShowPolicy = {this._openPolicyWindowHandle}
+      />
+    );
+  }
+
+  _renderPolicyWindow() {
+    return(
+      <PolicyWindow
+        openState = {this.state.showPolicy}
+        onCloweModalWindow = {this._closePolicyWindowFormHandle}
+      />
+    );
+  }
+
+  _renderInfoWindow() {
+    return(
+      <InfoWindow
+        openState = {this.state.showInfoWindow}
+        onCloweModalWindow = {this._closeInfoWindowFormHandle}
+        headerText = {`Ваше сообщение отправлено`}
+        bodyText = {`Наши эксперты свяжутся с вами, как только обработают сообщение`}
+        buttonText = {`Хорошо`}
+      />
+    );
+  }
 
   render() {
     const {cartPrice, cartType, cartTypeName, cartDishes, dishesTypesList, dishesList} = this.props;
@@ -101,6 +133,7 @@ class App extends PureComponent {
               <Main
                 openContactUsForm = {this._openContactUsFormHandle}
                 openPolicyWindow = {this._openPolicyWindowHandle}
+                openInfoWindow = {this._openInfoWindowHandle}
               />
               <PageFooter
                 openPolicyWindow = {this._openPolicyWindowHandle}
@@ -207,26 +240,48 @@ class App extends PureComponent {
             }}
           />
 
+          <Route
+            path={AppRoute.NO_GLUTEN}
+            render = {() => {
+              const noGlutenDishes = dishesList.slice().filter((dish) => dish.dishCategory === MenuCategory.NO_GLUTEN);
+
+              const noGlutenDishesTypes = dishesTypesList
+                .map((dishType) => {
+                    dishType.count = noGlutenDishes.slice().filter((dish) => dish.dishTypeId === dishType.dishTypeId).length;
+                    return dishType;
+                  })
+                .filter((dishType) => dishType.count > 0);
+
+                return (
+                  <React.Fragment>
+                    <PageHeader
+                      totalCost = {cartPrice}
+                      openContactUsForm = {this._openContactUsFormHandle}
+                    />
+                    <NoGluten
+                      dishesTypesList = {noGlutenDishesTypes}
+                      dishesList = {noGlutenDishes}
+                      onAddDishToCart = {onAddDishToCart}
+                      cartCategory = {cartType}
+                      onClearCart = {onClearCart}
+                    />
+                    <PageFooter
+                      openPolicyWindow = {this._openPolicyWindowHandle}
+                      openPolicsWindow = {this._openPoliticWindowHandle}
+                      openCookiesWindow = {this._openCookiesWindowHandle}
+                      openContactUsForm = {this._openContactUsFormHandle}
+                    />
+                  </React.Fragment>
+                );
+            }}
+          />
+
         </Switch>
 
-        <ContactUsModal
-          openState = {this.state.showContactUsForm}
-          onCloweModalWindow = {this._closeContactUsFormHandle}
-          onShowPolicy = {this._openPolicyWindowHandle}
-        />
+        {this.state.showContactUsForm ? this._renderContactUsModal() : ``}
+        {this.state.showPolicy ? this._renderPolicyWindow() : ``}
+        {this.state.showInfoWindow ? this._renderInfoWindow() : ``}
 
-        <PolicyWindow
-          openState = {this.state.showPolicy}
-          onCloweModalWindow = {this._closePolicyWindowFormHandle}
-        />
-
-        <InfoWindow
-          openState = {this.state.showInfoWindow}
-          onCloweModalWindow = {this._closeInfoWindowFormHandle}
-          headerText = {`Ваше сообщение отправлено`}
-          bodyText = {`Наши эксперты свяжутся с вами, как только обработают сообщение`}
-          buttonText = {`Хорошо`}
-        />
       </Router>
     )
   }

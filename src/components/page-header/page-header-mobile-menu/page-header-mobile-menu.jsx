@@ -56,6 +56,15 @@ class PageHeaderMobileMenu extends PureComponent {
                 </a>
               </li>
               <li className="mobile-nav__item">
+                <a
+                  href={AppRoute.NO_GLUTEN}
+                  title="Без глютена"
+                  onClick={this._onlineCookingClickHandler}
+                >
+                  Без глютена
+                </a>
+              </li>
+              <li className="mobile-nav__item">
                 <a title="Бизнесу" onClick={this._contactUsClickHandler}>Доставка&nbsp;еды</a>
               </li>
               <li className="mobile-nav__item">

@@ -61,6 +61,14 @@ class PageFooter extends PureComponent {
                         Онлайн кулинария
                       </Link>
                     </li>
+                    <li className="section-links__link">
+                      <Link
+                        href="no-gluten.html"
+                        to={`${AppRoute.NO_GLUTEN}`}
+                      >
+                        Без глютена
+                      </Link>
+                    </li>
                   </ul>
                 </section>
 

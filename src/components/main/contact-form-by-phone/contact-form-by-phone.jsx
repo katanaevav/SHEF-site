@@ -51,6 +51,18 @@ class ContactFormByPhone extends PureComponent {
     this.props.openPolicyWindow();
   }
 
+  _renderInfoWindow() {
+    return(
+      <InfoWindow
+        openState = {this.state.showInfoWindow}
+        onCloweModalWindow = {this._closeInfoWindowFormHandle}
+        headerText = {`Ваша заявка принята`}
+        bodyText = {`В ближайшее наши операторы свяжутся с вами по указанному телефону`}
+        buttonText = {`Хорошо`}
+      />
+    );
+  }
+
 
   render() {
     return (
@@ -80,13 +92,7 @@ class ContactFormByPhone extends PureComponent {
           <input className="contact-form__button" type="submit" value="Получить ссылку" />
         </form>
 
-        <InfoWindow
-          openState = {this.state.showInfoWindow}
-          onCloweModalWindow = {this._closeInfoWindowFormHandle}
-          headerText = {`Ваша заявка принята`}
-          bodyText = {`В ближайшее наши операторы свяжутся с вами по указанному телефону`}
-          buttonText = {`Хорошо`}
-        />
+        {this.state.showInfoWindow ? this._renderInfoWindow() : ``}
 
       </React.Fragment>
     );

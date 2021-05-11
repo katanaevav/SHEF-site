@@ -5,21 +5,12 @@ import {Link} from "react-router-dom";
 import {AppRoute} from "../../../const.js";
 
 import GetLinkForm from "../get-link-form/get-link-form.jsx";
-import InfoWindow from "../info-window/info-window.jsx";
 import ContactFormByPhone from "../contact-form-by-phone/contact-form-by-phone.jsx";
 
 
 class Main extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      showContactUsForm: false,
-      showInfoWindow: false,
-    };
-
-    this._openInfoWindowHandle = this._openInfoWindowHandle.bind(this);
-    this._closeInfoWindowFormHandle = this._closeInfoWindowFormHandle.bind(this);
 
     this._downloadApplicationsClickHandler = this._downloadApplicationsClickHandler.bind(this);
   }
@@ -44,15 +35,6 @@ class Main extends PureComponent {
     getComputedStyle(document.querySelector(`.get-link-form`)).display === `none` ?
       window.scrollTo(this._getCoords(document.querySelector(`.head__mobile-apps`))) :
       document.querySelector(`.get-link-form__input-email`).focus();
-  }
-
-
-  _openInfoWindowHandle() {
-    this.setState({ showInfoWindow: true });
-  }
-
-  _closeInfoWindowFormHandle() {
-    this.setState({ showInfoWindow: false });
   }
 
 
@@ -240,16 +222,6 @@ class Main extends PureComponent {
         </div>
       </main>
 
-
-      <InfoWindow
-        openState = {this.state.showInfoWindow}
-        onCloweModalWindow = {this._closeInfoWindowFormHandle}
-        headerText = {`Ваше сообщение отправлено`}
-        bodyText = {`Наши эксперты свяжутся с вами, как только обработают сообщение`}
-        buttonText = {`Хорошо`}
-      />
-
-
       </React.Fragment>
     );
   }
@@ -259,6 +231,7 @@ class Main extends PureComponent {
 Main.propTypes = {
   openContactUsForm: PropTypes.func.isRequired,
   openPolicyWindow: PropTypes.func.isRequired,
+  openInfoWindow: PropTypes.func.isRequired,
 }
 
 

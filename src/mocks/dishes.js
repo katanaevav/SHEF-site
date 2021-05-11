@@ -190,6 +190,68 @@ export const Dishes = [
     dishImage: `./img/g3.jpg`,
     dishImage2x: `./img/g3.jpg`,
   },
+  {
+    dishId: 14,
+    dishTypeId: 1,
+    dishCategory: 3,
+    dishName: `Анатомия вкуса`,
+    dishDescription: `Описание блюда Описание блюда
+                      Описание блюда Описание блюда
+                      Описание блюда Описание блюда
+                      Описание блюда Описание блюда`,
+    dishPrice: 250,
+    dishCount: 1,
+    dishWeight: `250 гр.`,
+    dishTag: `NEW`,
+    dishImage: `./img/dish.png`,
+    dishImage2x: `./img/dish@2x.png`,
+  },
+  {
+    dishId: 15,
+    dishTypeId: 1,
+    dishCategory: 3,
+    dishName: `Солянка сборная мясная`,
+    dishDescription: `Солянка сборная, приготовлена
+                      из нескольких видов мяса. В состав
+                      входят: телятина, свинина, курица,
+                      копченые ребрышки, охотничьи колбаски,
+                      свиной карбонад, копченая и вареная колбаса`,
+    dishPrice: 210,
+    dishCount: 1,
+    dishWeight: `350 гр.`,
+    dishTag: `HOT`,
+    dishImage: `./img/soup1.jpg`,
+    dishImage2x: `./img/soup1.jpg`,
+  },
+  {
+    dishId: 16,
+    dishTypeId: 3,
+    dishCategory: 3,
+    dishName: `Рис`,
+    dishDescription: `Считается основным (национальным) продуктом питания
+                      в странах Юго-Восточной Азии и Китае`,
+    dishPrice: 90,
+    dishCount: 1,
+    dishWeight: `200 гр.`,
+    dishTag: ``,
+    dishImage: `./img/g1.jpg`,
+    dishImage2x: `./img/g1.jpg`,
+  },
+  {
+    dishId: 17,
+    dishTypeId: 3,
+    dishCategory: 3,
+    dishName: `Гречка`,
+    dishDescription: `Каша, приготавливаемая из гречневой крупы, популярное
+                      блюдо русской, белорусской, украинской, литовской и
+                      польской кухонь.`,
+    dishPrice: 90,
+    dishCount: 1,
+    dishWeight: `200 гр.`,
+    dishTag: ``,
+    dishImage: `./img/g2.jpg`,
+    dishImage2x: `./img/g2.jpg`,
+  },
 ];
 
 
