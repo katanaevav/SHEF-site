@@ -6,6 +6,7 @@ import {AppRoute} from "../../../const.js";
 
 import GetLinkForm from "../get-link-form/get-link-form.jsx";
 import ContactFormByPhone from "../contact-form-by-phone/contact-form-by-phone.jsx";
+import ContactFormByPhoneHorizont from "../contact-form-by-phone-horizont/contact-form-by-phone-horizont.jsx";
 
 
 class Main extends PureComponent {
@@ -78,7 +79,7 @@ class Main extends PureComponent {
             <h2 className="links__header visually-hidden">Ссылки</h2>
             <ul className="links__list">
 
-              <li className="links__item">
+              <li className="links__item links__item--hovered">
                 <img className="links__image links__image--image1" src="./img/image1.png" srcSet="./img/image1@2x.png 2x" alt="Доставка" />
                 <div className="links__item-wrapper">
                   <h3 className="links__item-header">Порционные готовые блюда</h3>
@@ -90,7 +91,7 @@ class Main extends PureComponent {
                 </div>
               </li>
 
-              <li className="links__item">
+              <li className="links__item links__item--hovered">
                 <img className="links__image links__image--image2" src="./img/image2.png" srcSet="./img/image2@2x.png 2x" alt="Онлайн кулинария" />
                 <div className="links__item-wrapper">
                   <h3 className="links__item-header">Онлайн кулинария</h3>
@@ -108,7 +109,7 @@ class Main extends PureComponent {
                 </div>
               </li>
 
-              <li className="links__item">
+              <li className="links__item links__item--hovered">
                 <img className="links__image links__image--image3" src="./img/image3.png" srcSet="./img/image3@2x.png 2x" alt="Кейтеринг" />
                 <div className="links__item-wrapper">
                   <h3 className="links__item-header">Кейтеринг</h3>
@@ -126,7 +127,7 @@ class Main extends PureComponent {
                 </div>
               </li>
 
-              <li className="links__item">
+              <li className="links__item links__item--hovered">
                 <img className="links__image links__image--image4" src="./img/image4.png" srcSet="./img/image4@2x.png 2x" alt="Для бизнеса" />
                 <div className="links__item-wrapper">
                   <h3 className="links__item-header">Для бизнеса</h3>
@@ -138,7 +139,7 @@ class Main extends PureComponent {
                 </div>
               </li>
 
-              <li className="links__item">
+              <li className="links__item links__item--hovered">
                 <img className="links__image links__image--image5" src="./img/image5.png" srcSet="./img/image5@2x.png 2x" alt="Стань партнером" />
                 <div className="links__item-wrapper">
                   <h3 className="links__item-header">Стань партнером!</h3>
@@ -162,13 +163,96 @@ class Main extends PureComponent {
                   <a className="links__button" onClick={this._downloadApplicationsClickHandler}>Скачать приложение</a>
                 </div>
               </li>
+
+              <li className="links__item links__item--hovered">
+                <img className="links__image links__image--image8" src="./img/image8.png" srcSet="./img/image8@2x.png 2x" alt="Заказ продуктов" />
+                <div className="links__item-wrapper">
+                  <h3 className="links__item-header">Без глютена</h3>
+                  <p className="links__text">
+                    Здоровье еще не было
+                    на столько вкусным.<br />
+                    Еда без глютена на
+                    каждый день.
+                  </p>
+                  <Link
+                    className="links__button"
+                    href="foods.html"
+                    to={`${AppRoute.NO_GLUTEN}`}
+                  >
+                    Выбрать блюда
+                  </Link>
+                </div>
+              </li>
+
+              <li className="links__item links__item--contact-form">
+                <ContactFormByPhoneHorizont
+                  openPolicyWindow={this.props.openPolicyWindow}
+                />
+              </li>
+
             </ul>
           </section>
+
+
+          <section className="shef-service">
+            <h2 className="shef-service__header visually-hidden">Сервис Шеф Здесь</h2>
+
+            <div className="shef-service__about">
+              <div className="shef-service__text-panel">
+                <p className="shef-service__text shef-service__text--bold">Сервис Шеф Здесь -</p>
+                <p className="shef-service__text shef-service__text--main">
+                  самый широкий спектр
+                  кулинарных возможностей,
+                  благодаря собственному
+                  производству - фабрике кухни.
+                </p>
+                <p className="shef-service__text shef-service__text--comment">
+                  Основатель проекта, Шеф-повар
+                  и телеведущий Кирилл Еселев.
+                </p>
+              </div>
+
+              <div className="shef-service__photo-panel">
+                <img className="shef-service__image" src="./img/shef.png" alt="Кирилл Еселев" height="301" width="179" />
+              </div>
+            </div>
+
+            <div className="shef-service__delivery our-delivery">
+              <h3 className="our-delivery__header">Мы доставляем</h3>
+
+              <ul className="our-delivery__list">
+
+                <li className="our-delivery__list-item delivery-item">
+                  <img className="delivery-item__image" src="./img/image1.png" srcSet="./img/image1@2x.png 2x" alt="Доставка порционных блюд" />
+                  <p className="delivery-item__text">Порционные<br />блюда</p>
+                </li>
+
+                <li className="our-delivery__list-item delivery-item">
+                  <img className="delivery-item__image" src="./img/image2.png" srcSet="./img/image2@2x.png 2x" alt="Доставка кулинарии" />
+                  <p className="delivery-item__text">Кулинарию<br />для праздника</p>
+                </li>
+
+                <li className="our-delivery__list-item delivery-item">
+                  <img className="delivery-item__image" src="./img/image3.png" srcSet="./img/image3@2x.png 2x" alt="Доставка кейтеринг" />
+                  <p className="delivery-item__text">Фуршеты<br />для компании</p>
+                </li>
+
+                <li className="our-delivery__list-item delivery-item">
+                  <img className="delivery-item__image" src="./img/image8.png" srcSet="./img/image8@2x.png 2x" alt="Доставка без глютена" />
+                  <p className="delivery-item__text">Блюда<br />без глютена </p>
+                </li>
+
+              </ul>
+
+
+            </div>
+          </section>
+
 
           <section className="about">
             <h2 className="about__header visually-hidden">О сервисе</h2>
 
-            <article className="about__article article">
+            {/* <article className="about__article article">
               <div className="article__head">
                 <h3 className="article__header">Шеф Здесь</h3>
                 <p className="article__header-text">
@@ -207,7 +291,7 @@ class Main extends PureComponent {
                 <img className="article__data-image" src="./img/mobile-app.png" srcSet="./img/mobile-app@2x.png 2x" width="319" height="424" alt="Мобильное приложение" />
               </div>
 
-            </article>
+            </article> */}
 
             <div className="about__connect">
 
