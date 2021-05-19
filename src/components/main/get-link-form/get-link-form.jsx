@@ -111,8 +111,7 @@ class GetLinkForm extends PureComponent {
               className= {isFooter ? `section-connect__form-checkbox-label` : `get-link-form__checkbox-label`}
               htmlFor= {isFooter ? `footer-check-policy` : `check-policy`}
             >
-              согласен с условиями
-              <a onClick={this._policyLinkClickHandler}> Политики конфиденциальности</a>
+              согласен с условиями <a onClick={this._policyLinkClickHandler}> Политики конфиденциальности</a>
             </label>
           </div>
         </form>
