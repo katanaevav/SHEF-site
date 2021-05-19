@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
-import {AppRoute} from "../../../const.js";
+import {AppRoute, Links} from "../../../const.js";
 
 import GetLinkForm from "../get-link-form/get-link-form.jsx";
 import ContactFormByPhone from "../contact-form-by-phone/contact-form-by-phone.jsx";
@@ -59,10 +59,10 @@ class Main extends PureComponent {
               />
 
               <div className="head__mobile-apps">
-                <a className="head__mobile-app" href="#">
+                <a className="head__mobile-app" href={Links.APP_STORE_LINNK}>
                   <img className="head__mobile-app-image" src="./img/app-store.png" srcSet="./img/app-store@2x.png 2x" width="142" height="48" alt="Скачать в App Store" />
                 </a>
-                <a className="head__mobile-app" href="#">
+                <a className="head__mobile-app" href={Links.GOOGLE_PLAY_LINK}>
                   <img className="head__mobile-app-image" src="./img/google-play.png" srcSet="./img/google-play@2x.png 2x" width="160" height="48" alt="Скачать в Google Play" />
                 </a>
               </div>

@@ -83,10 +83,10 @@ class PageFooter extends PureComponent {
                 </section>
 
                 <section className="page-footer__section section-apps">
-                  <a className="section-apps__mobile-app" href="#">
+                  <a className="section-apps__mobile-app" href={Links.APP_STORE_LINNK}>
                     <img className="section-apps__mobile-app-image" src="./img/app-store.png" srcSet="./img/app-store@2x.png 2x" alt="Скачать в App Store" />
                   </a>
-                  <a className="section-apps__mobile-app" href="#">
+                  <a className="section-apps__mobile-app" href={Links.GOOGLE_PLAY_LINK}>
                     <img className="section-apps__mobile-app-image" src="./img/google-play.png" srcSet="./img/google-play@2x.png 2x" alt="Скачать в Google Play" />
                   </a>
                 </section>
