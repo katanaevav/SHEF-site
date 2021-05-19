@@ -132,7 +132,7 @@
             <h2 class="links__header visually-hidden">Ссылки</h2>
             <ul class="links__list">
 
-              <li class="links__item">
+              <li class="links__item links__item--hovered">
                 <img class="links__image links__image--image1" src="./img/image1.png" srcset="./img/image1@2x.png 2x" alt="Доставка">
                 <div class="links__item-wrapper">
                   <h3 class="links__item-header">Порционные готовые блюда</h3>
@@ -144,7 +144,7 @@
                 </div>
               </li>
 
-              <li class="links__item">
+              <li class="links__item links__item--hovered">
                 <img class="links__image links__image--image2" src="./img/image2.png" srcset="./img/image2@2x.png 2x" alt="Онлайн кулинария">
                 <div class="links__item-wrapper">
                   <h3 class="links__item-header">Онлайн кулинария</h3>
@@ -156,7 +156,7 @@
                 </div>
               </li>
 
-              <li class="links__item">
+              <li class="links__item links__item--hovered">
                 <img class="links__image links__image--image3" src="./img/image3.png" srcset="./img/image3@2x.png 2x" alt="Кейтеринг">
                 <div class="links__item-wrapper">
                   <h3 class="links__item-header">Кейтеринг</h3>
@@ -168,7 +168,7 @@
                 </div>
               </li>
 
-              <li class="links__item">
+              <li class="links__item links__item--hovered">
                 <img class="links__image links__image--image4" src="./img/image4.png" srcset="./img/image4@2x.png 2x" alt="Для бизнеса">
                 <div class="links__item-wrapper">
                   <h3 class="links__item-header">Для бизнеса</h3>
@@ -180,7 +180,7 @@
                 </div>
               </li>
 
-              <li class="links__item">
+              <li class="links__item links__item--hovered">
                 <img class="links__image links__image--image5" src="./img/image5.png" srcset="./img/image5@2x.png 2x" alt="Стань партнером">
                 <div class="links__item-wrapper">
                   <h3 class="links__item-header">Стань партнером!</h3>
@@ -190,18 +190,6 @@
                   <a class="links__button" href="#">Оставить заявку</a>
                 </div>
               </li>
-
-              <!-- <li class="links__item">
-                <img class="links__image links__image--image6" src="./img/image6.png" srcset="./img/image6@2x.png 2x" alt="Заказ продуктов">
-                <div class="links__item-wrapper">
-                  <h3 class="links__item-header">Заказ продуктов</h3>
-                  <p class="links__text">Доставка на следующий день.
-                    Оформить заказ можно у нас
-                    на сайте до 22:00 текущего дня.
-                  </p>
-                  <a class="links__button" href="foods.html">Выбрать продукты</a>
-                </div>
-              </li> -->
 
               <li class="links__item links__item--puprle">
                 <svg class="links__image links__image--image7" width="131" height="134" viewBox="0 0 131 134">
@@ -217,13 +205,107 @@
                 </div>
               </li>
 
+              <li class="links__item links__item--hovered">
+                <img class="links__image links__image--image8" src="./img/image8.png" srcset="./img/image8@2x.png 2x" alt="Заказ продуктов">
+                <div class="links__item-wrapper">
+                  <h3 class="links__item-header">Без глютена</h3>
+                  <p class="links__text">
+                    Здоровье еще не было
+                    на столько вкусным.<br>
+                    Еда без глютена на
+                    каждый день.
+                  </p>
+                  <a class="links__button" href="foods.html">Выбрать блюда</a>
+                </div>
+              </li>
+
+              <li class="links__item links__item--contact-form">
+                <form class="about__form contact-form" method="POST" action="https://echo.htmlacademy.ru">
+                  <img class="contact-form__image" src="./img/contact-us.png" srcset="./img/contact-us@2x.png 2x" alt="Связаться с нами" height="151" width="150">
+                  <div class="contact-form__input-wrapper contact-form__input-wrapper--main">
+                    <h2 class="contact-form__title">Оставьте заявку на консультацию</h2>
+                    <div class="contact-form__input-wrapper">
+                      <input class="contact-form__input contact-form__input--text" type="text" placeholder="Ваше имя" name="name" required>
+                      <input class="contact-form__input contact-form__input--phone" type="phone" placeholder="+7" name="phone" required>
+                      <input class="contact-form__button" type="submit" value="Связаться со мной">
+                    </div>
+                    <div class="contact-form__input-wrapper">
+                      <input class="contact-form__checkbox" type="checkbox" id="check-policy" name="accept-policy" value="yes">
+                      <label class="contact-form__checkbox-label" for="check-policy">Принимаю условия
+                        <a href="#">Политики конфиденциальности</a>
+                      </label>
+                    </div>
+                  </div>
+                </form>
+              </li>
+
             </ul>
           </section>
+
+
+
+          <section class="shef-service">
+            <h2 class="shef-service__header visually-hidden">Сервис Шеф Здесь</h2>
+
+            <div class="shef-service__about">
+              <div class="shef-service__text-panel">
+                <p class="shef-service__text shef-service__text--bold">Сервис Шеф Здесь -</p>
+                <p class="shef-service__text shef-service__text--main">
+                  самый широкий спектр
+                  кулинарных возможностей,
+                  благодаря собственному
+                  производству - фабрике кухни.
+                </p>
+                <p class="shef-service__text shef-service__text--comment">
+                  Основатель проекта, Шеф-повар
+                  и телеведущий Кирилл Еселев.
+                </p>
+              </div>
+
+              <div class="shef-service__photo-panel">
+                <img class="shef-service__image" src="./img/shef.png" alt="Кирилл Еселев" height="301" width="179">
+              </div>
+            </div>
+
+            <div class="shef-service__delivery our-delivery">
+              <h3 class="our-delivery__header">Мы доставляем</h3>
+
+              <ul class="our-delivery__list">
+
+                <li class="our-delivery__list-item delivery-item">
+                  <img class="delivery-item__image" src="./img/image1.png" srcset="./img/image1@2x.png 2x" alt="Доставка порционных блюд">
+                  <p class="delivery-item__text">Порционные<br />блюда</p>
+                </li>
+
+                <li class="our-delivery__list-item delivery-item">
+                  <img class="delivery-item__image" src="./img/image2.png" srcset="./img/image2@2x.png 2x" alt="Доставка кулинарии">
+                  <p class="delivery-item__text">Кулинарию<br />для праздника</p>
+                </li>
+
+                <li class="our-delivery__list-item delivery-item">
+                  <img class="delivery-item__image" src="./img/image3.png" srcset="./img/image3@2x.png 2x" alt="Доставка кейтеринг">
+                  <p class="delivery-item__text">Фуршеты<br />для компании</p>
+                </li>
+
+                <li class="our-delivery__list-item delivery-item">
+                  <img class="delivery-item__image" src="./img/image8.png" srcset="./img/image8@2x.png 2x" alt="Доставка без глютена">
+                  <p class="delivery-item__text">Блюда<br />без глютена </p>
+                </li>
+
+              </ul>
+
+
+            </div>
+          </section>
+
+
 
           <section class="about">
             <h2 class="about__header visually-hidden">О сервисе</h2>
 
-            <article class="about__article article">
+
+
+            <!-- <article class="about__article article">
               <div class="article__head">
                 <h3 class="article__header">Шеф Здесь</h3>
                 <p class="article__header-text">
@@ -262,7 +344,7 @@
                 <img class="article__data-image" src="./img/mobile-app.png" srcset="./img/mobile-app@2x.png 2x" width="319" height="424" alt="Мобильное приложение">
               </div>
 
-            </article>
+            </article> -->
 
             <div class="about__connect">
 
@@ -282,8 +364,8 @@
 
 
               <form class="about__form contact-form" method="POST" action="https://echo.htmlacademy.ru">
-                <img class="contact-form__image" src="./img/contact-us.png" srcset="./img/contact-us@2x.png 2x" alt="Связаться с нами" height="151" width="150">
-                <h2 class="contact-form__title">Связаться снами</h2>
+                <img class="contact-form__image" src="./img/contact-us.png" srcset="./img/contact-us@2x.png 2x" alt="Связаться с нами" height="167" width="166">
+                <h2 class="contact-form__title">Оставьте заявку на консультацию</h2>
                 <input class="contact-form__input contact-form__input--text" type="text" placeholder="Ваше имя" name="name" required>
                 <input class="contact-form__input contact-form__input--phone" type="phone" placeholder="+7" name="phone" required>
                 <div class="contact-form__input-wrapper">
@@ -292,7 +374,7 @@
                     <a href="#">Политики конфиденциальности</a>
                   </label>
                 </div>
-                <input class="contact-form__button" type="submit" value="Получить ссылку">
+                <input class="contact-form__button" type="submit" value="Связаться со мной">
               </form>
 
             </div>
@@ -312,7 +394,9 @@
                 <h2 class="section-connect visually-hidden">Для связи</h2>
 
                 <div class="section-connect__wrapper">
-                  <img class="section-connect__image section-connect__image--instagram" src="./img/instagram.svg" alt="Инстаграм">
+                  <a href="#">
+                    <img class="section-connect__image section-connect__image--instagram" src="./img/instagram.svg" alt="Инстаграм">
+                  </a>
                   <ul class="section-connect__adress">
                     <li class="section-connect__adress-item"><a href="tel:+79953014090" title="Телефон">+7 995 301 40 90</a></li>
                     <li class="section-connect__adress-item"><a href="mailto:office@jscorp.ru" title="Email">office@jscorp.ru</a></li>

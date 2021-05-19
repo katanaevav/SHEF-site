@@ -2,15 +2,22 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import history from "../../../history.js";
 
-import {AppRoute} from "../../../const.js";
+import {AppRoute, Links} from "../../../const.js";
 
 
 class PageHeaderMobileMenu extends PureComponent {
   constructor(props) {
     super(props);
+    this._noGlutenClickHandler = this._noGlutenClickHandler.bind(this);
     this._onlineCookingClickHandler = this._onlineCookingClickHandler.bind(this);
     this._cateringClickHandler = this._cateringClickHandler.bind(this);
     this._contactUsClickHandler = this._contactUsClickHandler.bind(this);
+  }
+
+  _noGlutenClickHandler(evt) {
+    evt.preventDefault();
+    history.push(AppRoute.NO_GLUTEN);
+    return(this.props.burgerButtonClick());
   }
 
   _onlineCookingClickHandler(evt) {
@@ -59,7 +66,7 @@ class PageHeaderMobileMenu extends PureComponent {
                 <a
                   href={AppRoute.NO_GLUTEN}
                   title="Без глютена"
-                  onClick={this._onlineCookingClickHandler}
+                  onClick={this._noGlutenClickHandler}
                 >
                   Без глютена
                 </a>
@@ -73,15 +80,15 @@ class PageHeaderMobileMenu extends PureComponent {
             </ul>
           </nav>
           <div className="mobile-menu__mobile-apps">
-            <a className="mobile-menu__mobile-app" href="#">
+            <a className="mobile-menu__mobile-app" href={Links.APP_STORE_LINNK}>
               <img className="mobile-menu__mobile-app-image" src="./img/app-store.png" srcSet="./img/app-store@2x.png 2x" width="142" height="48" alt="Скачать в App Store" />
             </a>
-            <a className="mobile-menu__mobile-app" href="#">
+            <a className="mobile-menu__mobile-app" href={Links.GOOGLE_PLAY_LINK}>
               <img className="mobile-menu__mobile-app-image" src="./img/google-play.png" srcSet="./img/google-play@2x.png 2x" width="160" height="48" alt="Скачать в Google Play" />
             </a>
           </div>
           <a className="mobile-menu__mobile-phone" href="tel:+79953014090">+7 995 301 40 90</a>
-          <a className="mobile-menu__mobile-jscorp" href="#"><img className="mobile-menu__mobile-jscorp-image" src="./img/jscorp-logo.svg" width="63" height="63" alt="JSCorp" /></a>
+          <a className="mobile-menu__mobile-jscorp" href={Links.JSCORP_LINK}><img className="mobile-menu__mobile-jscorp-image" src="./img/jscorp-logo.svg" width="63" height="63" alt="JSCorp" /></a>
         </div>
       </React.Fragment>
     );

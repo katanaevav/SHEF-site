@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import InfoWindow from "../info-window/info-window.jsx";
 
 
-class GetLinkForm extends PureComponent {
+class ContactFormByPhoneHorizont extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -57,7 +57,7 @@ class GetLinkForm extends PureComponent {
         openState = {this.state.showInfoWindow}
         onCloweModalWindow = {this._closeInfoWindowFormHandle}
         headerText = {`Ваша заявка принята`}
-        bodyText = {`В ближайшее время вы полчучите письмо на указанную электронную почту`}
+        bodyText = {`В ближайшее наши операторы свяжутся с вами по указанному телефону`}
         buttonText = {`Хорошо`}
       />
     );
@@ -65,54 +65,33 @@ class GetLinkForm extends PureComponent {
 
 
   render() {
-    const {isFooter} = this.props;
-
     return (
       <React.Fragment>
 
-        <form
-          className={isFooter ? `section-connect__form` : `header__form get-link-form`}
-          method="POST"
-          action="https://echo.htmlacademy.ru"
-          onSubmit={this._submitHandler}
-        >
-          <p
-            className={isFooter ? `section-connect__form-title` : `get-link-form__title`}
-          >
-            Отправим вам ссылку на наше приложение
-          </p>
-          <div className={isFooter ? `section-connect__form-input-wrapper` : `get-link-form__input-wrapper`}>
+        <form className="about__form contact-form" method="POST" action="https://echo.htmlacademy.ru" onSubmit={this._submitHandler}>
+          <img className="contact-form__image" src="./img/contact-us.png" srcSet="./img/contact-us@2x.png 2x" alt="Связаться с нами" height="151" width="150" />
+          <div className="contact-form__input-wrapper contact-form__input-wrapper--main">
+            <h2 className="contact-form__title">Оставьте заявку на консультацию</h2>
+            <div className="contact-form__input-wrapper">
+              <input className="contact-form__input contact-form__input--text" type="text" placeholder="Ваше имя" name="name" required />
+              <input className="contact-form__input contact-form__input--phone" type="phone" placeholder="+7" name="phone" required />
+              <input className="contact-form__button" type="submit" value="Связаться со мной" />
+            </div>
+            <div className="contact-form__input-wrapper">
             <input
-              className={isFooter ? `section-connect__form-input-email` : `get-link-form__input-email`}
-              type="email"
-              placeholder="Email"
-              name="e-mail"
-              required
-            />
-            <input
-              className={isFooter ? `section-connect__form-button` : `get-link-form__button`}
-              type="submit"
-              value="Получить ссылку"
-            />
-          </div>
-          <div className={isFooter ? `section-connect__form-input-wrapper` : `get-link-form__input-wrapper`}>
-            <input
-              className={isFooter ? `section-connect__form-checkbox` : `get-link-form__checkbox`}
+              className="contact-form__checkbox"
               type="checkbox"
-              id={isFooter ? `footer-check-policy` : `check-policy`}
+              id="check-policy-phone"
               name="accept-policy"
               value="yes"
-              ref={this.checkPolicy}
               required
+              ref={this.checkPolicy}
               onInvalid={this._custonValidityCheckboxHandler}
               onChange={this._custonValidityCheckboxHandler}
-            />
-            <label
-              className= {isFooter ? `section-connect__form-checkbox-label` : `get-link-form__checkbox-label`}
-              htmlFor= {isFooter ? `footer-check-policy` : `check-policy`}
-            >
-              согласен с условиями <a onClick={this._policyLinkClickHandler}> Политики конфиденциальности</a>
+              />
+            <label className="contact-form__checkbox-label" htmlFor="check-policy-phone">Принимаю условия <a onClick={this._policyLinkClickHandler}>Политики конфиденциальности</a>
             </label>
+            </div>
           </div>
         </form>
 
@@ -124,9 +103,8 @@ class GetLinkForm extends PureComponent {
 };
 
 
-GetLinkForm.propTypes = {
-  isFooter: PropTypes.bool.isRequired,
+ContactFormByPhoneHorizont.propTypes = {
   openPolicyWindow: PropTypes.func.isRequired,
 }
 
-export default GetLinkForm;
+export default ContactFormByPhoneHorizont;

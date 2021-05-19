@@ -28,7 +28,9 @@ class PageFooter extends PureComponent {
                   <h2 className="section-connect visually-hidden">Для связи</h2>
 
                   <div className="section-connect__wrapper">
-                    <img className="section-connect__image section-connect__image--instagram" src="./img/instagram.svg" alt="Инстаграм" />
+                    <a href={Links.INSTAGRAM_LINK} title="Instagram">
+                      <img className="section-connect__image section-connect__image--instagram" src="./img/instagram.svg" alt="Инстаграм" />
+                    </a>
                     <ul className="section-connect__adress">
                       <li className="section-connect__adress-item"><a href={Links.PHONE_LINC} title="Телефон">{Links.PHONE_SHOW}</a></li>
                       <li className="section-connect__adress-item"><a href={Links.EMAIL_LINK} title="Email">{Links.EMAIL_SHOW}u</a></li>
@@ -81,10 +83,10 @@ class PageFooter extends PureComponent {
                 </section>
 
                 <section className="page-footer__section section-apps">
-                  <a className="section-apps__mobile-app" href="#">
+                  <a className="section-apps__mobile-app" href={Links.APP_STORE_LINNK}>
                     <img className="section-apps__mobile-app-image" src="./img/app-store.png" srcSet="./img/app-store@2x.png 2x" alt="Скачать в App Store" />
                   </a>
-                  <a className="section-apps__mobile-app" href="#">
+                  <a className="section-apps__mobile-app" href={Links.GOOGLE_PLAY_LINK}>
                     <img className="section-apps__mobile-app-image" src="./img/google-play.png" srcSet="./img/google-play@2x.png 2x" alt="Скачать в Google Play" />
                   </a>
                 </section>
