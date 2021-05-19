@@ -28,7 +28,9 @@ class PageFooter extends PureComponent {
                   <h2 className="section-connect visually-hidden">Для связи</h2>
 
                   <div className="section-connect__wrapper">
-                    <img className="section-connect__image section-connect__image--instagram" src="./img/instagram.svg" alt="Инстаграм" />
+                    <a href={Links.INSTAGRAM_LINK} title="Instagram">
+                      <img className="section-connect__image section-connect__image--instagram" src="./img/instagram.svg" alt="Инстаграм" />
+                    </a>
                     <ul className="section-connect__adress">
                       <li className="section-connect__adress-item"><a href={Links.PHONE_LINC} title="Телефон">{Links.PHONE_SHOW}</a></li>
                       <li className="section-connect__adress-item"><a href={Links.EMAIL_LINK} title="Email">{Links.EMAIL_SHOW}u</a></li>
