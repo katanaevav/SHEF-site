@@ -8,9 +8,16 @@ import {AppRoute} from "../../../const.js";
 class PageHeaderMobileMenu extends PureComponent {
   constructor(props) {
     super(props);
+    this._noGlutenClickHandler = this._noGlutenClickHandler.bind(this);
     this._onlineCookingClickHandler = this._onlineCookingClickHandler.bind(this);
     this._cateringClickHandler = this._cateringClickHandler.bind(this);
     this._contactUsClickHandler = this._contactUsClickHandler.bind(this);
+  }
+
+  _noGlutenClickHandler(evt) {
+    evt.preventDefault();
+    history.push(AppRoute.NO_GLUTEN);
+    return(this.props.burgerButtonClick());
   }
 
   _onlineCookingClickHandler(evt) {
@@ -59,7 +66,7 @@ class PageHeaderMobileMenu extends PureComponent {
                 <a
                   href={AppRoute.NO_GLUTEN}
                   title="Без глютена"
-                  onClick={this._onlineCookingClickHandler}
+                  onClick={this._noGlutenClickHandler}
                 >
                   Без глютена
                 </a>
