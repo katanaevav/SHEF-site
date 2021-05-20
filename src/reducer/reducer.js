@@ -13,14 +13,20 @@ const initialState = {
 
   dishesTypesList: DishesTypes,
   dishesList: Dishes,
+
+  pointLoaded: {},
+  dishesTypesListLoaded: [],
 };
 
 const ActionType = {
-
   DELETE_DISH_FROM_CART: `DELETE_DISH_FROM_CART`,
   CHANGE_DISH_COUNT_IN_CART: `CHANGE_DISH_COUNT_IN_CART`,
   ADD_DISH_TO_CART: `ADD_DISH_TO_CART`,
   CLEAR_CART: `CLEAR_CART`,
+
+  LOAD_POINT: `LOAD_POINT`,
+  LOAD_CATEGORIES: `LOAD_CATEGORIES`,
+  LOAD_DISH: `LOAD_DISH`,
 };
 
 
@@ -51,6 +57,50 @@ const ActionCreator = {
       type: ActionType.CLEAR_CART,
     };
   },
+  loadPoint: (point) => {
+    return {
+      type: ActionType.LOAD_POINT,
+      payload: point,
+    };
+  },
+  loadCategories: (categories) => {
+    return {
+      type: ActionType.LOAD_CATEGORIES,
+      payload: categories,
+    };
+  },
+  loadDish: (dish) => {
+    return {
+      type: ActionType.LOAD_DISH,
+      payload: dish,
+    };
+  },
+};
+
+
+const Operation = {
+  loadPoint: (pointId) => (dispatch, getState, api) => {
+    return api.get(`/point/${pointId}`)
+      .then((response) => {
+        dispatch(ActionCreator.loadPoint(response.data));
+        console.log(response.data);
+      });
+  },
+
+  loadCategories: () => (dispatch, getState, api) => {
+    return api.get(`/categories`)
+      .then((response) => {
+        dispatch(ActionCreator.loadCategories(response.data));
+        console.log(response.data);
+      });
+  },
+
+  loadDish: (dishId) => (dispatch, getState, api) => {
+    return api.get(`/dish/${dishId}`)
+      .then((response) => {
+        dispatch(ActionCreator.loadDish(response.data));
+      });
+  },
 };
 
 
@@ -74,10 +124,19 @@ const reducer = (state = initialState, action) => {
         cartDishes: [],
         cartType: MenuCategory.EMPTY,
       });
+
+    case ActionType.LOAD_CATEGORIES:
+      return Object.assign({}, state, {
+        dishesTypesListLoaded: action.payload,
+      });
+    case ActionType.LOAD_POINT:
+      return Object.assign({}, state, {
+        pointLoaded: action.payload,
+      });
   }
 
   return state;
 };
 
 
-export {reducer, ActionType, ActionCreator};
+export {reducer, Operation, ActionType, ActionCreator};
