@@ -22,16 +22,40 @@ const store = createStore(
   // window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
 );
 
-
-store.dispatch(DataOperation.loadCategories());
-store.dispatch(DataOperation.loadPoint(1));
-store.dispatch(DataOperation.loadPoint(2));
-store.dispatch(DataOperation.loadPoint(3));
-
-
-ReactDOM.render(
+function renderApp() {
+  ReactDOM.render(
     <Provider store={store}>
       <App />
     </Provider>,
-  document.querySelector(`.site-container`)
-);
+    document.querySelector(`.site-container`)
+  );
+};
+
+
+// store.dispatch(DataOperation.loadCategories());
+store.dispatch(DataOperation.loadPoint(1,
+  store.dispatch(DataOperation.loadPoint(2,
+    store.dispatch(DataOperation.loadPoint(3,
+
+      () => {
+        ReactDOM.render(
+          <Provider store={store}>
+            <App />
+          </Provider>,
+          document.querySelector(`.site-container`)
+        );
+      }
+
+
+      ))))));
+
+// store.dispatch(DataOperation.loadPoint(2));
+// store.dispatch(DataOperation.loadPoint(3));
+
+
+// ReactDOM.render(
+//     <Provider store={store}>
+//       <App />
+//     </Provider>,
+//   document.querySelector(`.site-container`)
+// );

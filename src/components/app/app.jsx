@@ -120,6 +120,9 @@ class App extends PureComponent {
     const {cartPrice, cartType, cartTypeName, cartDishes, dishesTypesList, dishesList} = this.props;
     const {onDeleteDishFromCart, onChangeDishCountInCart, onAddDishToCart, onClearCart} = this.props;
 
+    // console.log(dishesList);
+    // console.log(dishesTypesList);
+
     return (
       <Router history={history}>
         <Switch>
@@ -172,6 +175,9 @@ class App extends PureComponent {
             path={AppRoute.CATERING}
             render = {() => {
               const cateringDishes = dishesList.slice().filter((dish) => dish.dishCategory === MenuCategory.CATERING);
+
+              // console.log(dishesList);
+              // console.log(MenuCategory.CATERING);
 
               const cateringDishesTypes = dishesTypesList
                 .map((dishType) => {

@@ -1,8 +1,8 @@
 import {DishesTypes} from "../mocks/dishes-types.js";
 import {Dishes} from "../mocks/dishes.js";
 
-import {Screens, MenuCategory} from "../const.js";
-import {deleteDishFromCart, changeDishCountInCart, addDishToCart} from "./selectors.js"
+import {MenuCategory} from "../const.js";
+import {deleteDishFromCart, changeDishCountInCart, addDishToCart, getDataFromPoint} from "./selectors.js"
 
 
 const initialState = {
@@ -11,8 +11,11 @@ const initialState = {
   cartType: MenuCategory.EMPTY,
   cartDishes: [],
 
-  dishesTypesList: DishesTypes,
-  dishesList: Dishes,
+  // dishesTypesList: DishesTypes,
+  // dishesList: Dishes,
+
+  dishesTypesList: [],
+  dishesList: [],
 
   pointLoaded: {},
   dishesTypesListLoaded: [],
@@ -23,6 +26,9 @@ const ActionType = {
   CHANGE_DISH_COUNT_IN_CART: `CHANGE_DISH_COUNT_IN_CART`,
   ADD_DISH_TO_CART: `ADD_DISH_TO_CART`,
   CLEAR_CART: `CLEAR_CART`,
+
+  ADD_DISHES: `ADD_DISHES`,
+  ADD_CATEGORIES: `ADD_CATEGORIES`,
 
   LOAD_POINT: `LOAD_POINT`,
   LOAD_CATEGORIES: `LOAD_CATEGORIES`,
@@ -57,6 +63,24 @@ const ActionCreator = {
       type: ActionType.CLEAR_CART,
     };
   },
+
+
+  addDishes: (dishes) => {
+    return {
+      type: ActionType.ADD_DISHES,
+      payload: dishes,
+    };
+  },
+
+  addCategories: (categories) => {
+    return {
+      type: ActionType.ADD_CATEGORIES,
+      payload: categories,
+    };
+  },
+
+
+
   loadPoint: (point) => {
     return {
       type: ActionType.LOAD_POINT,
@@ -79,11 +103,14 @@ const ActionCreator = {
 
 
 const Operation = {
-  loadPoint: (pointId) => (dispatch, getState, api) => {
+  loadPoint: (pointId, action) => (dispatch, getState, api) => {
     return api.get(`/point/${pointId}`)
       .then((response) => {
-        dispatch(ActionCreator.loadPoint(response.data));
-        console.log(response.data);
+        const convertedData = getDataFromPoint(response.data);
+        dispatch(ActionCreator.addDishes(convertedData.dishes));
+        dispatch(ActionCreator.addCategories(convertedData.categorises));
+        // console.log(getDataFromPoint(response.data));
+        action();
       });
   },
 
@@ -124,6 +151,19 @@ const reducer = (state = initialState, action) => {
         cartDishes: [],
         cartType: MenuCategory.EMPTY,
       });
+
+    case ActionType.ADD_DISHES:
+      // console.log(state.dishesList.concat(action.payload));
+      return Object.assign({}, state, {
+        dishesList: state.dishesList.concat(action.payload),
+      });
+    case ActionType.ADD_CATEGORIES:
+      return Object.assign({}, state, {
+        dishesTypesList: state.dishesTypesList.concat(action.payload),
+      });
+
+
+
 
     case ActionType.LOAD_CATEGORIES:
       return Object.assign({}, state, {

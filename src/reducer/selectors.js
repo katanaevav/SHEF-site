@@ -43,4 +43,38 @@ const addDishToCart = (cartList, dish) => {
   return arr;
 }
 
-export {getMenuCategoryName, getCartPrice, deleteDishFromCart, changeDishCountInCart, addDishToCart};
+
+const getDataFromPoint = (point) => {
+  const categorises = [];
+  const dishes = [];
+
+  point.categories.forEach((category) => {
+    categorises.push({
+      dishTypeId: category.id,
+      dishTypeName: category.name,
+    });
+
+    category.dishes.forEach((dish) => {
+      dishes.push({
+        dishId: dish.id,
+        dishTypeId: category.id,
+        dishCategory: point.id,
+        dishName: dish.name,
+        dishDescription: `Считается основным (национальным)`,
+        dishPrice: dish.price,
+        dishCount: 1,
+        dishWeight: `${dish.weight} гр.`,
+        dishTag: ``,
+        dishImage: dish.picture,
+        dishImage2x: dish.picture,
+      })
+    });
+  });
+
+  return ({
+    categorises,
+    dishes,
+  })
+}
+
+export {getMenuCategoryName, getCartPrice, deleteDishFromCart, changeDishCountInCart, addDishToCart, getDataFromPoint};
