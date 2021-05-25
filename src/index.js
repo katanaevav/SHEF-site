@@ -10,6 +10,7 @@ import {createAPI} from "./api.js";
 import {Operation as DataOperation} from "./reducer/reducer.js";
 
 import App from "./components/app/app.jsx";
+import {MenuCategory} from "./const.js";
 
 const api = createAPI();
 
@@ -33,24 +34,22 @@ function renderApp() {
 
 
 // store.dispatch(DataOperation.loadCategories());
-store.dispatch(DataOperation.loadPoint(1,
-  store.dispatch(DataOperation.loadPoint(2,
-    store.dispatch(DataOperation.loadPoint(3,
+store.dispatch(DataOperation.loadPoint(MenuCategory.CATERING, () => {
+  store.dispatch(DataOperation.loadPoint(MenuCategory.ONLINE_COOKING, () => {
+    store.dispatch(DataOperation.loadPoint(MenuCategory.NO_GLUTEN, () => {
 
-      () => {
         ReactDOM.render(
           <Provider store={store}>
             <App />
           </Provider>,
           document.querySelector(`.site-container`)
         );
-      }
 
+      }))
+    }))
+    })
+  );
 
-      ))))));
-
-// store.dispatch(DataOperation.loadPoint(2));
-// store.dispatch(DataOperation.loadPoint(3));
 
 
 // ReactDOM.render(
