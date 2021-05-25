@@ -55,7 +55,7 @@ class NoGluten extends PureComponent {
                   <li className="order-head__term">Минимальная сумма заказа: <span className="order-head__term-dd"><br />3000 рублей*</span></li>
                 </ul>
 
-                <p className="order-head__text-term">* Доставка в пределах МКАД 500р, <br />за МКАД и до 25км от МКАД - 1000р.</p>
+                <p className="order-head__text-term">* Доставка в пределах МКАД 300р, <br />за МКАД и до 25км от МКАД - 500р.</p>
 
               </div>
 

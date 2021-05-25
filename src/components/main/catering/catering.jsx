@@ -53,10 +53,10 @@ class Catering extends PureComponent {
                 <ul className="order-head__terms">
                   <li className="order-head__term">Время заказа: <span className="order-head__term-dd"><br />До 15:00 текущего дня</span></li>
                   <li className="order-head__term">Доставка: <span className="order-head__term-dd"><br />На следующий день</span></li>
-                  <li className="order-head__term">Минимальная сумма заказа: <span className="order-head__term-dd"><br />4900 рублей (+ повар - 3000 руб.)*</span></li>
+                  <li className="order-head__term">Минимальная сумма заказа: <span className="order-head__term-dd"><br />4900 рублей*</span></li>
                 </ul>
 
-                <p className="order-head__text-term">* Доставка в пределах МКАД 500р, <br />за МКАД и до 25км от МКАД - 1000р.</p>
+                <p className="order-head__text-term">* Доставка в пределах МКАД 300р, <br />за МКАД и до 25км от МКАД - 500р.</p>
 
               </div>
 

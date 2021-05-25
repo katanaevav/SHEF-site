@@ -42,6 +42,15 @@ class PageHeaderNav extends PureComponent {
                 <li className="sub-menu__item">
                   <Link
                     href="catering.html"
+                    title="Порционные блюда"
+                    to={`${AppRoute.CATERING}`}
+                  >
+                      Порционные блюда
+                  </Link>
+                </li>
+                <li className="sub-menu__item">
+                  <Link
+                    href="catering.html"
                     title="Кейтеринг"
                     to={`${AppRoute.CATERING}`}
                   >
