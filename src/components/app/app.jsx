@@ -42,6 +42,7 @@ class App extends PureComponent {
 
     this._openPolicyWindowHandle = this._openPolicyWindowHandle.bind(this);
     this._openPoliticWindowHandle = this._openPoliticWindowHandle.bind(this);
+    this._openOferWindowHandler = this._openOferWindowHandler.bind(this);
     this._openCookiesWindowHandle = this._openCookiesWindowHandle.bind(this);
     this._closePolicyWindowFormHandle = this._closePolicyWindowFormHandle.bind(this);
   }
@@ -71,6 +72,10 @@ class App extends PureComponent {
 
   _openPolicyWindowHandle() {
     this.setState({ showPolicy: PoliticsTexts.PRIVACY_POLICY });
+  }
+
+  _openOferWindowHandler() {
+    this.setState({ showPolicy: PoliticsTexts.OFER_POLICY });
   }
 
   _openPoliticWindowHandle() {
@@ -143,6 +148,7 @@ class App extends PureComponent {
                 openPolicsWindow = {this._openPoliticWindowHandle}
                 openCookiesWindow = {this._openCookiesWindowHandle}
                 openContactUsForm = {this._openContactUsFormHandle}
+                openOferWindow = {this._openOferWindowHandler}
               />
             </React.Fragment>
           </Route>
@@ -167,6 +173,7 @@ class App extends PureComponent {
                 openPolicsWindow = {this._openPoliticWindowHandle}
                 openCookiesWindow = {this._openCookiesWindowHandle}
                 openContactUsForm = {this._openContactUsFormHandle}
+                openOferWindow = {this._openOferWindowHandler}
               />
             </React.Fragment>
           </Route>
@@ -204,6 +211,7 @@ class App extends PureComponent {
                       openPolicsWindow = {this._openPoliticWindowHandle}
                       openCookiesWindow = {this._openCookiesWindowHandle}
                       openContactUsForm = {this._openContactUsFormHandle}
+                      openOferWindow = {this._openOferWindowHandler}
                     />
                   </React.Fragment>
                 );
@@ -240,6 +248,7 @@ class App extends PureComponent {
                       openPolicsWindow = {this._openPoliticWindowHandle}
                       openCookiesWindow = {this._openCookiesWindowHandle}
                       openContactUsForm = {this._openContactUsFormHandle}
+                      openOferWindow = {this._openOferWindowHandler}
                     />
                   </React.Fragment>
                 );

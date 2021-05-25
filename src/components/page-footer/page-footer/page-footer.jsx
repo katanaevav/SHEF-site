@@ -96,6 +96,7 @@ class PageFooter extends PureComponent {
               <ul className="page-footer__legals-list">
                 <li className="page-footer__legals-item"><a onClick={this.props.openPolicsWindow}>Условия использования</a></li>
                 <li className="page-footer__legals-item"><a onClick={this.props.openPolicyWindow}>Политика конфиденциальности</a></li>
+                <li className="page-footer__legals-item"><a onClick={this.props.openOferWindow}>Оферта</a></li>
                 <li className="page-footer__legals-item"><a onClick={this.props.openCookiesWindow}>Cookies</a></li>
               </ul>
 
@@ -119,6 +120,7 @@ PageFooter.propTypes = {
   openPolicsWindow: PropTypes.func.isRequired,
   openCookiesWindow: PropTypes.func.isRequired,
   openContactUsForm: PropTypes.func.isRequired,
+  openOferWindow: PropTypes.func.isRequired,
 }
 
 

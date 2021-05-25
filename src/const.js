@@ -7,7 +7,7 @@ export const Links = {
   EMAIL_SHOW: `office@jscorp.ru`,
   EMAIL_LINK: `mailto:office@jscorp.ru`,
   LOCAL_BURDER_APP_LINK: `https://www.localburgerco.com/app`,
-  JSCORP_LINK: `https://jscorp.ru/`,
+  JSCORP_LINK: `https://jscorp.ru/startups/`,
 };
 
 export const MenuCategory = {
@@ -24,6 +24,7 @@ export const PoliticsTexts = {
   PRIVACY_POLICY: 1,
   USE_POLICY: 2,
   COOKIES: 3,
+  OFER_POLICY: 4,
 }
 
 export const AppRoute = {
