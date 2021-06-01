@@ -17,7 +17,24 @@ export const MenuCategory = {
   NO_GLUTEN: 3,
 };
 
-export const MenuCategoryNames = [``, `Кейтеринг`, `Онлайн кулинария`, `Без глютена`];
+export const MenuCategoryProps = [
+  {
+    name: ``,
+    minCoast: 0,
+  },
+  {
+    name: `Кейтеринг`,
+    minCoast: 4900,
+  },
+  {
+    name: `Онлайн кулинария`,
+    minCoast: 2900,
+  },
+  {
+    name: `Без глютена`,
+    minCoast: 3000,
+  },
+];
 
 export const PoliticsTexts = {
   HIDE: 0,
