@@ -106,7 +106,7 @@ const Operation = {
   loadPoint: (pointId, action) => (dispatch, getState, api) => {
     return api.get(`/point/${pointId}`)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         const convertedData = getDataFromPoint(response.data);
         dispatch(ActionCreator.addDishes(convertedData.dishes));
         dispatch(ActionCreator.addCategories(convertedData.categorises));
