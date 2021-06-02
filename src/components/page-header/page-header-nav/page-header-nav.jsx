@@ -4,12 +4,15 @@ import {Link} from "react-router-dom";
 
 import {AppRoute} from "../../../const.js";
 
+import history from "../../../history.js";
+
 
 class PageHeaderNav extends PureComponent {
   constructor(props) {
     super(props);
 
     this._abouUsClickHandler = this._abouUsClickHandler.bind(this);
+    this._getLinkToAppsClickHandler = this._getLinkToAppsClickHandler.bind(this);
   }
 
   _getCoords(el) {
@@ -24,7 +27,14 @@ class PageHeaderNav extends PureComponent {
 
   _abouUsClickHandler(evt) {
     evt.preventDefault();
-    window.scrollTo(this._getCoords(document.querySelector(`.section-connect`)))
+    history.push(AppRoute.ROOT);
+    window.scrollTo(this._getCoords(document.querySelector(`.section-connect`)));
+  }
+
+
+  _getLinkToAppsClickHandler(evt) {
+    evt.preventDefault();
+    history.push(AppRoute.ROOT);
   }
 
 
@@ -40,13 +50,22 @@ class PageHeaderNav extends PureComponent {
               <a title="Заказ еды">Заказ&nbsp;еды</a>
               <ul className="main-menu__sub-menu sub-menu">
                 <li className="sub-menu__item">
-                  <Link
-                    href="catering.html"
+                  <a
+                    href="#"
                     title="Порционные блюда"
-                    to={`${AppRoute.CATERING}`}
+                    onClick={this._getLinkToAppsClickHandler}
                   >
                       Порционные блюда
-                  </Link>
+                  </a>
+                </li>
+                <li className="sub-menu__item">
+                  <a
+                    href="#"
+                    title="Бургеры от Local Burger"
+                    onClick={this._getLinkToAppsClickHandler}
+                  >
+                      Бургеры от Local Burger
+                  </a>
                 </li>
                 <li className="sub-menu__item">
                   <Link
