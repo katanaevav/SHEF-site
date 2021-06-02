@@ -84,6 +84,8 @@ class Cart extends PureComponent {
 
     if (this.props.totalCost < this.props.cartTypeName.minCoast) {
       popup(`До минимальной суммы заказа: ${this.props.cartTypeName.minCoast - this.props.totalCost} рублей`);
+    } else if (this.props.totalCost === 0) {
+      popup(`Ваша корзина пуста`);
     } else {
       evt.target.submit();
     }
