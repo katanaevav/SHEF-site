@@ -8,6 +8,8 @@ import CartDish from "../cart-dish/cart-dish.jsx";
 
 import {MenuCategory} from "../../../const.js";
 
+import {popup} from "../../ext/popup.js";
+
 
 class Cart extends PureComponent {
   constructor(props) {
@@ -18,7 +20,7 @@ class Cart extends PureComponent {
     this._goBackClickHandler = this._goBackClickHandler.bind(this);
     this._goBackToCartClickHandler = this._goBackToCartClickHandler.bind(this);
     this._checkOutButtonClickHandler = this._checkOutButtonClickHandler.bind(this);
-
+    this._formSubmitHandler = this._formSubmitHandler.bind(this);
   }
 
   _goBackToCartClickHandler() {
@@ -27,8 +29,12 @@ class Cart extends PureComponent {
   }
 
   _checkOutButtonClickHandler() {
-    document.querySelector(`.order-details`).classList.toggle("order-details--hide");
-    document.querySelector(`.cart`).classList.toggle("cart--hide");
+    if (this.props.totalCost < this.props.cartTypeName.minCoast) {
+      popup(`До минимальной суммы заказа: ${this.props.cartTypeName.minCoast - this.props.totalCost} рублей`);
+    } else {
+      document.querySelector(`.order-details`).classList.toggle("order-details--hide");
+      document.querySelector(`.cart`).classList.toggle("cart--hide");
+    }
   }
 
 
@@ -73,6 +79,16 @@ class Cart extends PureComponent {
     );
   }
 
+  _formSubmitHandler(evt) {
+    evt.preventDefault();
+
+    if (this.props.totalCost < this.props.cartTypeName.minCoast) {
+      popup(`До минимальной суммы заказа: ${this.props.cartTypeName.minCoast - this.props.totalCost} рублей`);
+    } else {
+      evt.target.submit();
+    }
+  }
+
   render() {
     const {cartTypeName, cartDishesList, totalCost} = this.props;
 
@@ -85,7 +101,7 @@ class Cart extends PureComponent {
             <div className="cart-wrapper">
               <section className="cart">
                 <div className="cart__wrpapper">
-                  <h1 className="cart__header">{cartTypeName}</h1>
+                  <h1 className="cart__header">{cartTypeName.name}</h1>
                   <a className="cart__go-back" onClick={this._goBackClickHandler}>Вернуться к выбру</a>
                 </div>
 
@@ -105,7 +121,7 @@ class Cart extends PureComponent {
                   <h2 className="order-details__header">Детали заказа</h2>
                 </div>
 
-                <form className="order-details__form" method="POST" action="https://echo.htmlacademy.ru">
+                <form className="order-details__form" method="POST" action="https://echo.htmlacademy.ru" onSubmit={this._formSubmitHandler}>
                   <input className="order-details__form-input order-details__form-input--name" type="text" placeholder="Ваше имя" name="name" required />
                   <input className="order-details__form-input order-details__form-input--phone" type="phone" placeholder="Ваш телефон" name="phone" required />
                   <input className="order-details__form-input order-details__form-input-adress" type="text" placeholder="Улица, дом, квартира" name="adress" required />
@@ -144,7 +160,7 @@ class Cart extends PureComponent {
 Cart.propTypes = {
   totalCost: PropTypes.number,
   cartType: PropTypes.number,
-  cartTypeName: PropTypes.string,
+  cartTypeName: PropTypes.object,
   cartDishesList: PropTypes.array,
 
   onDeleteDishFromCart: PropTypes.func,

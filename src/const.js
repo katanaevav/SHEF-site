@@ -19,7 +19,7 @@ export const MenuCategory = {
 
 export const MenuCategoryProps = [
   {
-    name: ``,
+    name: `Ваша корзина`,
     minCoast: 0,
   },
   {

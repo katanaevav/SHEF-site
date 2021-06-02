@@ -1,7 +1,8 @@
 import {MenuCategoryProps, MenuCategory} from "../const.js";
 
 const getMenuCategoryName = (menuCategoryId) => {
-  return menuCategoryId === MenuCategory.EMPTY ? `Ваша корзина` : MenuCategoryProps[menuCategoryId].name;
+  return MenuCategoryProps[menuCategoryId];
+  // return menuCategoryId === MenuCategory.EMPTY ? `Ваша корзина` : MenuCategoryProps[menuCategoryId].name;
 };
 
 const getCartPrice = (cartDishes) => {

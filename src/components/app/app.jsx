@@ -285,6 +285,7 @@ class App extends PureComponent {
                       openPolicsWindow = {this._openPoliticWindowHandle}
                       openCookiesWindow = {this._openCookiesWindowHandle}
                       openContactUsForm = {this._openContactUsFormHandle}
+                      openOferWindow = {this._openOferWindowHandler}
                     />
                   </React.Fragment>
                 );
@@ -308,7 +309,7 @@ class App extends PureComponent {
 App.propTypes = {
   cartPrice: PropTypes.number,
   cartType: PropTypes.number.isRequired,
-  cartTypeName: PropTypes.string.isRequired,
+  cartTypeName: PropTypes.object.isRequired,
   cartDishes: PropTypes.array,
 
   dishesTypesList: PropTypes.array,
