@@ -19,18 +19,22 @@ export const MenuCategory = {
 
 export const MenuCategoryProps = [
   {
+    id: 0,
     name: `Ваша корзина`,
     minCoast: 0,
   },
   {
+    id: 1,
     name: `Кейтеринг`,
     minCoast: 4900,
   },
   {
+    id: 2,
     name: `Онлайн кулинария`,
     minCoast: 2900,
   },
   {
+    id: 3,
     name: `Без глютена`,
     minCoast: 3000,
   },

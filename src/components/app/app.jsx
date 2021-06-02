@@ -48,6 +48,16 @@ class App extends PureComponent {
   }
 
 
+  componentDidMount() {
+    const dishes = JSON.parse(sessionStorage.getItem('cartDishes'));
+
+    if (dishes != null) {
+      dishes.forEach((dish) => {
+        this.props.onAddDishToCart(dish);
+      });
+    }
+  }
+
 
   _openContactUsFormHandle(evt) {
     evt.preventDefault();

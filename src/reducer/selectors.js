@@ -17,7 +17,9 @@ const deleteDishFromCart = (cartList, dishId) => {
   const indexToDelete = cartList.findIndex((dish) => dish.dishId === dishId);
 
   const arr = cartList.slice(0, cartList.length);
-  arr.splice(indexToDelete, 1)
+  arr.splice(indexToDelete, 1);
+
+  sessionStorage.setItem(`cartDishes`, JSON.stringify(arr));
 
   return arr;
 }
@@ -27,6 +29,8 @@ const changeDishCountInCart = (cartList, dishId, dishCount) => {
 
   const arr = cartList.slice(0, cartList.length);
   arr[indexToChange].dishCount = dishCount;
+
+  sessionStorage.setItem(`cartDishes`, JSON.stringify(arr));
 
   return arr;
 }
@@ -40,6 +44,8 @@ const addDishToCart = (cartList, dish) => {
   arr.splice(index > -1 ? index : arr.length, index > -1 ? 1 : 0, Object.assign({}, dish, {
     dishCount: count + dish.dishCount,
   }));
+
+  sessionStorage.setItem(`cartDishes`, JSON.stringify(arr));
 
   return arr;
 }
