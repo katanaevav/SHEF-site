@@ -167,6 +167,7 @@ class App extends PureComponent {
 
                 onDeleteDishFromCart = {onDeleteDishFromCart}
                 onChangeDishCountInCart = {onChangeDishCountInCart}
+                openPolicyWindow = {this._openPolicyWindowHandle}
                 />
               <PageFooter
                 openPolicyWindow = {this._openPolicyWindowHandle}

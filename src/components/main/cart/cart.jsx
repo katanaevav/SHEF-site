@@ -15,12 +15,15 @@ class Cart extends PureComponent {
   constructor(props) {
     super(props);
 
+    this.checkPolicy = React.createRef();
+
     this._renderShoppingList = this._renderShoppingList.bind(this);
     this._renderCheckoututton = this._renderCheckoututton.bind(this);
     this._goBackClickHandler = this._goBackClickHandler.bind(this);
     this._goBackToCartClickHandler = this._goBackToCartClickHandler.bind(this);
     this._checkOutButtonClickHandler = this._checkOutButtonClickHandler.bind(this);
     this._formSubmitHandler = this._formSubmitHandler.bind(this);
+    this._custonValidityCheckboxHandler = this._custonValidityCheckboxHandler.bind(this);
   }
 
   _goBackToCartClickHandler() {
@@ -79,6 +82,10 @@ class Cart extends PureComponent {
     );
   }
 
+  _custonValidityCheckboxHandler(evt) {
+    !this.checkPolicy.current.checked ? evt.target.setCustomValidity(`Необходимо принять политику конфиденциальности`) : evt.target.setCustomValidity(``);
+  }
+
   _formSubmitHandler(evt) {
     evt.preventDefault();
 
@@ -131,9 +138,19 @@ class Cart extends PureComponent {
                   <textarea className="order-details__form-input order-details__form-input-comment" name="comment" placeholder="Ваш комментарий"></textarea>
 
                   <div className="order-details__form-input-wrapper order-details__form-input-wrapper--checkbox">
-                    <input className="order-details__form-checkbox" type="checkbox" id="order-check-policy" name="accept-policy" value="yes" />
+                    <input
+                      className="order-details__form-checkbox"
+                      type="checkbox"
+                      id="order-check-policy"
+                      name="accept-policy"
+                      value="yes"
+                      ref={this.checkPolicy}
+                      required
+                      onInvalid={this._custonValidityCheckboxHandler}
+                      onChange={this._custonValidityCheckboxHandler}
+                    />
                     <label className="order-details__form-checkbox-label" htmlFor="order-check-policy">согласен с условиями<br />
-                      <a href="#">Политики конфиденциальности</a>
+                      <a href="#" onClick={this.props.openPolicyWindow}>Политики конфиденциальности</a>
                     </label>
                   </div>
 
@@ -167,6 +184,7 @@ Cart.propTypes = {
 
   onDeleteDishFromCart: PropTypes.func,
   onChangeDishCountInCart: PropTypes.func,
+  openPolicyWindow: PropTypes.func.isRequired,
 }
 
 

@@ -85,7 +85,7 @@ class Main extends PureComponent {
                   <h3 className="links__item-header">Порционные готовые блюда</h3>
                   <p className="links__text">Доставка до 30 минут!
                     Скачайте мобильное приложение
-                    и заказывайте вкусную еду из дома или офиса
+                    и заказывайте вкусную еду
                   </p>
                   <a className="links__button" onClick={this._downloadApplicationsClickHandler}>Скачать приложение</a>
                 </div>
