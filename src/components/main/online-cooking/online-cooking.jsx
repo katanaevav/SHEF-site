@@ -43,10 +43,10 @@ class OnlineCooking extends PureComponent {
               <div className="order-head__left-panel">
                 <h1 className="order-head__header">Онлайн кулинария</h1>
                 <p className="order-head__text">
-                  Хочется домашней еды или необходимо накрыть
-                  стол к празднику, а готовить нет времени
-                  или желания? Не беда - выбирайте блюда, а мы
-                  приготовим и все привезем!
+                  У вас день рождение, свадьба или вы<br />
+                  хотите встретиться с друзьями и нет<br />
+                  желания провести время за плитой?<br />
+                  Мы позаботимся о еде, пока вы отдыхаете.
                 </p>
 
                 <ul className="order-head__terms">

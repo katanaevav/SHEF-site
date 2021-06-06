@@ -51,7 +51,11 @@ class Main extends PureComponent {
 
             <div className="head__left-panel">
               <h1 className="head__header">Фабрика кухни Кирилла Еселева.<br />Готовая еда!</h1>
-              <p className="head__text">Мы готовим для вас, чтобы вы могли позаботьтесь о том, что вам важно.</p>
+              <p className="head__text">Готовая  еда за 30 минут домой или в офис! У вас
+                                        корпоратив или день рождения воспользуйтесь
+                                        услугами кейтеринга и выездного шеф-повара.
+                                        Заказывайте еду без глютена высокого качества.
+              </p>
 
               <GetLinkForm
                 isFooter={false}
@@ -95,9 +99,10 @@ class Main extends PureComponent {
                 <img className="links__image links__image--image2" src="./img/image2.png" srcSet="./img/image2@2x.png 2x" alt="Онлайн кулинария" />
                 <div className="links__item-wrapper">
                   <h3 className="links__item-header">Онлайн кулинария</h3>
-                  <p className="links__text">Доставка на следующий день.
-                    Оформить заказ можно у нас
-                    на сайте до  17:00 текущего дня.
+                  <p className="links__text">Вкусно накормим вас
+                                             и ваших гостей на
+                                             праздник и в выходной.
+                                             Большой спектр блюд.
                   </p>
                   <Link
                     className="links__button"
@@ -113,9 +118,10 @@ class Main extends PureComponent {
                 <img className="links__image links__image--image3" src="./img/image3.png" srcSet="./img/image3@2x.png 2x" alt="Кейтеринг" />
                 <div className="links__item-wrapper">
                   <h3 className="links__item-header">Кейтеринг</h3>
-                  <p className="links__text">Доставка на следующий день.
-                    Оформить заказ можно у нас
-                    на сайте до 15:00 текущего дня.
+                  <p className="links__text">Тематическое меню к
+                                             любому вашему событию.
+                                             Мы сможем удовлетворить
+                                             ваш любой запрос.
                   </p>
                   <Link
                     className="links__button"
@@ -142,9 +148,11 @@ class Main extends PureComponent {
               <li className="links__item links__item--hovered">
                 <img className="links__image links__image--image5" src="./img/image5.png" srcSet="./img/image5@2x.png 2x" alt="Стань партнером" />
                 <div className="links__item-wrapper">
-                  <h3 className="links__item-header">Стань партнером!</h3>
-                  <p className="links__text">Инвестируй в точку с<br />
-                    готовой едой.<br /><br /><br />
+                  <h3 className="links__item-header">Владелец франшизы</h3>
+                  <p className="links__text">Получи доходность от 30%
+                                             годовых с нашей франшизой
+                                             доставки готовой еды. Напиши
+                                             нам и получи презентацию.
                   </p>
                   <a className="links__button" onClick={this.props.openContactUsForm}>Оставить заявку</a>
                 </div>

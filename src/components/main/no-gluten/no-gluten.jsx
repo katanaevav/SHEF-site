@@ -43,10 +43,9 @@ class NoGluten extends PureComponent {
               <div className="order-head__left-panel">
                 <h1 className="order-head__header">Без глютена</h1>
                 <p className="order-head__text">
-                  Мы разработали блюда без глютена, чтобы
-                  вы могли соблюдать диету или употреблять
-                  здоровую пищу каждый день. Попробовав
-                  раз, вы останетесь довольны навсегда.
+                Безглютеновые и экологические чистые блюда!
+                Подойдут даже для самой трепетной диеты.
+                Приготовим и доставим к вашей двери.
                 </p>
 
                 <ul className="order-head__terms">
