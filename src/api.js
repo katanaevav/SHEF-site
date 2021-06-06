@@ -7,7 +7,8 @@ const Error = {
 // export const createAPI = (onUnauthorized) => {
 export const createAPI = () => {
   const api = axios.create({
-    baseURL: `http://89.223.123.86:8080/api`,
+    // baseURL: `http://89.223.123.86:8080/api`,
+    baseURL: `https://chefzdes.ru/api`,
     timeout: 5000,
     withCredentials: true,
   });
