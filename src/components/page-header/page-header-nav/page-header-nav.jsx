@@ -11,7 +11,7 @@ class PageHeaderNav extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._abouUsClickHandler = this._abouUsClickHandler.bind(this);
+    // this._abouUsClickHandler = this._abouUsClickHandler.bind(this);
     this._getLinkToAppsClickHandler = this._getLinkToAppsClickHandler.bind(this);
   }
 
@@ -25,11 +25,11 @@ class PageHeaderNav extends PureComponent {
   }
 
 
-  _abouUsClickHandler(evt) {
-    evt.preventDefault();
-    history.push(AppRoute.ROOT);
-    window.scrollTo(this._getCoords(document.querySelector(`.section-connect`)));
-  }
+  // _abouUsClickHandler(evt) {
+  //   evt.preventDefault();
+  //   history.push(AppRoute.ROOT);
+  //   window.scrollTo(this._getCoords(document.querySelector(`.section-connect`)));
+  // }
 
 
   _getLinkToAppsClickHandler(evt) {
@@ -103,9 +103,9 @@ class PageHeaderNav extends PureComponent {
                 <li className="sub-menu__item"><a title="Стань партнером" onClick={openContactUsForm}>Стань&nbsp;партнером</a></li>
               </ul>
             </li>
-            <li className="main-menu__item">
+            {/* <li className="main-menu__item">
               <a title="О нас" onClick={this._abouUsClickHandler}>О&nbsp;нас</a>
-            </li>
+            </li> */}
           </ul>
         </nav>
 
