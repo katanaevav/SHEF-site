@@ -1,6 +1,3 @@
-import {DishesTypes} from "../mocks/dishes-types.js";
-import {Dishes} from "../mocks/dishes.js";
-
 import {MenuCategory} from "../const.js";
 import {deleteDishFromCart, changeDishCountInCart, addDishToCart, getDataFromPoint} from "./selectors.js"
 
@@ -10,9 +7,6 @@ const initialState = {
   cartPrice: 0,
   cartType: MenuCategory.EMPTY,
   cartDishes: [],
-
-  // dishesTypesList: DishesTypes,
-  // dishesList: Dishes,
 
   dishesTypesList: [],
   dishesList: [],
@@ -31,8 +25,6 @@ const ActionType = {
   ADD_CATEGORIES: `ADD_CATEGORIES`,
 
   LOAD_POINT: `LOAD_POINT`,
-  LOAD_CATEGORIES: `LOAD_CATEGORIES`,
-  LOAD_DISH: `LOAD_DISH`,
 };
 
 
@@ -80,33 +72,21 @@ const ActionCreator = {
   },
 
 
-
   loadPoint: (point) => {
     return {
       type: ActionType.LOAD_POINT,
       payload: point,
     };
   },
-  loadCategories: (categories) => {
-    return {
-      type: ActionType.LOAD_CATEGORIES,
-      payload: categories,
-    };
-  },
-  loadDish: (dish) => {
-    return {
-      type: ActionType.LOAD_DISH,
-      payload: dish,
-    };
-  },
+
 };
 
 
 const Operation = {
   loadPoint: (pointId, action) => (dispatch, getState, api) => {
-    return api.get(`/point/${pointId}`)
+    // return api.get(`/point/${pointId}`)
+    return api.get(`/stuff_points`)
       .then((response) => {
-        // console.log(response.data);
         const convertedData = getDataFromPoint(response.data);
         dispatch(ActionCreator.addDishes(convertedData.dishes));
         dispatch(ActionCreator.addCategories(convertedData.categorises));
@@ -115,20 +95,6 @@ const Operation = {
       });
   },
 
-  loadCategories: () => (dispatch, getState, api) => {
-    return api.get(`/categories`)
-      .then((response) => {
-        dispatch(ActionCreator.loadCategories(response.data));
-        console.log(response.data);
-      });
-  },
-
-  loadDish: (dishId) => (dispatch, getState, api) => {
-    return api.get(`/dish/${dishId}`)
-      .then((response) => {
-        dispatch(ActionCreator.loadDish(response.data));
-      });
-  },
 };
 
 

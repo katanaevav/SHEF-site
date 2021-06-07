@@ -51,31 +51,35 @@ const addDishToCart = (cartList, dish) => {
 }
 
 
-const getDataFromPoint = (point) => {
+const getDataFromPoint = (points) => {
   const categorises = [];
   const dishes = [];
 
-  point.categories.forEach((category) => {
-    categorises.push({
-      dishTypeId: category.id,
-      dishTypeName: category.name,
+  points.forEach((point) => {
+
+    point.categories.forEach((category) => {
+      categorises.push({
+        dishTypeId: category.id,
+        dishTypeName: category.name,
+      });
+
+      category.dishes.forEach((dish) => {
+        dishes.push({
+          dishId: dish.id,
+          dishTypeId: category.id,
+          dishCategory: point.id,
+          dishName: dish.name,
+          dishDescription: dish.description,
+          dishPrice: dish.price,
+          dishCount: 1,
+          dishWeight: `${dish.weight} гр.`,
+          dishTag: ``,
+          dishImage: dish.picture,
+          dishImage2x: dish.picture,
+        })
+      });
     });
 
-    category.dishes.forEach((dish) => {
-      dishes.push({
-        dishId: dish.id,
-        dishTypeId: category.id,
-        dishCategory: point.id,
-        dishName: dish.name,
-        dishDescription: `Считается основным (национальным)`,
-        dishPrice: dish.price,
-        dishCount: 1,
-        dishWeight: `${dish.weight} гр.`,
-        dishTag: ``,
-        dishImage: dish.picture,
-        dishImage2x: dish.picture,
-      })
-    });
   });
 
   return ({

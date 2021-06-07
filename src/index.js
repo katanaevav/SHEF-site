@@ -33,28 +33,12 @@ function renderApp() {
 };
 
 
-// store.dispatch(DataOperation.loadCategories());
 store.dispatch(DataOperation.loadPoint(MenuCategory.CATERING, () => {
-  store.dispatch(DataOperation.loadPoint(MenuCategory.ONLINE_COOKING, () => {
-    store.dispatch(DataOperation.loadPoint(MenuCategory.NO_GLUTEN, () => {
-
-        ReactDOM.render(
-          <Provider store={store}>
-            <App />
-          </Provider>,
-          document.querySelector(`.site-container`)
-        );
-
-      }))
-    }))
+      ReactDOM.render(
+        <Provider store={store}>
+          <App />
+        </Provider>,
+        document.querySelector(`.site-container`)
+      );
     })
   );
-
-
-
-// ReactDOM.render(
-//     <Provider store={store}>
-//       <App />
-//     </Provider>,
-//   document.querySelector(`.site-container`)
-// );
