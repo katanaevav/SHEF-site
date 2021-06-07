@@ -33,7 +33,7 @@ function renderApp() {
 };
 
 
-store.dispatch(DataOperation.loadPoint(MenuCategory.CATERING, () => {
+store.dispatch(DataOperation.loadPoint(() => {
       ReactDOM.render(
         <Provider store={store}>
           <App />

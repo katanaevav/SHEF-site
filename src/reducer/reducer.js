@@ -83,8 +83,7 @@ const ActionCreator = {
 
 
 const Operation = {
-  loadPoint: (pointId, action) => (dispatch, getState, api) => {
-    // return api.get(`/point/${pointId}`)
+  loadPoint: (action) => (dispatch, getState, api) => {
     return api.get(`/stuff_points`)
       .then((response) => {
         const convertedData = getDataFromPoint(response.data);
