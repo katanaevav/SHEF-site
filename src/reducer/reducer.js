@@ -8,6 +8,9 @@ const initialState = {
   cartType: MenuCategory.EMPTY,
   cartDishes: [],
 
+  orderId: 0,
+  orderPayStatus: false,
+
   dishesTypesList: [],
   dishesList: [],
 
@@ -25,6 +28,8 @@ const ActionType = {
   ADD_CATEGORIES: `ADD_CATEGORIES`,
 
   LOAD_POINT: `LOAD_POINT`,
+  SET_ORDER_ID: `SET_ORDER_ID`,
+  SET_ORDER_PAY_STATUS: `SET_ORDER_PAY_STATUS`,
 };
 
 
@@ -79,6 +84,20 @@ const ActionCreator = {
     };
   },
 
+  setOrderId: (orderId) => {
+    return {
+      type: ActionType.SET_ORDER_ID,
+      payload: orderId,
+    };
+  },
+
+  setOrderPayStatus: (status) => {
+    return {
+      type: ActionType.SET_ORDER_PAY_STATUS,
+      payload: status,
+    };
+  },
+
 };
 
 
@@ -94,6 +113,48 @@ const Operation = {
       });
   },
 
+  setOrderPayStatus: (payStatus, action) => (dispatch, getState, api) => {
+    // const currentDate = new Date();
+    // console.log(`start saving order`);
+    return api.patch(`/orders/`, {
+      "pay_status": payStatus,
+    })
+
+    .then(() => {
+      dispatch(ActionCreator.setOrderPayStatus(payStatus));
+      action();
+    })
+
+    .catch((err) => {
+      throw err;
+    })
+  },
+
+  saveOrder: (order, action) => (dispatch, getState, api) => {
+    return api.post(`/orders/`, {
+      "created_at": order.date,
+      "total_sum": order.summ,
+      "pay_status": false,
+      "user_phone": order.user_phone,
+      "items": order.items,
+      "pick_at": null,
+      "comment": order.comment,
+      "flat": "0",
+      "client_name": order.client_name,
+      "address_string": order.address_string,
+      "address": 1,
+      "point": order.point,
+    })
+
+    .then((response) => {
+      dispatch(ActionCreator.setOrderId(response.data.id));
+      action(response.data);
+    })
+
+    .catch((err) => {
+      throw err;
+    })
+  },
 };
 
 
@@ -138,6 +199,14 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_POINT:
       return Object.assign({}, state, {
         pointLoaded: action.payload,
+      });
+    case ActionType.SET_ORDER_ID:
+      return Object.assign({}, state, {
+        orderId: action.payload,
+      });
+    case ActionType.SET_ORDER_PAY_STATUS:
+      return Object.assign({}, state, {
+        orderPayStatus: action.payload,
       });
   }
 
