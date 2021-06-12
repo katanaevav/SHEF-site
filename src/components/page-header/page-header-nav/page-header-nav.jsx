@@ -34,7 +34,7 @@ class PageHeaderNav extends PureComponent {
 
   _getLinkToAppsClickHandler(evt) {
     evt.preventDefault();
-    history.push(AppRoute.ROOT);
+    history.push(AppRoute.LINK_TO_APPS);
   }
 
 

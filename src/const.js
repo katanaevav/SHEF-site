@@ -50,6 +50,7 @@ export const PoliticsTexts = {
 
 export const AppRoute = {
   ROOT: `/`,
+  LINK_TO_APPS: `/`,
   ONLINE_COOKING: `/online-cooking`,
   CATERING: `/catering`,
   NO_GLUTEN: `/no-gluten`,

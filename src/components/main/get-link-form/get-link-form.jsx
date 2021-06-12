@@ -75,6 +75,7 @@ class GetLinkForm extends PureComponent {
           method="POST"
           action="https://echo.htmlacademy.ru"
           onSubmit={this._submitHandler}
+          id="get-apps"
         >
           <p
             className={isFooter ? `section-connect__form-title` : `get-link-form__title`}

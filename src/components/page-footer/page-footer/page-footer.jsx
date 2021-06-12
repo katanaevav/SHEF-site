@@ -5,13 +5,20 @@ import {Link} from "react-router-dom";
 import {AppRoute, Links} from "../../../const.js";
 
 import GetLinkForm from "../../main/get-link-form/get-link-form.jsx";
+import history from "../../../history.js";
 
 
 class PageFooter extends PureComponent {
   constructor(props) {
     super(props);
+
+    this._getLinkToAppsClickHandler = this._getLinkToAppsClickHandler.bind(this);
   }
 
+  _getLinkToAppsClickHandler(evt) {
+    evt.preventDefault();
+    history.push(AppRoute.LINK_TO_APPS);
+  }
 
   render() {
 
@@ -47,6 +54,20 @@ class PageFooter extends PureComponent {
                 <section className="page-footer__section section-links">
                   <h2 className="section-connect__header">Заказ еды</h2>
                   <ul className="section-links__links">
+                    <li className="section-links__link">
+                      <a
+                        onClick={this._getLinkToAppsClickHandler}
+                      >
+                        Порционные блюда
+                      </a>
+                    </li>
+                    <li className="section-links__link">
+                      <a
+                        onClick={this._getLinkToAppsClickHandler}
+                      >
+                        Бургеры от Local Burger
+                      </a>
+                    </li>
                     <li className="section-links__link">
                       <Link
                         href="catering.html"
