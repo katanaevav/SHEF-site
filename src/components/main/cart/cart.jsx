@@ -105,6 +105,9 @@ class Cart extends PureComponent {
     console.log(respData);
      this.setState({ orderId: respData.id });
      this.orderIdInput.current.value = respData.id;
+
+     pay(this);
+
   }
 
   _formSubmitHandler(evt) {
@@ -138,6 +141,15 @@ class Cart extends PureComponent {
     }
   }
 
+  componentDidMount () {
+    const script = document.createElement("script");
+
+    script.src = "https://securepay.tinkoff.ru/html/payForm/js/tinkoff_v2.js";
+    script.async = true;
+
+    document.body.appendChild(script);
+}
+
   render() {
     const {cartTypeName, cartDishesList, totalCost} = this.props;
 
@@ -170,14 +182,22 @@ class Cart extends PureComponent {
                   <h2 className="order-details__header">{`Детали заказа ${this.state.orderId > 0 ? this.state.orderId : ``}` }</h2>
                 </div>
 
-                <form className="order-details__form" method="POST" action="https://echo.htmlacademy.ru" onSubmit={this._formSubmitHandler}>
+                <form className="order-details__form" name="TinkoffPayForm" onSubmit={this._formSubmitHandler}>
+
+                  <input type="hidden" name="terminalkey" value="1622565527503DEMO" />
+                  <input type="hidden" name="frame" value="true" />
+                  <input type="hidden" name="language" value="ru" />
+                  <input type="hidden" name="reccurentPayment" value="false" />
+                  <input type="hidden" name="customerKey" value="" />
+                  <input type="hidden" placeholder="E-mail" name="email" value="123@123.ru" />
+
                   <input className="order-details__form-input order-details__form-input--name" type="text" ref={this.orderNameInput} placeholder="Ваше имя" name="name" required />
                   <input className="order-details__form-input order-details__form-input--phone" type="phone" ref={this.orderPhoneInput} placeholder="Ваш телефон" name="phone" required />
                   <input className="order-details__form-input order-details__form-input-adress" type="text" ref={this.orderAdressInput} placeholder="Улица, дом, квартира" name="adress" required />
-                  <input className="order-details__totalCost" type="hidden" name="totalCost" value={totalCost} />
-                  <input className="order-details__orderId" type="hidden" name="orderId" ref={this.orderIdInput} value="0" />
+                  <input className="order-details__totalCost" type="hidden" name="amount" value={`${totalCost}.00`} />
+                  <input className="order-details__orderId" type="hidden" name="order" ref={this.orderIdInput} value="0" />
 
-                  <textarea className="order-details__form-input order-details__form-input-comment" name="comment" ref={this.orderCommentInput} placeholder="Ваш комментарий"></textarea>
+                  <textarea className="order-details__form-input order-details__form-input-comment" name="description" ref={this.orderCommentInput} placeholder="Ваш комментарий"></textarea>
 
                   <div className="order-details__form-input-wrapper order-details__form-input-wrapper--checkbox">
                     <input
