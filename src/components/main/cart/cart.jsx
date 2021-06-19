@@ -37,7 +37,7 @@ class Cart extends PureComponent {
     };
 
     this.form = {
-      terminalkey: '1622565527503DEMO',
+      terminalkey: 'TinkoffBankTest',
       frame: 'true',
       language: 'ru',
       amount: '22',
@@ -57,6 +57,7 @@ class Cart extends PureComponent {
     this._custonValidityCheckboxHandler = this._custonValidityCheckboxHandler.bind(this);
     this._getOrderIdResponse = this._getOrderIdResponse.bind(this);
     this._closeInfoWindowFormHandle = this._closeInfoWindowFormHandle.bind(this);
+    this._closePayFormHandle = this._closePayFormHandle.bind(this);
   }
 
   _renderInfoWindow() {
@@ -144,16 +145,43 @@ class Cart extends PureComponent {
   }
 
 
+
+
+
+
+
+  _closePayFormHandle(respData) {
+    console.log(`3. tinkoff response data`);
+    console.log(respData);
+    this.setState({ showInfoWindow: true });
+  }
+
+
   _getOrderIdResponse(respData) {
+    console.log(`1. backend response data`);
     console.log(respData);
     this.setState({ orderId: respData.id });
 
-
-
-    this.setState({ showInfoWindow: true });
     //  pay(this);
 
+    const orderIdS = respData.id + 80000;
+
+    this.form.amount = this.props.totalCost.toString();
+    this.form.order = orderIdS.toString();
+    this.form.description = this.orderCommentInput.current.value;
+    this.form.name = this.orderNameInput.current.value;
+    this.form.phone = this.orderPhoneInput.current.value;
+
+    console.log(`2. form data`);
+    console.log(this.form);
+
+    this.setState({ showPayForm: true });
   }
+
+
+
+
+
 
   _formSubmitHandler(evt) {
     evt.preventDefault();
@@ -189,14 +217,14 @@ class Cart extends PureComponent {
     }
   }
 
-  componentDidMount () {
-    const script = document.createElement("script");
+//   componentDidMount () {
+//     const script = document.createElement("script");
 
-    script.src = "https://securepay.tinkoff.ru/html/payForm/js/tinkoff_v2.js";
-    script.async = true;
+//     script.src = "https://securepay.tinkoff.ru/html/payForm/js/tinkoff_v2.js";
+//     script.async = true;
 
-    document.body.appendChild(script);
-}
+//     document.body.appendChild(script);
+// }
 
   render() {
     const {cartTypeName, cartDishesList, totalCost} = this.props;
@@ -276,7 +304,7 @@ class Cart extends PureComponent {
 
                   <Tinkoff.Pay
                     form={this.form}
-                    onClose={(inp) => console.log(inp)}
+                    onClose={this._closePayFormHandle}
                   /> :
                   ``
                 }
