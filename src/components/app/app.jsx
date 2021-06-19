@@ -175,6 +175,7 @@ class App extends PureComponent {
                 cartTypeName = {cartTypeName}
                 cartDishesList = {cartDishes}
 
+                onClearCart = {onClearCart}
                 onDeleteDishFromCart = {onDeleteDishFromCart}
                 onChangeDishCountInCart = {onChangeDishCountInCart}
                 openPolicyWindow = {this._openPolicyWindowHandle}

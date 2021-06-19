@@ -41,6 +41,7 @@
     "react-modal": "3.12.1",
     "react-redux": "7.2.2",
     "react-router-dom": "5.2.0",
+    "react-tinkoff-pay": "^2.8.7",
     "redux": "4.0.5",
     "redux-thunk": "2.3.0"
   }

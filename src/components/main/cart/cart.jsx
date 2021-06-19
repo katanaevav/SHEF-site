@@ -10,7 +10,10 @@ import CartDish from "../cart-dish/cart-dish.jsx";
 import {MenuCategory} from "../../../const.js";
 
 import {Operation as DataOperation} from "../../../reducer/reducer.js";
+import InfoWindow from "../info-window/info-window.jsx";
 import {ActionCreator} from "../../../reducer/reducer.js";
+
+import Tinkoff from 'react-tinkoff-pay';
 
 import {popup} from "../../ext/popup.js";
 
@@ -19,6 +22,7 @@ class Cart extends PureComponent {
   constructor(props) {
     super(props);
 
+    this.orderForm = React.createRef();
     this.checkPolicy = React.createRef();
     this.orderIdInput = React.createRef();
     this.orderNameInput = React.createRef();
@@ -28,7 +32,21 @@ class Cart extends PureComponent {
 
     this.state = {
       orderId: 0,
+      showPayForm: false,
+      showInfoWindow: false,
     };
+
+    this.form = {
+      terminalkey: '1622565527503DEMO',
+      frame: 'true',
+      language: 'ru',
+      amount: '22',
+      order: '11',
+      description: '',
+      name: '',
+      email: '123@123.ru',
+      phone: '79055594564'
+  }
 
     this._renderShoppingList = this._renderShoppingList.bind(this);
     this._renderCheckoututton = this._renderCheckoututton.bind(this);
@@ -38,6 +56,31 @@ class Cart extends PureComponent {
     this._formSubmitHandler = this._formSubmitHandler.bind(this);
     this._custonValidityCheckboxHandler = this._custonValidityCheckboxHandler.bind(this);
     this._getOrderIdResponse = this._getOrderIdResponse.bind(this);
+    this._closeInfoWindowFormHandle = this._closeInfoWindowFormHandle.bind(this);
+  }
+
+  _renderInfoWindow() {
+    return(
+      <InfoWindow
+        openState = {this.state.showInfoWindow}
+        onCloweModalWindow = {this._closeInfoWindowFormHandle}
+        headerText = {`Номер вашего заказа: ${this.state.orderId}`}
+        bodyText = {`В ближайшее время c вами свяжутся по указанному телефону`}
+        buttonText = {`Хорошо`}
+      />
+    );
+  }
+
+  _closeInfoWindowFormHandle() {
+    this.setState({ showInfoWindow: false });
+    this.props.onClearCart();
+    this.orderNameInput.current.value = ``;
+    this.orderPhoneInput.current.value = ``;
+    this.orderAdressInput.current.value = ``;
+    this.orderCommentInput.current.value = ``;
+    this.checkPolicy.current.checked = false;
+
+    history.push(AppRoute.ROOT);
   }
 
   _goBackToCartClickHandler() {
@@ -104,9 +147,18 @@ class Cart extends PureComponent {
   _getOrderIdResponse(respData) {
     console.log(respData);
      this.setState({ orderId: respData.id });
-     this.orderIdInput.current.value = respData.id;
+    //  this.orderIdInput.current.value = respData.id;
 
-     pay(this);
+    // this.props.onClearCart();
+    // this.orderNameInput.current.value = ``;
+    // this.orderPhoneInput.current.value = ``;
+    // this.orderAdressInput.current.value = ``;
+    // this.orderCommentInput.current.value = ``;
+    // this.checkPolicy.current.checked = false;
+
+    this.setState({ showInfoWindow: true });
+    // history.push(AppRoute.ROOT);
+    //  pay(this);
 
   }
 
@@ -132,12 +184,15 @@ class Cart extends PureComponent {
     } else if (this.props.totalCost === 0) {
       popup(`Ваша корзина пуста`);
     } else {
+
       // evt.target.submit();
       // console.log(`saving order from cart `);
 
-
+      // pay(this);
 
       this.props.saveOrder(order, this._getOrderIdResponse);
+
+
     }
   }
 
@@ -185,7 +240,7 @@ class Cart extends PureComponent {
                 <form className="order-details__form" name="TinkoffPayForm" onSubmit={this._formSubmitHandler}>
 
                   <input type="hidden" name="terminalkey" value="1622565527503DEMO" />
-                  <input type="hidden" name="frame" value="true" />
+                  <input type="hidden" name="frame" value="false" />
                   <input type="hidden" name="language" value="ru" />
                   <input type="hidden" name="reccurentPayment" value="false" />
                   <input type="hidden" name="customerKey" value="" />
@@ -224,13 +279,21 @@ class Cart extends PureComponent {
                   <input className="order-details__form-button" type="submit" value="Перейти к оплате" />
                 </form>
 
+                {this.state.showPayForm ?
 
-
+                  <Tinkoff.Pay
+                    form={this.form}
+                    onClose={(inp) => console.log(inp)}
+                  /> :
+                  ``
+                }
               </section>
             </div>
 
           </div>
         </main>
+
+        {this.state.showInfoWindow ? this._renderInfoWindow() : ``}
 
       </React.Fragment>
     );
@@ -249,6 +312,7 @@ Cart.propTypes = {
   openPolicyWindow: PropTypes.func.isRequired,
 
   saveOrder: PropTypes.func,
+  onClearCart: PropTypes.func,
 }
 
 const mapStateToProps = (state) => ({

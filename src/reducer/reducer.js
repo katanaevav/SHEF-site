@@ -174,6 +174,7 @@ const reducer = (state = initialState, action) => {
         cartType: state.cartType === MenuCategory.EMPTY ? action.payload.dishCategory : state.cartType,
       });
     case ActionType.CLEAR_CART:
+      sessionStorage.setItem(`cartDishes`, JSON.stringify([]));
       return Object.assign({}, state, {
         cartDishes: [],
         cartType: MenuCategory.EMPTY,
