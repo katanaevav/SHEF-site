@@ -146,18 +146,11 @@ class Cart extends PureComponent {
 
   _getOrderIdResponse(respData) {
     console.log(respData);
-     this.setState({ orderId: respData.id });
-    //  this.orderIdInput.current.value = respData.id;
+    this.setState({ orderId: respData.id });
 
-    // this.props.onClearCart();
-    // this.orderNameInput.current.value = ``;
-    // this.orderPhoneInput.current.value = ``;
-    // this.orderAdressInput.current.value = ``;
-    // this.orderCommentInput.current.value = ``;
-    // this.checkPolicy.current.checked = false;
+
 
     this.setState({ showInfoWindow: true });
-    // history.push(AppRoute.ROOT);
     //  pay(this);
 
   }
