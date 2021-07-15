@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import PropTypes from "prop-types";
 
 import ContactUsModal from "../main/contact-us-modal/contact-us-modal.jsx";
+import GetLinkFormModal from "../main/get-link-form-modal/get-link-form-modal.jsx";
 import InfoWindow from "../main/info-window/info-window.jsx";
 import PolicyWindow from "../main/policy-window/policy-window.jsx";
 
@@ -21,7 +22,7 @@ import NoGluten from "../main/no-gluten/no-gluten.jsx";
 import Catering from "../main/catering/catering.jsx";
 import Cart from "../main/cart/cart.jsx";
 
-import {MenuCategory, AppRoute, PoliticsTexts} from "../../const.js"
+import {MenuCategory, AppRoute, PoliticsTexts, StatusWindowState} from "../../const.js"
 
 class App extends PureComponent {
   constructor(props) {
@@ -32,7 +33,11 @@ class App extends PureComponent {
       showInfoWindow: false,
       showPolicy: 0,
       showQuestionWindow: false,
+      showGetLinkFormModal: false,
     };
+
+    this._openGetLinkFormModalHandle = this._openGetLinkFormModalHandle.bind(this);
+    this._closeGetLinkFormModalHandle = this._closeGetLinkFormModalHandle.bind(this);
 
     this._openContactUsFormHandle = this._openContactUsFormHandle.bind(this);
     this._closeContactUsFormHandle = this._closeContactUsFormHandle.bind(this);
@@ -55,6 +60,20 @@ class App extends PureComponent {
       dishes.forEach((dish) => {
         this.props.onAddDishToCart(dish);
       });
+    }
+  }
+
+
+  _openGetLinkFormModalHandle(evt) {
+    evt.preventDefault();
+
+    this.setState({ showGetLinkFormModal: true });
+  }
+
+  _closeGetLinkFormModalHandle(status) {
+    this.setState({ showGetLinkFormModal: false });
+    if (status === 1) {
+      this._openInfoWindowHandle();
     }
   }
 
@@ -98,6 +117,16 @@ class App extends PureComponent {
 
   _closePolicyWindowFormHandle() {
     this.setState({ showPolicy: PoliticsTexts.HIDE });
+  }
+
+  _renderGetLinkFormModal() {
+    return(
+      <GetLinkFormModal
+        openState = {this.state.showGetLinkFormModal}
+        onCloweModalWindow = {this._closeGetLinkFormModalHandle}
+        onShowPolicy = {this._openPolicyWindowHandle}
+      />
+    );
   }
 
   _renderContactUsModal() {
@@ -147,11 +176,14 @@ class App extends PureComponent {
               <PageHeader
                 totalCost = {cartPrice}
                 openContactUsForm = {this._openContactUsFormHandle}
+                openGetLinkFormModalForm = {this._openGetLinkFormModalHandle}
               />
               <Main
+                openGetLinkFormModalForm = {this._openGetLinkFormModalHandle}
                 openContactUsForm = {this._openContactUsFormHandle}
                 openPolicyWindow = {this._openPolicyWindowHandle}
                 openInfoWindow = {this._openInfoWindowHandle}
+                showStatusWindow = {StatusWindowState.NO_STATUS}
               />
               <PageFooter
                 openPolicyWindow = {this._openPolicyWindowHandle}
@@ -163,11 +195,28 @@ class App extends PureComponent {
             </React.Fragment>
           </Route>
 
+
+
+
+          <Route exact path={AppRoute.PAY_SUCCESS}>
+            {/* {console.log(`redirect from success`)} */}
+            <Redirect to={AppRoute.ROOT} />
+          </Route>
+
+          <Route exact path={AppRoute.PAY_ERROR}>
+            {/* {console.log(`redirect from error`)} */}
+            <Redirect to={AppRoute.ROOT} />
+          </Route>
+
+
+
+
           <Route exact path={AppRoute.CART}>
             <React.Fragment>
               <PageHeader
                 totalCost = {cartPrice}
                 openContactUsForm = {this._openContactUsFormHandle}
+                openGetLinkFormModalForm = {this._openGetLinkFormModalHandle}
               />
               <Cart
                 totalCost = {cartPrice}
@@ -210,6 +259,7 @@ class App extends PureComponent {
                     <PageHeader
                       totalCost = {cartPrice}
                       openContactUsForm = {this._openContactUsFormHandle}
+                      openGetLinkFormModalForm = {this._openGetLinkFormModalHandle}
                     />
                     <Catering
                         dishesTypesList = {cateringDishesTypes}
@@ -247,6 +297,7 @@ class App extends PureComponent {
                     <PageHeader
                       totalCost = {cartPrice}
                       openContactUsForm = {this._openContactUsFormHandle}
+                      openGetLinkFormModalForm = {this._openGetLinkFormModalHandle}
                     />
                     <OnlineCooking
                       dishesTypesList = {onlineCookingDishesTypes}
@@ -284,6 +335,7 @@ class App extends PureComponent {
                     <PageHeader
                       totalCost = {cartPrice}
                       openContactUsForm = {this._openContactUsFormHandle}
+                      openGetLinkFormModalForm = {this._openGetLinkFormModalHandle}
                     />
                     <NoGluten
                       dishesTypesList = {noGlutenDishesTypes}
@@ -307,6 +359,7 @@ class App extends PureComponent {
         </Switch>
 
         {this.state.showContactUsForm ? this._renderContactUsModal() : ``}
+        {this.state.showGetLinkFormModal ? this._renderGetLinkFormModal() : ``}
         {this.state.showPolicy ? this._renderPolicyWindow() : ``}
         {this.state.showInfoWindow ? this._renderInfoWindow() : ``}
 

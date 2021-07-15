@@ -13,7 +13,11 @@ class Main extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._downloadApplicationsClickHandler = this._downloadApplicationsClickHandler.bind(this);
+    // this.state = {
+    //   showInfoWindow: false,
+    // };
+
+    // this._downloadApplicationsClickHandler = this._downloadApplicationsClickHandler.bind(this);
   }
 
   componentDidMount() {
@@ -30,13 +34,13 @@ class Main extends PureComponent {
   }
 
 
-  _downloadApplicationsClickHandler(evt) {
-    evt.preventDefault();
+  // _downloadApplicationsClickHandler(evt) {
+  //   evt.preventDefault();
 
-    getComputedStyle(document.querySelector(`.get-link-form`)).display === `none` ?
-      window.scrollTo(this._getCoords(document.querySelector(`.head__mobile-apps`))) :
-      document.querySelector(`.get-link-form__input-email`).focus();
-  }
+  //   getComputedStyle(document.querySelector(`.get-link-form`)).display === `none` ?
+  //     window.scrollTo(this._getCoords(document.querySelector(`.head__mobile-apps`))) :
+  //     document.querySelector(`.get-link-form__input-email`).focus();
+  // }
 
 
   render() {
@@ -91,7 +95,8 @@ class Main extends PureComponent {
                     Скачайте мобильное приложение
                     и заказывайте вкусную еду
                   </p>
-                  <a className="links__button" onClick={this._downloadApplicationsClickHandler}>Скачать приложение</a>
+                  {/* <a className="links__button" onClick={this._downloadApplicationsClickHandler}>Скачать приложение</a> */}
+                  <a className="links__button" onClick={this.props.openGetLinkFormModalForm}>Скачать приложение</a>
                 </div>
               </li>
 
@@ -168,7 +173,8 @@ class Main extends PureComponent {
                     бургеры у нас, ведь они<br />
                     наши друзья.<br /><br />
                   </p>
-                  <a className="links__button" onClick={this._downloadApplicationsClickHandler}>Скачать приложение</a>
+                  {/* <a className="links__button" onClick={this._downloadApplicationsClickHandler}>Скачать приложение</a> */}
+                  <a className="links__button" onClick={this.props.openGetLinkFormModalForm}>Скачать приложение</a>
                 </div>
               </li>
 
@@ -314,6 +320,8 @@ class Main extends PureComponent {
         </div>
       </main>
 
+      {/* {this.state.showInfoWindow ? this._renderInfoWindow() : ``} */}
+
       </React.Fragment>
     );
   }
@@ -321,9 +329,11 @@ class Main extends PureComponent {
 
 
 Main.propTypes = {
+  openGetLinkFormModalForm: PropTypes.func.isRequired,
   openContactUsForm: PropTypes.func.isRequired,
   openPolicyWindow: PropTypes.func.isRequired,
   openInfoWindow: PropTypes.func.isRequired,
+  showStatusWindow: PropTypes.number.isRequired,
 }
 
 

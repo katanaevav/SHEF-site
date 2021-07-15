@@ -22,7 +22,7 @@ class PageHeader extends PureComponent {
 
 
   render() {
-    const {totalCost, openContactUsForm} = this.props;
+    const {totalCost, openContactUsForm, openGetLinkFormModalForm} = this.props;
 
     return (
       <React.Fragment>
@@ -42,6 +42,7 @@ class PageHeader extends PureComponent {
 
             <PageHeaderNav
               openContactUsForm = {openContactUsForm}
+              openGetLinkFormModalForm = {openGetLinkFormModalForm}
             />
 
             <a className="page-header__phone" href={Links.PHONE_LINC}>{Links.PHONE_SHOW}</a>
@@ -70,6 +71,7 @@ class PageHeader extends PureComponent {
 PageHeader.propTypes = {
   totalCost: PropTypes.number,
   openContactUsForm: PropTypes.func.isRequired,
+  openGetLinkFormModalForm: PropTypes.func.isRequired,
 }
 
 

@@ -12,7 +12,7 @@ class PageHeaderNav extends PureComponent {
     super(props);
 
     // this._abouUsClickHandler = this._abouUsClickHandler.bind(this);
-    this._getLinkToAppsClickHandler = this._getLinkToAppsClickHandler.bind(this);
+    // this._getLinkToAppsClickHandler = this._getLinkToAppsClickHandler.bind(this);
   }
 
   _getCoords(el) {
@@ -32,14 +32,14 @@ class PageHeaderNav extends PureComponent {
   // }
 
 
-  _getLinkToAppsClickHandler(evt) {
-    evt.preventDefault();
-    history.push(AppRoute.LINK_TO_APPS);
-  }
+  // _getLinkToAppsClickHandler(evt) {
+  //   evt.preventDefault();
+  //   history.push(AppRoute.LINK_TO_APPS);
+  // }
 
 
   render() {
-    const {openContactUsForm} = this.props;
+    const {openContactUsForm, openGetLinkFormModalForm} = this.props;
 
     return (
       <React.Fragment>
@@ -53,7 +53,8 @@ class PageHeaderNav extends PureComponent {
                   <a
                     href="#"
                     title="Порционные блюда"
-                    onClick={this._getLinkToAppsClickHandler}
+                    // onClick={this._getLinkToAppsClickHandler}
+                    onClick={openGetLinkFormModalForm}
                   >
                       Порционные блюда
                   </a>
@@ -62,7 +63,8 @@ class PageHeaderNav extends PureComponent {
                   <a
                     href="#"
                     title="Бургеры от Local Burger"
-                    onClick={this._getLinkToAppsClickHandler}
+                    // onClick={this._getLinkToAppsClickHandler}
+                    onClick={openGetLinkFormModalForm}
                   >
                       Бургеры от Local Burger
                   </a>
@@ -117,6 +119,7 @@ class PageHeaderNav extends PureComponent {
 
 PageHeaderNav.propTypes = {
   openContactUsForm: PropTypes.func.isRequired,
+  openGetLinkFormModalForm: PropTypes.func.isRequired,
 }
 
 export default PageHeaderNav;

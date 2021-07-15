@@ -88,4 +88,5 @@ const getDataFromPoint = (points) => {
   })
 }
 
+
 export {getMenuCategoryName, getCartPrice, deleteDishFromCart, changeDishCountInCart, addDishToCart, getDataFromPoint};

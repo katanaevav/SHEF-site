@@ -1,7 +1,11 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 
+import {Operation as DataOperation} from "../../../reducer/reducer.js";
+import {SavingStatus, Links} from "../../../const.js";
 import InfoWindow from "../info-window/info-window.jsx";
+import {popup} from "../../ext/popup.js";
 
 
 class GetLinkForm extends PureComponent {
@@ -12,6 +16,9 @@ class GetLinkForm extends PureComponent {
       showInfoWindow: false,
     };
 
+
+    this.form = React.createRef();
+    this.email = React.createRef();
     this.checkPolicy = React.createRef();
 
     this._submitHandler = this._submitHandler.bind(this);
@@ -27,9 +34,20 @@ class GetLinkForm extends PureComponent {
   _submitHandler(evt) {
     evt.preventDefault();
 
-    this._openInfoWindowHandle();
+    // Links.LINK_EMAIL_REQUESTL;
 
-    evt.target.reset();
+    const formData = new FormData(this.form.current);
+    formData.append("email", this.email.current.value);
+
+    this.props.makeRequest(formData, Links.LINK_EMAIL_REQUEST, (status) => {
+      if (status === SavingStatus.SUCCESS) {
+        this._openInfoWindowHandle();
+        evt.target.reset();
+      } else {
+        popup(`Не удалось отпарвить сообщение. Попробуйте позднее.`);
+        evt.target.reset();
+      }
+    });
   }
 
   _custonValidityCheckboxHandler(evt) {
@@ -76,6 +94,7 @@ class GetLinkForm extends PureComponent {
           action="https://echo.htmlacademy.ru"
           onSubmit={this._submitHandler}
           id="get-apps"
+          ref={this.form}
         >
           <p
             className={isFooter ? `section-connect__form-title` : `get-link-form__title`}
@@ -89,6 +108,7 @@ class GetLinkForm extends PureComponent {
               placeholder="Email"
               name="e-mail"
               required
+              ref={this.email}
             />
             <input
               className={isFooter ? `section-connect__form-button` : `get-link-form__button`}
@@ -128,6 +148,22 @@ class GetLinkForm extends PureComponent {
 GetLinkForm.propTypes = {
   isFooter: PropTypes.bool.isRequired,
   openPolicyWindow: PropTypes.func.isRequired,
+
+  makeRequest: PropTypes.func,
 }
 
-export default GetLinkForm;
+
+const mapStateToProps = (state) => ({
+
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  makeRequest(formData, link, action) {
+    dispatch(DataOperation.makeRequest(formData, link, action));
+  },
+});
+
+
+// export default GetLinkForm;
+export {GetLinkForm};
+export default connect(mapStateToProps, mapDispatchToProps)(GetLinkForm);

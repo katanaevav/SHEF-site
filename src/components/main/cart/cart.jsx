@@ -7,7 +7,7 @@ import {AppRoute} from "../../../const.js";
 
 import CartDish from "../cart-dish/cart-dish.jsx";
 
-import {MenuCategory} from "../../../const.js";
+import {MenuCategory, SavingStatus} from "../../../const.js";
 
 import {Operation as DataOperation} from "../../../reducer/reducer.js";
 import InfoWindow from "../info-window/info-window.jsx";
@@ -38,6 +38,7 @@ class Cart extends PureComponent {
 
     this.form = {
       terminalkey: 'TinkoffBankTest',
+      // terminalkey: '1622565527503DEMO',
       frame: 'true',
       language: 'ru',
       amount: '22',
@@ -157,25 +158,30 @@ class Cart extends PureComponent {
   }
 
 
-  _getOrderIdResponse(respData) {
-    console.log(`1. backend response data`);
-    console.log(respData);
-    this.setState({ orderId: respData.id });
+  _getOrderIdResponse(respData, status) {
 
-    //  pay(this);
+    if (status === SavingStatus.SUCCESS) {
+      console.log(`1. backend response data`);
+      console.log(respData);
+      this.setState({ orderId: respData.id });
 
-    const orderIdS = respData.id + 80000;
+      //  pay(this);
 
-    this.form.amount = this.props.totalCost.toString();
-    this.form.order = orderIdS.toString();
-    this.form.description = this.orderCommentInput.current.value;
-    this.form.name = this.orderNameInput.current.value;
-    this.form.phone = this.orderPhoneInput.current.value;
+      const orderIdS = respData.id + 80000;
 
-    console.log(`2. form data`);
-    console.log(this.form);
+      this.form.amount = this.props.totalCost.toString();
+      this.form.order = orderIdS.toString();
+      this.form.description = this.orderCommentInput.current.value;
+      this.form.name = this.orderNameInput.current.value;
+      this.form.phone = this.orderPhoneInput.current.value;
 
-    this.setState({ showPayForm: true });
+      console.log(`2. form data`);
+      console.log(this.form);
+
+      this.setState({ showPayForm: true });
+    } else {
+      popup(`Не удалось сохранить заказ. Попробуйте позднее.`);
+    }
   }
 
 

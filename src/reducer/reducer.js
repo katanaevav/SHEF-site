@@ -1,4 +1,4 @@
-import {MenuCategory} from "../const.js";
+import {SavingStatus, MenuCategory, Links} from "../const.js";
 import {deleteDishFromCart, changeDishCountInCart, addDishToCart, getDataFromPoint} from "./selectors.js"
 
 
@@ -16,6 +16,8 @@ const initialState = {
 
   pointLoaded: {},
   dishesTypesListLoaded: [],
+
+  linkRequestStatus: ``,
 };
 
 const ActionType = {
@@ -102,8 +104,23 @@ const ActionCreator = {
 
 
 const Operation = {
+  makeRequest: (formData, link, action) => (dispatch, getState, api) => {
+    return api.post(link, formData)
+      .then((response) => {
+        if (response.status === 201) {
+          action(SavingStatus.SUCCESS);
+        } else {
+          action(SavingStatus.FAIL);
+        }
+      })
+      .catch((err) => {
+        action(SavingStatus.FAIL);
+        // throw err;
+      });
+  },
+
   loadPoint: (action) => (dispatch, getState, api) => {
-    return api.get(`/stuff_points`)
+    return api.get(Links.STUFF_POINTS)
       .then((response) => {
         const convertedData = getDataFromPoint(response.data);
         dispatch(ActionCreator.addDishes(convertedData.dishes));
@@ -131,7 +148,7 @@ const Operation = {
   },
 
   saveOrder: (order, action) => (dispatch, getState, api) => {
-    return api.post(`/orders/`, {
+    return api.post(Links.ORDERS, {
       "created_at": order.date,
       "total_sum": order.summ,
       "pay_status": false,
@@ -148,11 +165,12 @@ const Operation = {
 
     .then((response) => {
       dispatch(ActionCreator.setOrderId(response.data.id));
-      action(response.data);
+      action(response.data, SavingStatus.SUCCESS);
     })
 
     .catch((err) => {
-      throw err;
+      action(err, SavingStatus.FAIL);
+      // throw err;
     })
   },
 };

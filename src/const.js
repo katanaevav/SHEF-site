@@ -8,6 +8,18 @@ export const Links = {
   EMAIL_LINK: `mailto:office@jscorp.ru`,
   LOCAL_BURDER_APP_LINK: `https://www.localburgerco.com/app`,
   JSCORP_LINK: `https://jscorp.ru/startups/`,
+
+  STUFF_POINTS: `/stuff_points/`,
+  ORDERS: `/orders/`,
+
+  LINK_EMAIL_REQUEST: `/link_request/`,
+  LINK_CONSULTATION_REQUEST: `/consultation_request/`,
+  LINK_CONTACTUS_REQUEST: `/contact_us/`,
+};
+
+export const SavingStatus = {
+  SUCCESS: `SUCCESS`,
+  FAIL: `FAIL`,
 };
 
 export const MenuCategory = {
@@ -48,6 +60,12 @@ export const PoliticsTexts = {
   OFER_POLICY: 4,
 }
 
+export const StatusWindowState = {
+  NO_STATUS: 0,
+  SUCCESS: 1,
+  ERROR: 2,
+}
+
 export const AppRoute = {
   ROOT: `/`,
   LINK_TO_APPS: `/`,
@@ -55,4 +73,6 @@ export const AppRoute = {
   CATERING: `/catering`,
   NO_GLUTEN: `/no-gluten`,
   CART: `/cart`,
+  PAY_SUCCESS: `/sp`,
+  PAY_ERROR: `/ep`,
 };
