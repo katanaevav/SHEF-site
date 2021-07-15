@@ -43,7 +43,7 @@ class GetLinkFormModal extends PureComponent {
     evt.preventDefault();
 
     const formData = new FormData(this.form.current);
-    formData.append("contact", this.inputContact.current.value);
+    formData.append("email", this.inputContact.current.value);
 
     this.props.makeRequest(formData, Links.LINK_EMAIL_REQUEST, (status) => {
       if (status === SavingStatus.SUCCESS) {

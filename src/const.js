@@ -12,9 +12,9 @@ export const Links = {
   STUFF_POINTS: `/stuff_points/`,
   ORDERS: `/orders/`,
 
-  LINK_EMAIL_REQUEST: `/link_request/`,
-  LINK_CONSULTATION_REQUEST: `/consultation_request/`,
-  LINK_CONTACTUS_REQUEST: `/contact_us/`,
+  LINK_EMAIL_REQUEST: `/web/link_request/`,
+  LINK_CONSULTATION_REQUEST: `/web/consultation_request/`,
+  LINK_CONTACTUS_REQUEST: `/web/contact_us/`,
 };
 
 export const SavingStatus = {
