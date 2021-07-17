@@ -37,9 +37,9 @@ class Cart extends PureComponent {
     };
 
     this.form = {
-      terminalkey: 'TinkoffBankTest',
-      // terminalkey: '1622565527503DEMO',
-      frame: 'true',
+      // terminalkey: 'TinkoffBankTest',
+      terminalkey: '1622565527503DEMO',
+      frame: 'false',
       language: 'ru',
       amount: '22',
       order: '11',
@@ -152,8 +152,8 @@ class Cart extends PureComponent {
 
 
   _closePayFormHandle(respData) {
-    console.log(`3. tinkoff response data`);
-    console.log(respData);
+    // console.log(`3. tinkoff response data`);
+    // console.log(respData);
     this.setState({ showInfoWindow: true });
   }
 
@@ -175,8 +175,8 @@ class Cart extends PureComponent {
       this.form.name = this.orderNameInput.current.value;
       this.form.phone = this.orderPhoneInput.current.value;
 
-      console.log(`2. form data`);
-      console.log(this.form);
+      // console.log(`2. form data`);
+      // console.log(this.form);
 
       this.setState({ showPayForm: true });
     } else {
