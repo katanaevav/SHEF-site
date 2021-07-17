@@ -8,7 +8,7 @@ const initialState = {
   cartType: MenuCategory.EMPTY,
   cartDishes: [],
 
-  orderId: 0,
+  orderId: 205,
   orderPayStatus: false,
 
   dishesTypesList: [],
@@ -130,16 +130,16 @@ const Operation = {
       });
   },
 
-  setOrderPayStatus: (payStatus, action) => (dispatch, getState, api) => {
-    // const currentDate = new Date();
-    // console.log(`start saving order`);
-    return api.patch(`/orders/`, {
+  // setOrderPayStatus: (payStatus, action) => (dispatch, getState, api) => {
+  setOrderPayStatus: (payStatus) => (dispatch, getState, api) => {
+    // console.log(`${Links.ORDERS}${getState().orderId}/`);
+    return api.patch(`${Links.ORDER}${getState().orderId}/`, {
       "pay_status": payStatus,
     })
 
     .then(() => {
       dispatch(ActionCreator.setOrderPayStatus(payStatus));
-      action();
+      // action();
     })
 
     .catch((err) => {

@@ -13,6 +13,10 @@ class RedirectComponent extends PureComponent {
 
   componentDidMount() {
     this.props.setAppStates(true, this.props.payStatus)
+    console.log(this.props.setStatus);
+    if (this.props.setStatus) {
+      this.props.setStatus(true);
+    }
   }
 
   render() {
@@ -26,6 +30,7 @@ class RedirectComponent extends PureComponent {
 RedirectComponent.propTypes = {
   setAppStates: PropTypes.func.isRequired,
   payStatus: PropTypes.bool.isRequired,
+  setStatus: PropTypes.func,
 }
 
 export default RedirectComponent;

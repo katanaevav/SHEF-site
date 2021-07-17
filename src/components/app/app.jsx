@@ -11,6 +11,7 @@ import InfoWindow from "../main/info-window/info-window.jsx";
 import PolicyWindow from "../main/policy-window/policy-window.jsx";
 
 import {ActionCreator} from "../../reducer/reducer.js";
+import {Operation as DataOperation} from "../../reducer/reducer.js";
 import {getMenuCategoryName, getCartPrice} from "../../reducer/selectors.js";
 
 import history from "../../history.js";
@@ -246,6 +247,7 @@ class App extends PureComponent {
             <RedirectComponent
               setAppStates = {this._setAfterPay}
               payStatus = {true}
+              setStatus = {this.props.setOrderPayStatus}
             />
           </Route>
 
@@ -433,6 +435,8 @@ App.propTypes = {
   onChangeDishCountInCart: PropTypes.func,
   onAddDishToCart: PropTypes.func,
   onClearCart: PropTypes.func,
+
+  setOrderPayStatus: PropTypes.func,
 };
 
 
@@ -463,6 +467,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onClearCart() {
     dispatch(ActionCreator.clearCart());
+  },
+  setOrderPayStatus(payStatus) {
+    // dispatch(DataOperation.setOrderPayStatus(payStatus, action));
+    dispatch(DataOperation.setOrderPayStatus(payStatus));
   },
 });
 
