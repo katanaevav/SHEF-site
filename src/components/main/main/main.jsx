@@ -22,6 +22,9 @@ class Main extends PureComponent {
 
   componentDidMount() {
     window.scrollTo(0, 0);
+    if (this.props.isAfterPay) {
+      this.props.openPayStatusWindow();
+    }
   }
 
   _getCoords(el) {
@@ -334,6 +337,8 @@ Main.propTypes = {
   openPolicyWindow: PropTypes.func.isRequired,
   openInfoWindow: PropTypes.func.isRequired,
   showStatusWindow: PropTypes.number.isRequired,
+  openPayStatusWindow: PropTypes.func.isRequired,
+  isAfterPay: PropTypes.bool.isRequired,
 }
 
 

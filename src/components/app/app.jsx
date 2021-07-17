@@ -3,8 +3,10 @@ import {Switch, Route, Router, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 
+import RedirectComponent from "../ext/redirect-component.jsx";
 import ContactUsModal from "../main/contact-us-modal/contact-us-modal.jsx";
 import GetLinkFormModal from "../main/get-link-form-modal/get-link-form-modal.jsx";
+import PayStatusWindowModal from "../main/pay-status-window-modal/pay-status-window-modal.jsx";
 import InfoWindow from "../main/info-window/info-window.jsx";
 import PolicyWindow from "../main/policy-window/policy-window.jsx";
 
@@ -31,13 +33,20 @@ class App extends PureComponent {
     this.state = {
       showContactUsForm: false,
       showInfoWindow: false,
+      showPayStatusWindow: false,
+      isAfterPay: false,
+      payStatus: false,
       showPolicy: 0,
       showQuestionWindow: false,
       showGetLinkFormModal: false,
     };
 
+
     this._openGetLinkFormModalHandle = this._openGetLinkFormModalHandle.bind(this);
     this._closeGetLinkFormModalHandle = this._closeGetLinkFormModalHandle.bind(this);
+
+    this._openPayStatusWindowHandle = this._openPayStatusWindowHandle.bind(this);
+    this._closePayStatusWindowHandle = this._closePayStatusWindowHandle.bind(this);
 
     this._openContactUsFormHandle = this._openContactUsFormHandle.bind(this);
     this._closeContactUsFormHandle = this._closeContactUsFormHandle.bind(this);
@@ -50,6 +59,7 @@ class App extends PureComponent {
     this._openOferWindowHandler = this._openOferWindowHandler.bind(this);
     this._openCookiesWindowHandle = this._openCookiesWindowHandle.bind(this);
     this._closePolicyWindowFormHandle = this._closePolicyWindowFormHandle.bind(this);
+    this._setAfterPay = this._setAfterPay.bind(this);
   }
 
 
@@ -99,6 +109,14 @@ class App extends PureComponent {
     this.setState({ showInfoWindow: false });
   }
 
+  _openPayStatusWindowHandle() {
+    this.setState({ showPayStatusWindow: true });
+  }
+
+  _closePayStatusWindowHandle() {
+    this.setState({ showPayStatusWindow: false });
+  }
+
   _openPolicyWindowHandle() {
     this.setState({ showPolicy: PoliticsTexts.PRIVACY_POLICY });
   }
@@ -117,6 +135,29 @@ class App extends PureComponent {
 
   _closePolicyWindowFormHandle() {
     this.setState({ showPolicy: PoliticsTexts.HIDE });
+  }
+
+  _setAfterPay(afterStatus, payStatus) {
+    this.setState({
+      isAfterPay: afterStatus,
+      payStatus: payStatus,
+    });
+  }
+
+
+  _renderPayStatusWindow() {
+    return(
+      <PayStatusWindowModal
+        openState = {this.state.showPayStatusWindow}
+        onCloweModalWindow = {this._closePayStatusWindowHandle}
+        status = {this.state.payStatus}
+        headerText = {this.state.payStatus ? `Успешная оплата` : `Оплата не произведена`}
+        bodyText = {this.state.payStatus ?
+          `Вы совершили оплату. В ближайшее время с вами свяжется наш менеджер по указанному телефону` :
+          `Оплатить не удалось. Проверьте данные карты и попробуйте еще раз`}
+        buttonText = {`Хорошо`}
+      />
+    );
   }
 
   _renderGetLinkFormModal() {
@@ -184,6 +225,9 @@ class App extends PureComponent {
                 openPolicyWindow = {this._openPolicyWindowHandle}
                 openInfoWindow = {this._openInfoWindowHandle}
                 showStatusWindow = {StatusWindowState.NO_STATUS}
+                openPayStatusWindow = {this._openPayStatusWindowHandle}
+                isAfterPay = {this.state.isAfterPay}
+                // isAfterPay = {true}
               />
               <PageFooter
                 openPolicyWindow = {this._openPolicyWindowHandle}
@@ -199,13 +243,17 @@ class App extends PureComponent {
 
 
           <Route exact path={AppRoute.PAY_SUCCESS}>
-            {/* {console.log(`redirect from success`)} */}
-            <Redirect to={AppRoute.ROOT} />
+            <RedirectComponent
+              setAppStates = {this._setAfterPay}
+              payStatus = {true}
+            />
           </Route>
 
           <Route exact path={AppRoute.PAY_ERROR}>
-            {/* {console.log(`redirect from error`)} */}
-            <Redirect to={AppRoute.ROOT} />
+            <RedirectComponent
+              setAppStates = {this._setAfterPay}
+              payStatus = {false}
+            />
           </Route>
 
 
@@ -362,6 +410,7 @@ class App extends PureComponent {
         {this.state.showGetLinkFormModal ? this._renderGetLinkFormModal() : ``}
         {this.state.showPolicy ? this._renderPolicyWindow() : ``}
         {this.state.showInfoWindow ? this._renderInfoWindow() : ``}
+        {this.state.showPayStatusWindow ? this._renderPayStatusWindow() : ``}
 
       </Router>
     )
