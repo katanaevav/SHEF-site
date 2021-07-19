@@ -13,7 +13,7 @@ class RedirectComponent extends PureComponent {
 
   componentDidMount() {
     this.props.setAppStates(true, this.props.payStatus)
-    console.log(this.props.setStatus);
+    // console.log(this.props.setStatus);
     if (this.props.setStatus) {
       this.props.setStatus(true);
     }

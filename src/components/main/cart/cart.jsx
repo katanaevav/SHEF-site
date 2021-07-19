@@ -1,3 +1,6 @@
+// https://chefzdes.ru/ep?Success=false&ErrorCode=1051&Message=%D0%9D%D0%B5%D0%B4%D0%BE%D1%81%D1%82%D0%B0%D1%82%D0%BE%D1%87%D0%BD%D0%BE+%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2+%D0%BD%D0%B0+%D0%BA%D0%B0%D1%80%D1%82%D0%B5.&Details=&Amount=414000&MerchantEmail=2071224%40mail.ru&MerchantName=ChefZdes.ru&OrderId=80390&PaymentId=640678238&TranDate=&BackUrl=http%3A%2F%2Fchefzdes.ru&CompanyName=%D0%98%D0%9F+%D0%9F%D0%A3%D0%97%D0%90%D0%9D%D0%9A%D0%9E%D0%92+%D0%9F%D0%95%D0%A2%D0%A0+%D0%92%D0%9B%D0%90%D0%94%D0%98%D0%9C%D0%98%D0%A0%D0%9E%D0%92%D0%98%D0%A7&EmailReq=2071224%40mail.ru&PhonesReq=9262071224
+
+
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
@@ -161,8 +164,8 @@ class Cart extends PureComponent {
   _getOrderIdResponse(respData, status) {
 
     if (status === SavingStatus.SUCCESS) {
-      console.log(`1. backend response data`);
-      console.log(respData);
+      // console.log(`1. backend response data`);
+      // console.log(respData);
       this.setState({ orderId: respData.id });
 
       //  pay(this);
