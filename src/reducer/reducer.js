@@ -8,7 +8,7 @@ const initialState = {
   cartType: MenuCategory.EMPTY,
   cartDishes: [],
 
-  orderId: 205,
+  orderId: 0,
   orderPayStatus: false,
 
   dishesTypesList: [],
