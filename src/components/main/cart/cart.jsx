@@ -163,14 +163,16 @@ class Cart extends PureComponent {
 
   _getOrderIdResponse(respData, status) {
 
+
     if (status === SavingStatus.SUCCESS) {
       // console.log(`1. backend response data`);
       // console.log(respData);
       this.setState({ orderId: respData.id });
+      // localStorage.setItem(`orderId`, respData.id);
 
       //  pay(this);
 
-      const orderIdS = respData.id + 80000;
+      const orderIdS = respData.id;
 
       this.form.amount = this.props.totalCost.toString();
       this.form.order = orderIdS.toString();

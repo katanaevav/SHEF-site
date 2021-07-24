@@ -9,13 +9,20 @@ class RedirectComponent extends PureComponent {
   constructor(props) {
     super(props);
 
+    const params = new URLSearchParams(window.location.href);
+    this.mesage = params.get('Message');
   }
 
   componentDidMount() {
-    this.props.setAppStates(true, this.props.payStatus)
-    // console.log(this.props.setStatus);
+    const payStatusTextTemp = this.props.payStatus ?
+      `Вы совершили оплату. В ближайшее время с вами свяжется наш менеджер по указанному телефону` :
+      `Оплатить не удалось: ${this.mesage}`;
+
+    this.props.setAppStates(true, this.props.payStatus, payStatusTextTemp);
+
     if (this.props.setStatus) {
       this.props.setStatus(true);
+      this.props.onClearCart();
     }
   }
 
@@ -31,6 +38,7 @@ RedirectComponent.propTypes = {
   setAppStates: PropTypes.func.isRequired,
   payStatus: PropTypes.bool.isRequired,
   setStatus: PropTypes.func,
+  onClearCart: PropTypes.func,
 }
 
 export default RedirectComponent;

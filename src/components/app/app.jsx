@@ -35,6 +35,7 @@ class App extends PureComponent {
       showContactUsForm: false,
       showInfoWindow: false,
       showPayStatusWindow: false,
+      payStatusText: ``,
       isAfterPay: false,
       payStatus: false,
       showPolicy: 0,
@@ -65,7 +66,8 @@ class App extends PureComponent {
 
 
   componentDidMount() {
-    const dishes = JSON.parse(sessionStorage.getItem('cartDishes'));
+    const dishes = JSON.parse(localStorage.getItem('cartDishes'));
+    this.props.setOrderId(localStorage.getItem('orderId'))
 
     if (dishes != null) {
       dishes.forEach((dish) => {
@@ -138,24 +140,27 @@ class App extends PureComponent {
     this.setState({ showPolicy: PoliticsTexts.HIDE });
   }
 
-  _setAfterPay(afterStatus, payStatus) {
+  _setAfterPay(afterStatus, payStatus, payStatusText) {
     this.setState({
       isAfterPay: afterStatus,
       payStatus: payStatus,
+      payStatusText: payStatusText,
     });
   }
 
 
   _renderPayStatusWindow() {
+
     return(
       <PayStatusWindowModal
         openState = {this.state.showPayStatusWindow}
         onCloweModalWindow = {this._closePayStatusWindowHandle}
         status = {this.state.payStatus}
         headerText = {this.state.payStatus ? `Успешная оплата` : `Оплата не произведена`}
-        bodyText = {this.state.payStatus ?
-          `Вы совершили оплату. В ближайшее время с вами свяжется наш менеджер по указанному телефону` :
-          `Оплатить не удалось. Проверьте данные карты и попробуйте еще раз`}
+        // bodyText = {this.state.payStatus ?
+        //   `Вы совершили оплату. В ближайшее время с вами свяжется наш менеджер по указанному телефону` :
+        //   `Оплатить не удалось. Проверьте данные карты и попробуйте еще раз`}
+        bodyText = {this.state.payStatusText}
         buttonText = {`Хорошо`}
       />
     );
@@ -248,6 +253,7 @@ class App extends PureComponent {
               setAppStates = {this._setAfterPay}
               payStatus = {true}
               setStatus = {this.props.setOrderPayStatus}
+              onClearCart = {onClearCart}
             />
           </Route>
 
@@ -431,6 +437,7 @@ App.propTypes = {
   dishesTypesList: PropTypes.array,
   dishesList: PropTypes.array,
 
+  setOrderId: PropTypes.func,
   onDeleteDishFromCart: PropTypes.func,
   onChangeDishCountInCart: PropTypes.func,
   onAddDishToCart: PropTypes.func,
@@ -456,6 +463,9 @@ const mapStateToProps = (state) => ({
 
 
 const mapDispatchToProps = (dispatch) => ({
+  setOrderId(orderId) {
+    dispatch(ActionCreator.setOrderId(orderId));
+  },
   onDeleteDishFromCart(dishId) {
     dispatch(ActionCreator.onDeleteDishFromCart(dishId));
   },

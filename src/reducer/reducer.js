@@ -132,8 +132,8 @@ const Operation = {
 
   // setOrderPayStatus: (payStatus, action) => (dispatch, getState, api) => {
   setOrderPayStatus: (payStatus) => (dispatch, getState, api) => {
-    // console.log(`${Links.ORDERS}${getState().orderId}/`);
-    return api.patch(`${Links.ORDER}${getState().orderId}/`, {
+    // console.log(`${Links.ORDERS}${localStorage.getItem(`orderId`)}/`);
+    return api.patch(`${Links.ORDER}${localStorage.getItem(`orderId`)}/`, {
       "pay_status": payStatus,
     })
 
@@ -165,12 +165,13 @@ const Operation = {
 
     .then((response) => {
       dispatch(ActionCreator.setOrderId(response.data.id));
+      localStorage.setItem(`orderId`, response.data.id);
       action(response.data, SavingStatus.SUCCESS);
     })
 
     .catch((err) => {
       action(err, SavingStatus.FAIL);
-      // throw err;
+      throw err;
     })
   },
 };
@@ -192,7 +193,8 @@ const reducer = (state = initialState, action) => {
         cartType: state.cartType === MenuCategory.EMPTY ? action.payload.dishCategory : state.cartType,
       });
     case ActionType.CLEAR_CART:
-      sessionStorage.setItem(`cartDishes`, JSON.stringify([]));
+      localStorage.setItem(`cartDishes`, JSON.stringify([]));
+      localStorage.setItem(`orderId`, ``);
       return Object.assign({}, state, {
         cartDishes: [],
         cartType: MenuCategory.EMPTY,

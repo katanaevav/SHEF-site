@@ -1,6 +1,6 @@
 export const Links = {
-  APP_STORE_LINNK: `https://www.apple.com/ru/app-store/`,
-  GOOGLE_PLAY_LINK: `https://play.google.com/store/apps`,
+  APP_STORE_LINNK: `https://apps.apple.com/ru/app/%D1%88%D0%B5%D1%84-%D0%B7%D0%B4%D0%B5%D1%81%D1%8C/id1511313789`,
+  GOOGLE_PLAY_LINK: `https://play.google.com/store/apps/details?id=com.progtech.chefthere`,
   INSTAGRAM_LINK: `https://www.instagram.com/chefhere.ru/`,
   PHONE_SHOW: `+7 926 296 36 18`,
   PHONE_LINC:  `tel:+79262963618`,
