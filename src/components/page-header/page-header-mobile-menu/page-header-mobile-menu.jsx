@@ -87,7 +87,7 @@ class PageHeaderMobileMenu extends PureComponent {
               <img className="mobile-menu__mobile-app-image" src="./img/google-play.png" srcSet="./img/google-play@2x.png 2x" width="160" height="48" alt="Скачать в Google Play" />
             </a>
           </div>
-          <a className="mobile-menu__mobile-phone" href="tel:+79953014090">+7 995 301 40 90</a>
+          <a className="mobile-menu__mobile-phone" href={Links.PHONE_LINC}>{Links.PHONE_SHOW}</a>
           <a className="mobile-menu__mobile-jscorp" href={Links.JSCORP_LINK}><img className="mobile-menu__mobile-jscorp-image" src="./img/jscorp-logo.svg" width="63" height="63" alt="JSCorp" /></a>
         </div>
       </React.Fragment>

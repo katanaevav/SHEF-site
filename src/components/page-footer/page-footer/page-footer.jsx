@@ -12,13 +12,13 @@ class PageFooter extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._getLinkToAppsClickHandler = this._getLinkToAppsClickHandler.bind(this);
+    // this._getLinkToAppsClickHandler = this._getLinkToAppsClickHandler.bind(this);
   }
 
-  _getLinkToAppsClickHandler(evt) {
-    evt.preventDefault();
-    history.push(AppRoute.LINK_TO_APPS);
-  }
+  // _getLinkToAppsClickHandler(evt) {
+  //   evt.preventDefault();
+  //   history.push(AppRoute.LINK_TO_APPS);
+  // }
 
   render() {
 
@@ -56,14 +56,16 @@ class PageFooter extends PureComponent {
                   <ul className="section-links__links">
                     <li className="section-links__link">
                       <a
-                        onClick={this._getLinkToAppsClickHandler}
+                        // onClick={this._getLinkToAppsClickHandler}
+                        onClick={this.props.openGetLinkFormModalForm}
                       >
                         Порционные блюда
                       </a>
                     </li>
                     <li className="section-links__link">
                       <a
-                        onClick={this._getLinkToAppsClickHandler}
+                        // onClick={this._getLinkToAppsClickHandler}
+                        onClick={this.props.openGetLinkFormModalForm}
                       >
                         Бургеры от Local Burger
                       </a>
@@ -142,6 +144,7 @@ PageFooter.propTypes = {
   openCookiesWindow: PropTypes.func.isRequired,
   openContactUsForm: PropTypes.func.isRequired,
   openOferWindow: PropTypes.func.isRequired,
+  openGetLinkFormModalForm: PropTypes.func.isRequired,
 }
 
 

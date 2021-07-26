@@ -241,6 +241,7 @@ class App extends PureComponent {
                 openCookiesWindow = {this._openCookiesWindowHandle}
                 openContactUsForm = {this._openContactUsFormHandle}
                 openOferWindow = {this._openOferWindowHandler}
+                openGetLinkFormModalForm = {this._openGetLinkFormModalHandle}
               />
             </React.Fragment>
           </Route>
@@ -291,6 +292,7 @@ class App extends PureComponent {
                 openCookiesWindow = {this._openCookiesWindowHandle}
                 openContactUsForm = {this._openContactUsFormHandle}
                 openOferWindow = {this._openOferWindowHandler}
+                openGetLinkFormModalForm = {this._openGetLinkFormModalHandle}
               />
             </React.Fragment>
           </Route>
@@ -330,6 +332,7 @@ class App extends PureComponent {
                       openCookiesWindow = {this._openCookiesWindowHandle}
                       openContactUsForm = {this._openContactUsFormHandle}
                       openOferWindow = {this._openOferWindowHandler}
+                      openGetLinkFormModalForm = {this._openGetLinkFormModalHandle}
                     />
                   </React.Fragment>
                 );
@@ -368,6 +371,7 @@ class App extends PureComponent {
                       openCookiesWindow = {this._openCookiesWindowHandle}
                       openContactUsForm = {this._openContactUsFormHandle}
                       openOferWindow = {this._openOferWindowHandler}
+                      openGetLinkFormModalForm = {this._openGetLinkFormModalHandle}
                     />
                   </React.Fragment>
                 );
@@ -406,6 +410,7 @@ class App extends PureComponent {
                       openCookiesWindow = {this._openCookiesWindowHandle}
                       openContactUsForm = {this._openContactUsFormHandle}
                       openOferWindow = {this._openOferWindowHandler}
+                      openGetLinkFormModalForm = {this._openGetLinkFormModalHandle}
                     />
                   </React.Fragment>
                 );
