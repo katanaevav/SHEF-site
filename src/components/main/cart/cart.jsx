@@ -41,14 +41,16 @@ class Cart extends PureComponent {
 
     this.form = {
       // terminalkey: 'TinkoffBankTest',
-      terminalkey: '1622565527503DEMO',
+      // terminalkey: '1622565527503DEMO',
+      terminalkey: '1622565527503',
       frame: 'false',
       language: 'ru',
       amount: '22',
       order: '11',
       description: '',
       name: '',
-      email: '123@123.ru',
+      // email: '123@123.ru',
+      email: '',
       phone: '79055594564'
   }
 
