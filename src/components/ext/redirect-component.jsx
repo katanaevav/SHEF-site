@@ -15,10 +15,11 @@ class RedirectComponent extends PureComponent {
 
   componentDidMount() {
     const payStatusTextTemp = this.props.payStatus ?
-      `Вы совершили оплату. В ближайшее время с вами свяжется наш менеджер по указанному телефону` :
-      `Оплатить не удалось: ${this.mesage}`;
+      [`Ваш номер заказа: `, <b key="1">{this.props.orderId}</b>, `.` , <br key="2" />, `В ближайшее время с вами свяжется наш менеджер по указанному телефону`] :
+      [`Оплатить не удалось: ${this.mesage}`];
 
     this.props.setAppStates(true, this.props.payStatus, payStatusTextTemp);
+
 
     if (this.props.setStatus) {
       this.props.setStatus(true);
@@ -39,6 +40,7 @@ RedirectComponent.propTypes = {
   payStatus: PropTypes.bool.isRequired,
   setStatus: PropTypes.func,
   onClearCart: PropTypes.func,
+  orderId: PropTypes.string,
 }
 
 export default RedirectComponent;

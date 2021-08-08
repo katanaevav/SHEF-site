@@ -9,13 +9,14 @@ export const Links = {
   LOCAL_BURDER_APP_LINK: `https://www.localburgerco.com/app`,
   JSCORP_LINK: `https://jscorp.ru/startups/`,
 
-  STUFF_POINTS: `/stuff_points/`,
-  ORDERS: `/orders/`,
-  ORDER: `/order/`,
+  STUFF_POINTS: `/web/stuff_points/`,
+  ORDERS: `/web/orders/`,
+  ORDER: `/web/order/`,
+  LOGIN: `/api-token-auth/`,
 
-  LINK_EMAIL_REQUEST: `/link_request/`,
-  LINK_CONSULTATION_REQUEST: `/consultation_request/`,
-  LINK_CONTACTUS_REQUEST: `/contact_us/`,
+  LINK_EMAIL_REQUEST: `/web/link_request/`,
+  LINK_CONSULTATION_REQUEST: `/web/consultation_request/`,
+  LINK_CONTACTUS_REQUEST: `/web/contact_us/`,
 };
 
 export const SavingStatus = {

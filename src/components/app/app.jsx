@@ -67,7 +67,7 @@ class App extends PureComponent {
 
   componentDidMount() {
     const dishes = JSON.parse(localStorage.getItem('cartDishes'));
-    this.props.setOrderId(localStorage.getItem('orderId'))
+    // this.props.setOrderId(localStorage.getItem('orderId'));
 
     if (dishes != null) {
       dishes.forEach((dish) => {
@@ -141,6 +141,8 @@ class App extends PureComponent {
   }
 
   _setAfterPay(afterStatus, payStatus, payStatusText) {
+
+    // console.log(this.props.orderId, payStatusText);
     this.setState({
       isAfterPay: afterStatus,
       payStatus: payStatus,
@@ -211,6 +213,8 @@ class App extends PureComponent {
     const {cartPrice, cartType, cartTypeName, cartDishes, dishesTypesList, dishesList} = this.props;
     const {onDeleteDishFromCart, onChangeDishCountInCart, onAddDishToCart, onClearCart} = this.props;
 
+    console.log(this.props.orderId);
+
     // console.log(dishesList);
     // console.log(dishesTypesList);
 
@@ -255,6 +259,7 @@ class App extends PureComponent {
               payStatus = {true}
               setStatus = {this.props.setOrderPayStatus}
               onClearCart = {onClearCart}
+              orderId = {this.props.orderId}
             />
           </Route>
 
@@ -435,6 +440,7 @@ class App extends PureComponent {
 
 App.propTypes = {
   cartPrice: PropTypes.number,
+  orderId: PropTypes.string,
   cartType: PropTypes.number.isRequired,
   cartTypeName: PropTypes.object.isRequired,
   cartDishes: PropTypes.array,
@@ -462,6 +468,7 @@ const mapStateToProps = (state) => ({
   cartTypeName: getMenuCategoryName(state.cartType),
   cartDishes: state.cartDishes,
 
+  orderId: state.orderId,
   dishesTypesList: state.dishesTypesList,
   dishesList: state.dishesList,
 });

@@ -7,7 +7,7 @@ import {Provider} from "react-redux";
 import {reducer} from "./reducer/reducer.js";
 import {createAPI} from "./api.js";
 
-import {Operation as DataOperation} from "./reducer/reducer.js";
+import {Operation as DataOperation, ActionCreator} from "./reducer/reducer.js";
 
 import App from "./components/app/app.jsx";
 import {MenuCategory} from "./const.js";
@@ -32,8 +32,10 @@ function renderApp() {
   );
 };
 
+store.dispatch(DataOperation.login(() => {
+  store.dispatch(ActionCreator.setOrderId(localStorage.getItem('orderId')));
 
-store.dispatch(DataOperation.loadPoint(() => {
+  store.dispatch(DataOperation.loadPoint(() => {
       ReactDOM.render(
         <Provider store={store}>
           <App />
@@ -42,3 +44,8 @@ store.dispatch(DataOperation.loadPoint(() => {
       );
     })
   );
+
+}));
+
+
+

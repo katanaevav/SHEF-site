@@ -8,7 +8,7 @@ const initialState = {
   cartType: MenuCategory.EMPTY,
   cartDishes: [],
 
-  orderId: 0,
+  orderId: `0`,
   orderPayStatus: false,
 
   dishesTypesList: [],
@@ -18,6 +18,7 @@ const initialState = {
   dishesTypesListLoaded: [],
 
   linkRequestStatus: ``,
+  token: ``,
 };
 
 const ActionType = {
@@ -29,6 +30,7 @@ const ActionType = {
   ADD_DISHES: `ADD_DISHES`,
   ADD_CATEGORIES: `ADD_CATEGORIES`,
 
+  SET_TOKEN: `SET_TOKEN`,
   LOAD_POINT: `LOAD_POINT`,
   SET_ORDER_ID: `SET_ORDER_ID`,
   SET_ORDER_PAY_STATUS: `SET_ORDER_PAY_STATUS`,
@@ -100,12 +102,26 @@ const ActionCreator = {
     };
   },
 
+  setToken: (token) => {
+    return {
+      type: ActionType.SET_TOKEN,
+      payload: token,
+    };
+  },
+
 };
 
 
 const Operation = {
   makeRequest: (formData, link, action) => (dispatch, getState, api) => {
-    return api.post(link, formData)
+    return api.post(
+      link,
+      formData,
+      {
+        headers: {
+          'Authorization': `Token ${getState().token}`
+        },
+      })
       .then((response) => {
         if (response.status === 201) {
           action(SavingStatus.SUCCESS);
@@ -119,8 +135,27 @@ const Operation = {
       });
   },
 
+  login: (action) => (dispatch, getState, api) => {
+    return api.post(
+      Links.LOGIN,
+      {
+        "username": "alt_admin",
+        "password": "altsuperadmin",
+      })
+      .then((response) => {
+        dispatch(ActionCreator.setToken(response.data.token));
+        action();
+      });
+  },
+
   loadPoint: (action) => (dispatch, getState, api) => {
-    return api.get(Links.STUFF_POINTS)
+    return api.get(
+      Links.STUFF_POINTS,
+      {
+        headers: {
+          'Authorization': `Token ${getState().token}`
+        },
+      })
       .then((response) => {
         const convertedData = getDataFromPoint(response.data);
         dispatch(ActionCreator.addDishes(convertedData.dishes));
@@ -133,10 +168,16 @@ const Operation = {
   // setOrderPayStatus: (payStatus, action) => (dispatch, getState, api) => {
   setOrderPayStatus: (payStatus) => (dispatch, getState, api) => {
     // console.log(`${Links.ORDERS}${localStorage.getItem(`orderId`)}/`);
-    return api.patch(`${Links.ORDER}${localStorage.getItem(`orderId`)}/`, {
+    return api.patch(
+      `${Links.ORDER}${localStorage.getItem(`orderId`)}/`,
+      {
       "pay_status": payStatus,
-    })
-
+      },
+      {
+        headers: {
+          'Authorization': `Token ${getState().token}`
+        },
+      })
     .then(() => {
       dispatch(ActionCreator.setOrderPayStatus(payStatus));
       // action();
@@ -148,21 +189,27 @@ const Operation = {
   },
 
   saveOrder: (order, action) => (dispatch, getState, api) => {
-    return api.post(Links.ORDERS, {
-      "created_at": order.date,
-      "total_sum": order.summ,
-      "pay_status": false,
-      "user_phone": order.user_phone,
-      "items": order.items,
-      "pick_at": null,
-      "comment": order.comment,
-      "flat": "0",
-      "client_name": order.client_name,
-      "address_string": order.address_string,
-      "address": 1,
-      "point": order.point,
-    })
-
+    return api.post(
+      Links.ORDERS,
+      {
+        "created_at": order.date,
+        "total_sum": order.summ,
+        "pay_status": false,
+        "user_phone": order.user_phone,
+        "items": order.items,
+        "pick_at": null,
+        "comment": order.comment,
+        "flat": "0",
+        "client_name": order.client_name,
+        "address_string": order.address_string,
+        "address": 1,
+        "point": order.point,
+      },
+      {
+        headers: {
+          'Authorization': `Token ${getState().token}`
+        },
+      })
     .then((response) => {
       dispatch(ActionCreator.setOrderId(response.data.id));
       localStorage.setItem(`orderId`, response.data.id);
@@ -208,6 +255,11 @@ const reducer = (state = initialState, action) => {
     case ActionType.ADD_CATEGORIES:
       return Object.assign({}, state, {
         dishesTypesList: state.dishesTypesList.concat(action.payload),
+      });
+
+    case ActionType.SET_TOKEN:
+      return Object.assign({}, state, {
+        token: action.payload,
       });
 
 

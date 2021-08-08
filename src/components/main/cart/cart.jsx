@@ -41,8 +41,8 @@ class Cart extends PureComponent {
 
     this.form = {
       // terminalkey: 'TinkoffBankTest',
-      // terminalkey: '1622565527503DEMO',
-      terminalkey: '1622565527503',
+      terminalkey: '1622565527503DEMO',
+      // terminalkey: '1622565527503',
       frame: 'false',
       language: 'ru',
       amount: '22',

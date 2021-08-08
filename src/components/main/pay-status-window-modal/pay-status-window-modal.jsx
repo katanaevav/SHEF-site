@@ -40,7 +40,7 @@ PayStatusWindowModal.propTypes = {
   openState: PropTypes.bool.isRequired,
   onCloweModalWindow: PropTypes.func.isRequired,
   headerText: PropTypes.string,
-  bodyText: PropTypes.string,
+  bodyText: PropTypes.array,
   buttonText: PropTypes.string,
 };
 
